@@ -12,7 +12,7 @@
       <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
       <p:add-attribute match="/*" attribute-name="style" attribute-value="hyphens:auto"/>
       <p:add-attribute match="html:p" attribute-name="style" attribute-value="display:block"/>
-      <px:transform type="css-block" query="(translator:dedicon)"/>
+      <px:transform type="css-block" query="(translator:dedicon)(locale:nl)"/>
       <p:delete match="@style"/>
     </p:declare-step>
   </x:script>
