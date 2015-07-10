@@ -24,6 +24,7 @@ import static org.daisy.pipeline.braille.common.Transform.Provider.util.dispatch
 import static org.daisy.pipeline.braille.common.Transform.Provider.util.logCreate;
 import static org.daisy.pipeline.braille.common.Transform.Provider.util.logSelect;
 import static org.daisy.pipeline.braille.common.Transform.Provider.util.memoize;
+import static org.daisy.pipeline.braille.common.util.Locales.parseLocale;
 import org.daisy.pipeline.braille.common.WithSideEffect;
 import org.daisy.pipeline.braille.common.XProcTransform;
 import org.daisy.pipeline.braille.libhyphen.LibhyphenHyphenator;
@@ -60,6 +61,7 @@ public interface DediconCSSBlockTransform extends CSSBlockTransform, XProcTransf
 		 * Recognized features:
 		 *
 		 * - translator: Will only match if the value is `dedicon'.
+		 * - locale: Will only match if the language subtag is 'nl'.
 		 *
 		 */
 		public Iterable<DediconCSSBlockTransform> get(String query) {
@@ -88,6 +90,9 @@ public interface DediconCSSBlockTransform extends CSSBlockTransform, XProcTransf
 			protected final Iterable<WithSideEffect<DediconCSSBlockTransform,Logger>> __get(String query) {
 				Map<String,Optional<String>> q = new HashMap<String,Optional<String>>(parseQuery(query));
 				Optional<String> o;
+				if ((o = q.remove("locale")) != null)
+					if (!"nl".equals(parseLocale(o.get()).getLanguage()))
+						return empty;
 				if ((o = q.remove("translator")) != null)
 					if (o.get().equals("dedicon"))
 						if (q.size() == 0) {
