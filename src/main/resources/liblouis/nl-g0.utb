@@ -36,7 +36,7 @@
 # ----------------------------------------------------------------------------------------------
 
 include nl-chardefs.uti
-include braille-patterns.cti
+include http://www.liblouis.org/tables/braille-patterns.cti
 
 decpoint  \x002C  2    # COMMA       §3.1 Het cijferteken [1]
 decpoint  \x002E  256  # FULL STOP   §3.1 Het cijferteken [1]

@@ -43,7 +43,7 @@
 # Unicode 0000..007F  C0 Controls and Basic Latin
 # ----------------------------------------------------------------------------------------------
 
-include latinLetterDef6Dots.uti
+include http://www.liblouis.org/tables/latinLetterDef6Dots.uti
 
 uplow       \x00C0\x00E0  12356,12356         Àà                  LATIN CAPITAL LETTER A WITH GRAVE - LATIN SMALL LETTER A WITH GRAVE
 uplow       \x00C1\x00E1  12356,12356         Áá                  LATIN CAPITAL LETTER A WITH ACUTE - LATIN SMALL LETTER A WITH ACUTE
@@ -90,7 +90,7 @@ punctuation \x002D        36                  -                   HYPHEN-MINUS
 punctuation \x002E        256                 .                   FULL STOP
 math        \x002F        34                  /                   SOLIDUS
 
-include digits6Dots.uti
+include http://www.liblouis.org/tables/digits6Dots.uti
 
 punctuation \x003A        25                  :                   COLON
 punctuation \x003B        23                  ;                   SEMICOLON
