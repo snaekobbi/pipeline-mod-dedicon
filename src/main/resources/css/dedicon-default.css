@@ -1,5 +1,5 @@
 @page {
-	size: 33 28;
+	size: 35 28;
 	@top-center {
 		content: string(print-page);
 	}
