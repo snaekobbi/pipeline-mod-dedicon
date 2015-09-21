@@ -3,9 +3,10 @@ pipeline-mod-dedicon v1.1.0
 
 Includes
 --------
-- Initial default CSS.
+- Initial default CSS
 - Improved Liblouis table for Dutch grade 0 (https://github.com/snaekobbi/liblouis/issues/6,
   https://github.com/snaekobbi/issues/issues/13)
+- Custom handling of superscript and subscript (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/2)
 
 pipeline-mod-dedicon v1.0.0
 ===========================
