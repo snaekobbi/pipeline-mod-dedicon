@@ -10,8 +10,6 @@
       <p:input port="source"/>
       <p:output port="result"/>
       <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
-      <p:add-attribute match="/*" attribute-name="style" attribute-value="hyphens:auto"/>
-      <p:add-attribute match="html:p" attribute-name="style" attribute-value="display:block"/>
       <px:transform type="css-block" query="(translator:dedicon)(locale:nl)"/>
       <p:delete match="@style"/>
     </p:declare-step>
@@ -21,8 +19,8 @@
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
-          <div xmlns="http://www.w3.org/1999/xhtml">
-            <p>zomervakantie</p>
+          <div xmlns="http://www.w3.org/1999/xhtml" style="hyphens:auto">
+            <p style="display:block">zomervakantie</p>
           </div>
         </x:document>
       </x:input>
@@ -39,7 +37,7 @@
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="test_2">
+  <x:scenario label="test_2" pending="liblouis emphasis not working yet">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
@@ -61,7 +59,7 @@
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="test_3">
+  <x:scenario label="test_3" pending="liblouis emphasis not working yet">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
@@ -78,6 +76,32 @@
       <x:document type="inline">
         <div xmlns="http://www.w3.org/1999/xhtml">
           <em>⠸⠉⠥⠗⠎⠊⠑⠋</em>
+        </div>
+      </x:document>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="test_4">
+    <x:call step="pxi:transform">
+      <x:input port="source">
+        <x:document type="inline">
+          <div xmlns="http://www.w3.org/1999/xhtml">
+            <p style="display:block">
+              <em>Geestelijk leven is niet mogelijk zonder te leren.<sup>1</sup></em>
+            </p>
+          </div>
+        </x:document>
+      </x:input>
+    </x:call>
+    <x:context label="result">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect label="result" type="compare">
+      <x:document type="inline">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <p>
+            <em>⠨⠛⠑⠑⠎⠞⠑⠇⠊⠚⠅ ⠇⠑⠧⠑⠝ ⠊⠎ ⠝⠊⠑⠞ ⠍⠕⠛⠑⠇⠊⠚⠅ ⠵⠕⠝⠙⠑⠗ ⠞⠑ ⠇⠑⠗⠑⠝⠲<sup>⠌⠼⠁</sup></em>
+          </p>
         </div>
       </x:document>
     </x:expect>

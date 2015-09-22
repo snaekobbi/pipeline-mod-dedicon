@@ -12,11 +12,10 @@
 	<xsl:param name="query" required="yes"/>
 	
 	<xsl:template match="css:block" mode="#all">
-		<xsl:variable name="text" as="xs:string*"/>
+		<xsl:variable name="text" as="xs:string*">
 			<xsl:for-each select="//text()">
-				<xsl:sequence
-							select="if (ancestor::sup) then concat('^',.) else
-										if (ancestor::sub) then concat('\',.) else ."/>
+				<xsl:sequence select="if (ancestor::html:sup) then concat('^',.) else
+				                      if (ancestor::html:sub) then concat('\',.) else ."/>
 			</xsl:for-each>
 		</xsl:variable>
 		<xsl:variable name="style" as="xs:string*">
