@@ -16,7 +16,7 @@
 			<xsl:for-each select="//text()">
 				<xsl:sequence
 							select="if (ancestor::sup) then concat('^',.) else
-										if (ancestor::sub) then concat('_',.) else ."/>
+										if (ancestor::sub) then concat('\',.) else ."/>
 			</xsl:for-each>
 		</xsl:variable>
 		<xsl:variable name="style" as="xs:string*">
