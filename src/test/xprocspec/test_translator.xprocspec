@@ -106,5 +106,49 @@
       </x:document>
     </x:expect>
   </x:scenario>
+  <x:scenario label="test_5">
+    <x:call step="pxi:transform">
+      <x:input port="source">
+        <x:document type="inline">
+          <div xmlns="http://www.w3.org/1999/xhtml">
+            <h1>Not preserving whitespace</h1>
+            <code>/*  Some test data  */
+            int[] data = {
+                1,  2,  3,  4,
+                5,  6,  7,  8
+            };</code>
+            <h1>Preserving whitespace</h1>
+            <!-- TODO: change to xml:space -->
+            <code space="preserve">/*  Some test data  */
+            int[] data = {
+                1,  2,  3,  4,
+                5,  6,  7,  8
+            };</code>
+          </div>
+        </x:document>
+      </x:input>
+    </x:call>
+    <x:context label="result">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect label="result" type="compare">
+      <x:document type="inline">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <h1>⠨⠝⠕⠞⠀⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
+          
+          <code>⠌⠔⠀⠨⠎⠕⠍⠑⠀⠞⠑⠎⠞⠀⠙⠁⠞⠁⠀⠔⠌⠀⠊⠝⠞⠷⠾⠀⠙⠁⠞⠁⠀⠶
+          ⠷⠀⠼⠁⠂⠀⠼⠃⠂⠀⠼⠉⠂⠀⠼⠙⠂⠀⠼⠑⠂⠀⠼⠋⠂⠀⠼⠛⠂⠀⠼⠓⠀⠾⠆</code>
+          
+          <h1>⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
+          
+          <code space="preserve">⠌⠔⠀⠀⠨⠎⠕⠍⠑⠀⠞⠑⠎⠞⠀⠙⠁⠞⠁⠀⠀⠔⠌
+          ⠊⠝⠞⠷⠾⠀⠙⠁⠞⠁⠀⠶⠀⠷
+          ⠀⠀⠀⠀⠼⠁⠂⠀⠀⠼⠃⠂⠀⠀⠼⠉⠂⠀⠀⠼⠙⠂
+          ⠀⠀⠀⠀⠼⠑⠂⠀⠀⠼⠋⠂⠀⠀⠼⠛⠂⠀⠀⠼⠓
+          ⠾⠆</code>
+        </div>
+      </x:document>
+    </x:expect>
+  </x:scenario>
   
 </x:description>
