@@ -15,7 +15,7 @@
     </p:declare-step>
   </x:script>
   
-  <x:scenario label="test_1">
+  <x:scenario label="test_1" pending="libhyphen not available on Windows">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
