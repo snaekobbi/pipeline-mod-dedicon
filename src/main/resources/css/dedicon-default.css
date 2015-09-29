@@ -46,3 +46,12 @@ doctitle, docauthor {
 	margin-top: 2;
 	margin-bottom: 2;
 }
+
+code {
+	display: block;
+	hyphens: none;
+}
+
+*[space=preserve] {
+	white-space: pre-wrap;
+}
