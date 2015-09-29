@@ -9,15 +9,17 @@ import java.net.URI;
 import javax.xml.namespace.QName;
 
 import static com.google.common.base.Objects.toStringHelper;
-import static com.google.common.collect.Iterables.concat;
-import static com.google.common.collect.Iterables.transform;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableMap;
+import static com.google.common.collect.Iterables.concat;
+import static com.google.common.collect.Iterables.transform;
+import static com.google.common.collect.Lists.newArrayList;
 
 import static org.daisy.pipeline.braille.css.Query.parseQuery;
 import static org.daisy.pipeline.braille.common.util.Tuple3;
 import static org.daisy.pipeline.braille.common.util.URIs.asURI;
 import org.daisy.pipeline.braille.common.CSSBlockTransform;
+import org.daisy.pipeline.braille.common.Hyphenator;
 import org.daisy.pipeline.braille.common.Transform;
 import org.daisy.pipeline.braille.common.Transform.AbstractTransform;
 import static org.daisy.pipeline.braille.common.Transform.Provider.util.dispatch;
@@ -27,7 +29,6 @@ import static org.daisy.pipeline.braille.common.Transform.Provider.util.memoize;
 import static org.daisy.pipeline.braille.common.util.Locales.parseLocale;
 import org.daisy.pipeline.braille.common.WithSideEffect;
 import org.daisy.pipeline.braille.common.XProcTransform;
-import org.daisy.pipeline.braille.libhyphen.LibhyphenHyphenator;
 import org.daisy.pipeline.braille.liblouis.LiblouisTranslator;
 
 import org.osgi.service.component.annotations.Activate;
@@ -78,6 +79,7 @@ public interface DediconCSSBlockTransform extends CSSBlockTransform, XProcTransf
 			
 			private final static String liblouisTable = "(liblouis-table:'http://www.dedicon.nl/liblouis/nl-NL-g0.utb')";
 			private final static String hyphenationTable = "(libhyphen-table:'http://www.libreoffice.org/dictionaries/hyphen/hyph_nl_NL.dic')";
+			private final static String fallbackHyphenationTable = "(hyphenator:tex)(locale:nl-NL)";
 		
 			private ProviderImpl(Logger context) {
 				super(context);
@@ -96,13 +98,22 @@ public interface DediconCSSBlockTransform extends CSSBlockTransform, XProcTransf
 				if ((o = q.remove("translator")) != null)
 					if (o.get().equals("dedicon"))
 						if (q.size() == 0) {
-							Iterable<WithSideEffect<LibhyphenHyphenator,Logger>> hyphenators
-								= logSelect(hyphenationTable, libhyphenHyphenatorProvider.get(hyphenationTable));
+							Iterable<WithSideEffect<Hyphenator,Logger>> hyphenators = concat(
+								logSelect(hyphenationTable, hyphenatorProvider.get(hyphenationTable)),
+								logSelect(fallbackHyphenationTable, hyphenatorProvider.get(fallbackHyphenationTable)));
 							return transform(
-								hyphenators,
-								new WithSideEffect.Function<LibhyphenHyphenator,DediconCSSBlockTransform,Logger>() {
-									public DediconCSSBlockTransform _apply(LibhyphenHyphenator h) {
-										String translatorQuery = liblouisTable + "(hyphenator:" + h.getIdentifier() + ")";
+								concat(
+									transform(
+										hyphenators,
+										new WithSideEffect.Function<Hyphenator,String,Logger>() {
+											public String _apply(Hyphenator h) {
+												return h.getIdentifier(); }}),
+									newArrayList(
+										WithSideEffect.<String,Logger>of("liblouis"),
+										WithSideEffect.<String,Logger>of("none"))),
+								new WithSideEffect.Function<String,DediconCSSBlockTransform,Logger>() {
+									public DediconCSSBlockTransform _apply(String hyphenator) {
+										String translatorQuery = liblouisTable + "(hyphenator:" + hyphenator + ")";
 										try {
 											applyWithSideEffect(
 												logSelect(
@@ -162,25 +173,25 @@ public interface DediconCSSBlockTransform extends CSSBlockTransform, XProcTransf
 		= memoize(dispatch(liblouisTranslatorProviders));
 		
 		@Reference(
-			name = "LibhyphenHyphenatorProvider",
-			unbind = "unbindLibhyphenHyphenatorProvider",
-			service = LibhyphenHyphenator.Provider.class,
+			name = "HyphenatorProvider",
+			unbind = "unbindHyphenatorProvider",
+			service = Hyphenator.Provider.class,
 			cardinality = ReferenceCardinality.MULTIPLE,
 			policy = ReferencePolicy.DYNAMIC
 		)
-		protected void bindLibhyphenHyphenatorProvider(LibhyphenHyphenator.Provider provider) {
-			libhyphenHyphenatorProviders.add(provider);
+		protected void bindHyphenatorProvider(Hyphenator.Provider provider) {
+			hyphenatorProviders.add(provider);
 		}
 	
-		protected void unbindLibhyphenHyphenatorProvider(LibhyphenHyphenator.Provider provider) {
-			libhyphenHyphenatorProviders.remove(provider);
-			libhyphenHyphenatorProvider.invalidateCache();
+		protected void unbindHyphenatorProvider(Hyphenator.Provider provider) {
+			hyphenatorProviders.remove(provider);
+			hyphenatorProvider.invalidateCache();
 		}
 	
-		private List<Transform.Provider<LibhyphenHyphenator>> libhyphenHyphenatorProviders
-		= new ArrayList<Transform.Provider<LibhyphenHyphenator>>();
-		private Transform.Provider.MemoizingProvider<LibhyphenHyphenator> libhyphenHyphenatorProvider
-		= memoize(dispatch(libhyphenHyphenatorProviders));
+		private List<Transform.Provider<Hyphenator>> hyphenatorProviders
+		= new ArrayList<Transform.Provider<Hyphenator>>();
+		private Transform.Provider.MemoizingProvider<Hyphenator> hyphenatorProvider
+		= memoize(dispatch(hyphenatorProviders));
 		
 	}
 }
