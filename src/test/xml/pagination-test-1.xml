@@ -34,11 +34,12 @@
 		content: string(print-page);
 	}
 	@top-right {
-		content: counter(braille-page);
+		content: counter(page);
 	}
 }
 pagenum {
-	string-set: print-page attr(value);
+	display: none;
+	string-set: print-page content();
 }
 frontmatter, bodymatter {
 	display: block;
