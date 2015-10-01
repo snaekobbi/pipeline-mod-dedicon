@@ -111,19 +111,9 @@
       <x:input port="source">
         <x:document type="inline">
           <div xmlns="http://www.w3.org/1999/xhtml">
-            <h1>Not preserving whitespace</h1>
-            <code>/*  Some test data  */
-            int[] data = {
-                1,  2,  3,  4,
-                5,  6,  7,  8
-            };</code>
-            <h1>Preserving whitespace</h1>
+            <h1>Not   preserving   whitespace</h1>
             <!-- TODO: change to xml:space -->
-            <code space="preserve">/*  Some test data  */
-            int[] data = {
-                1,  2,  3,  4,
-                5,  6,  7,  8
-            };</code>
+            <h1 space="preserve">Preserving   whitespace</h1>
           </div>
         </x:document>
       </x:input>
@@ -135,17 +125,7 @@
       <x:document type="inline">
         <div xmlns="http://www.w3.org/1999/xhtml">
           <h1>⠨⠝⠕⠞⠀⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
-          
-          <code>⠌⠔⠀⠨⠎⠕⠍⠑⠀⠞⠑⠎⠞⠀⠙⠁⠞⠁⠀⠔⠌⠀⠊⠝⠞⠷⠾⠀⠙⠁⠞⠁⠀⠶
-          ⠷⠀⠼⠁⠂⠀⠼⠃⠂⠀⠼⠉⠂⠀⠼⠙⠂⠀⠼⠑⠂⠀⠼⠋⠂⠀⠼⠛⠂⠀⠼⠓⠀⠾⠆</code>
-          
-          <h1>⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
-          
-          <code space="preserve">⠌⠔⠀⠀⠨⠎⠕⠍⠑⠀⠞⠑⠎⠞⠀⠙⠁⠞⠁⠀⠀⠔⠌
-          ⠊⠝⠞⠷⠾⠀⠙⠁⠞⠁⠀⠶⠀⠷
-          ⠀⠀⠀⠀⠼⠁⠂⠀⠀⠼⠃⠂⠀⠀⠼⠉⠂⠀⠀⠼⠙⠂
-          ⠀⠀⠀⠀⠼⠑⠂⠀⠀⠼⠋⠂⠀⠀⠼⠛⠂⠀⠀⠼⠓
-          ⠾⠆</code>
+          <h1 space="preserve">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀  ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
         </div>
       </x:document>
     </x:expect>
