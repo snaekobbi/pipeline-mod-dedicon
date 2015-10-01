@@ -14,8 +14,8 @@
 	<xsl:template match="css:block" mode="#all">
 		<xsl:variable name="text" as="xs:string*">
 			<xsl:for-each select="//text()">
-				<xsl:sequence select="if (ancestor::html:sup) then concat('^',.) else
-				                      if (ancestor::html:sub) then concat('\',.) else ."/>
+				<xsl:sequence select="if (ancestor::*:sup) then concat('^',.) else
+				                      if (ancestor::*:sub) then concat('\',.) else ."/>
 			</xsl:for-each>
 		</xsl:variable>
 		<xsl:variable name="style" as="xs:string*">
@@ -23,8 +23,8 @@
 				<xsl:variable name="inline-style" as="element()*"
 				              select="css:computed-properties($inline-properties, true(), parent::*)"/>
 				<xsl:variable name="transform" as="xs:string?"
-				              select="if (ancestor::html:strong) then 'louis-bold' else
-				                      if (ancestor::html:em) then 'louis-ital' else ()"/>
+				              select="if (ancestor::*:strong) then 'louis-bold' else
+				                      if (ancestor::*:em) then 'louis-ital' else ()"/>
 				<xsl:variable name="inline-style" as="element()*"
 				              select="if ($transform) then ($inline-style,css:property('transform',$transform)) else $inline-style"/>
 				<xsl:sequence select="css:serialize-declaration-list($inline-style[not(@value=css:initial-value(@name))])"/>
