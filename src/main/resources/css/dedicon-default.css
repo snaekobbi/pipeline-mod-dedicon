@@ -9,7 +9,7 @@
 }
 
 pagenum {
-	display: page-break;
+	display: none;
 	string-set: print-page attr(value);
 }
 
