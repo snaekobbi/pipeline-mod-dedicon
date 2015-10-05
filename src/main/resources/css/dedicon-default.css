@@ -51,3 +51,7 @@ code {
 	display: block;
 	hyphens: none;
 }
+
+[space=preserve] {
+	white-space: pre-wrap;
+}

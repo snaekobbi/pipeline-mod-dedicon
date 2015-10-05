@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.daisy.org/ns/xprocspec"
+               xmlns:p="http://www.w3.org/ns/xproc"
+               xmlns:px="http://www.daisy.org/ns/pipeline/xproc"
+               xmlns:html="http://www.w3.org/1999/xhtml"
+               xmlns:css="http://www.daisy.org/ns/pipeline/braille-css"
+               xmlns:pxi="http://www.daisy.org/ns/pipeline/xproc/internal">
+  
+  <x:script>
+    <p:declare-step type="pxi:transform" version="1.0">
+      <p:input port="source"/>
+      <p:output port="result"/>
+      <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
+      <p:import href="http://www.daisy.org/pipeline/modules/braille/css-utils/library.xpl"/>
+      <css:inline>
+        <p:with-option name="default-stylesheet" select="'../../main/resources/css/dedicon-default.css'"/>
+      </css:inline>
+      <px:transform type="css-block" query="(translator:dedicon)(locale:nl)"/>
+    </p:declare-step>
+  </x:script>
+  
+  <x:scenario label="test_whitespace">
+    <x:call step="pxi:transform">
+      <x:input port="source">
+        <x:document type="inline">
+          <div xmlns="http://www.w3.org/1999/xhtml">
+            <p>Not   preserving   whitespace</p>
+            <!-- TODO: change to xml:space -->
+            <p space="preserve">Preserving   whitespace</p>
+          </div>
+        </x:document>
+      </x:input>
+    </x:call>
+    <x:context label="result">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect label="result" type="compare" normalize-space="false">
+      <x:document type="inline">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="@page { size: 35 28; @top-center { content: string(print-page); } @top-right { content: counter(page); } }">             <p style="{ display: block; text-indent: 1 }">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>                          <p space="preserve" style="{ display: block; text-indent: 1; white-space: pre-wrap }">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
+      </x:document>
+    </x:expect>
+  </x:scenario>
+  
+</x:description>

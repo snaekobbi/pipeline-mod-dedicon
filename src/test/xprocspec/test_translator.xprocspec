@@ -11,7 +11,6 @@
       <p:output port="result"/>
       <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
       <px:transform type="css-block" query="(translator:dedicon)(locale:nl)"/>
-      <p:delete match="@style"/>
     </p:declare-step>
   </x:script>
   
@@ -30,8 +29,8 @@
     </x:context>
     <x:expect label="result" type="compare">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml">
-          <p>⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
+        <div xmlns="http://www.w3.org/1999/xhtml" style="{ hyphens: manual }">
+          <p style="{ display: block }">⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
         </div>
       </x:document>
     </x:expect>
@@ -97,19 +96,19 @@
     <x:expect label="result" type="compare">
       <x:document type="inline">
         <div xmlns="http://www.w3.org/1999/xhtml">
-          <p>⠨⠛⠑⠑⠎⠞⠑⠇⠊⠚⠅ ⠇⠑⠧⠑⠝ ⠊⠎ ⠝⠊⠑⠞ ⠍⠕⠛⠑⠇⠊⠚⠅ ⠵⠕⠝⠙⠑⠗ ⠞⠑ ⠇⠑⠗⠑⠝⠲<sup>⠌⠼⠁</sup></p>
+          <p style="{ display: block }">⠨⠛⠑⠑⠎⠞⠑⠇⠊⠚⠅ ⠇⠑⠧⠑⠝ ⠊⠎ ⠝⠊⠑⠞ ⠍⠕⠛⠑⠇⠊⠚⠅ ⠵⠕⠝⠙⠑⠗ ⠞⠑ ⠇⠑⠗⠑⠝⠲<sup>⠌⠼⠁</sup></p>
         </div>
       </x:document>
     </x:expect>
   </x:scenario>
+  
   <x:scenario label="test_whitespace">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
           <div xmlns="http://www.w3.org/1999/xhtml">
             <p style="display: block">Not   preserving   whitespace</p>
-            <!-- TODO: change to xml:space -->
-            <p style="display: block" space="preserve">Preserving   whitespace</p>
+            <p style="display: block; white-space: pre-wrap">Preserving   whitespace</p>
           </div>
         </x:document>
       </x:input>
@@ -117,12 +116,9 @@
     <x:context label="result">
       <x:document type="port" port="result"/>
     </x:context>
-    <x:expect label="result" type="compare">
+    <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml">
-          <p>⠨⠝⠕⠞ ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛ ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>
-          <p space="preserve">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>
-        </div>
+        <div xmlns="http://www.w3.org/1999/xhtml">             <p style="{ display: block }">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p style="{ display: block; white-space: pre-wrap }">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
       </x:document>
     </x:expect>
   </x:scenario>
