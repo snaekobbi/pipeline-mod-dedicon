@@ -15,7 +15,7 @@
     </p:declare-step>
   </x:script>
   
-  <x:scenario label="test_1" pending="libhyphen not available on Windows">
+  <x:scenario label="test_hyphenation" pending="libhyphen not available on Windows">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
@@ -37,7 +37,7 @@
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="test_2" pending="liblouis emphasis not working yet">
+  <x:scenario label="test_strong" pending="liblouis emphasis not working yet">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
@@ -59,7 +59,7 @@
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="test_3" pending="liblouis emphasis not working yet">
+  <x:scenario label="test_em" pending="liblouis emphasis not working yet">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
@@ -81,14 +81,12 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="test_4">
+  <x:scenario label="test_sup_sub">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
           <div xmlns="http://www.w3.org/1999/xhtml">
-            <p style="display:block">
-              <em>Geestelijk leven is niet mogelijk zonder te leren.<sup>1</sup></em>
-            </p>
+            <p style="display:block">Geestelijk leven is niet mogelijk zonder te leren.<sup>1</sup></p>
           </div>
         </x:document>
       </x:input>
@@ -99,21 +97,19 @@
     <x:expect label="result" type="compare">
       <x:document type="inline">
         <div xmlns="http://www.w3.org/1999/xhtml">
-          <p>
-            <em>⠨⠛⠑⠑⠎⠞⠑⠇⠊⠚⠅ ⠇⠑⠧⠑⠝ ⠊⠎ ⠝⠊⠑⠞ ⠍⠕⠛⠑⠇⠊⠚⠅ ⠵⠕⠝⠙⠑⠗ ⠞⠑ ⠇⠑⠗⠑⠝⠲<sup>⠌⠼⠁</sup></em>
-          </p>
+          <p>⠨⠛⠑⠑⠎⠞⠑⠇⠊⠚⠅ ⠇⠑⠧⠑⠝ ⠊⠎ ⠝⠊⠑⠞ ⠍⠕⠛⠑⠇⠊⠚⠅ ⠵⠕⠝⠙⠑⠗ ⠞⠑ ⠇⠑⠗⠑⠝⠲<sup>⠌⠼⠁</sup></p>
         </div>
       </x:document>
     </x:expect>
   </x:scenario>
-  <x:scenario label="test_5">
+  <x:scenario label="test_whitespace">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
           <div xmlns="http://www.w3.org/1999/xhtml">
-            <h1>Not   preserving   whitespace</h1>
+            <p style="display: block">Not   preserving   whitespace</p>
             <!-- TODO: change to xml:space -->
-            <h1 space="preserve">Preserving   whitespace</h1>
+            <p style="display: block" space="preserve">Preserving   whitespace</p>
           </div>
         </x:document>
       </x:input>
@@ -124,8 +120,8 @@
     <x:expect label="result" type="compare">
       <x:document type="inline">
         <div xmlns="http://www.w3.org/1999/xhtml">
-          <h1>⠨⠝⠕⠞⠀⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
-          <h1 space="preserve">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛⠀  ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</h1>
+          <p>⠨⠝⠕⠞ ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛ ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>
+          <p space="preserve">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>
         </div>
       </x:document>
     </x:expect>
