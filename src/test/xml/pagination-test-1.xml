@@ -9,20 +9,15 @@
 	and output with `(formatter:dotify)`.
 	
 	Issues with liblouis:
-	* Page numbers are positioned to the right of the first line of frontmatter.
-	  Expected is that they appear in the top margin (header).
 	* There are two page breaks between frontmatter and bodymatter.
 	  Expected is that page-break-after and page-break-before collapse into one.
-	* The top-center pagenum with ID pg1 is rendered hard left.
+	* The top-center pagenum with ID pg1 is not rendered.
+	* Braille page numbers are not rendered.
 	
 	Issues with dotify:
-	* A print page number is positioned to the right of the first line of frontmatter.
-	  Expected is that it appears in the top margin (header).
-	  Except that frontmatter contains no print page numbers and should not render any.
 	* There are two page breaks between frontmatter and bodymatter.
 	  Expected is that page-break-after and page-break-before collapse into one.
-	* Braille page numbers are not rendered.
-	* The top-center pagenum with ID pg1 is rendered hard left.
+	* The top-center pagenum with ID pg1 is not rendered.
 -->
 <head>
 <style type="text/css">
