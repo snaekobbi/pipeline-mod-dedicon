@@ -4,20 +4,14 @@
 <!--
 	Ref.: https://github.com/snaekobbi/system/releases/tag/v1.2.2
 	Tested using BRF output.
-	
-	Compare output with `(formatter:liblouis)`,
-	and output with `(formatter:dotify)`.
-	
-	Issues with liblouis:
-	* There are two page breaks between frontmatter and bodymatter.
-	  Expected is that page-break-after and page-break-before collapse into one.
-	* The top-center pagenum with ID pg1 is not rendered.
-	* Braille page numbers are not rendered.
+	Used (formatter:dotify)`.
 	
 	Issues with dotify:
 	* There are two page breaks between frontmatter and bodymatter.
 	  Expected is that page-break-after and page-break-before collapse into one.
-	* The top-center pagenum with ID pg1 is not rendered.
+	* The top-center pagenum with ID pg1 is not rendered when `display` is set to `none`.
+	  The pagenum is rendered correctly when `display` is set to `block`,
+	  but then it also appears in the normal flow.
 -->
 <head>
 <style type="text/css">
