@@ -4,13 +4,13 @@
 		content: string(print-page);
 	}
 	@top-right {
-		content: counter(braille-page);
+		content: counter(page);
 	}
 }
 
 pagenum {
 	display: none;
-	string-set: print-page attr(value);
+	string-set: print-page content();
 }
 
 head {
