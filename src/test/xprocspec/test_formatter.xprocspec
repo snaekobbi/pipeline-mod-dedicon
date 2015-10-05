@@ -26,7 +26,7 @@
   <x:scenario label="example">
     <x:call step="pxi:transform">
       <x:input port="source">
-        <x:document type="file" href="../xml/pagination-test-1.xml"/>
+        <x:document type="file" href="../resources/xml/pagination-test-1.xml"/>
       </x:input>
       <x:option name="temp-dir" select="$temp-dir"/>
     </x:call>
@@ -34,7 +34,7 @@
       <x:document type="port" port="result"/>
     </x:context>
     <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
-      <x:document type="file" href="../pef/pagination-test-1.pef"/>
+      <x:document type="file" href="../resources/pef/pagination-test-1.pef"/>
     </x:expect>
   </x:scenario>
   

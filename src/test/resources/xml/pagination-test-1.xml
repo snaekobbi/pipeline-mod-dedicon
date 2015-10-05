@@ -15,6 +15,7 @@
 -->
 <head>
 <style type="text/css">
+/* @import url("http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/css/default.css"); */
 @page {
 	size: 35 28;
 	@top-center {
@@ -34,6 +35,13 @@ frontmatter, bodymatter {
 	page-break-after: always;
 }
 level1, h1, p {
+	display: block;
+}
+/* from default.css */
+head {
+	display: none;
+}
+doctitle, docauthor {
 	display: block;
 }
 </style>
