@@ -23,7 +23,7 @@
     </p:declare-step>
   </x:script>
   
-  <x:scenario label="example">
+  <x:scenario label="test_pagination_1">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="file" href="../resources/xml/pagination-test-1.xml"/>

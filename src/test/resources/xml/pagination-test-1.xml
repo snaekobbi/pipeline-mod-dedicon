@@ -4,7 +4,7 @@
 <!--
 	Ref.: https://github.com/snaekobbi/system/releases/tag/v1.2.2
 	Tested using BRF output.
-	Used (formatter:dotify)`.
+	Used `(formatter:dotify)`.
 	
 	Issues with dotify:
 	* There are two page breaks between frontmatter and bodymatter.
@@ -37,11 +37,14 @@ frontmatter, bodymatter {
 level1, h1, p {
 	display: block;
 }
+docauthor {
+	display: none;
+}
 /* from default.css */
 head {
 	display: none;
 }
-doctitle, docauthor {
+doctitle {
 	display: block;
 }
 </style>
@@ -49,14 +52,13 @@ doctitle, docauthor {
 <book>
 <frontmatter>
 <doctitle>Pagination test</doctitle>
-<docauthor>Davy Kager</docauthor>
+<docauthor></docauthor>
 </frontmatter>
 <bodymatter>
 <level1>
 <pagenum page="normal" id="pg1">1</pagenum>
 <h1>First Page</h1>
-<p>This is text on the first print page.</p>
-<p>The print page number should be rendered top-center, the braille page number top-right.</p>
+<p>This is some text.</p>
 </level1>
 </bodymatter>
 </book>
