@@ -77,7 +77,8 @@ public interface DediconCSSBlockTransform extends CSSBlockTransform, XProcTransf
 	
 		private class ProviderImpl extends AbstractProvider<DediconCSSBlockTransform> {
 			
-			private final static String liblouisTable = "(liblouis-table:'http://www.dedicon.nl/liblouis/nl-NL-g0.utb')";
+			private final static String liblouisTable = "(liblouis-table:'" +
+				"http://www.dedicon.nl/liblouis/nl-NL-g0.utb,http://www.dedicon.nl/liblouis/undefined.utb')";
 			private final static String hyphenationTable = "(libhyphen-table:'http://www.libreoffice.org/dictionaries/hyphen/hyph_nl_NL.dic')";
 			private final static String fallbackHyphenationTable = "(hyphenator:tex)(locale:nl-NL)";
 		
