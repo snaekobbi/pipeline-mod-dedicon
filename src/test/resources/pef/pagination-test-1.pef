@@ -8,7 +8,7 @@
 	</meta>
   </head>
   <body>
-	<volume cols="35" rows="3" rowgap="0" duplex="false">
+	<volume cols="35" rows="3" rowgap="0" duplex="true">
 	  <section>
 		<page>
 		  <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
