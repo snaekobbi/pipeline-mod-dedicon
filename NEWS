@@ -1,4 +1,4 @@
-pipeline-mod-dedicon v1.0.1
+pipeline-mod-dedicon v1.1.0
 ===========================
 
 Includes
@@ -7,6 +7,9 @@ Includes
 - Improved Liblouis table for Dutch grade 0 (https://github.com/snaekobbi/liblouis/issues/6,
   https://github.com/snaekobbi/issues/issues/13)
 - Custom handling of superscript and subscript (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/2)
+- Handling of xml:space
+- Question mark for unknown characters (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/3)
+
 
 pipeline-mod-dedicon v1.0.0
 ===========================
