@@ -25,8 +25,7 @@
         <x:document type="inline">
           <div xmlns="http://www.w3.org/1999/xhtml">
             <p>Not   preserving   whitespace</p>
-            <!-- TODO: change to xml:space -->
-            <p space="preserve">Preserving   whitespace</p>
+            <p xml:space="preserve">Preserving   whitespace</p>
           </div>
         </x:document>
       </x:input>
@@ -36,7 +35,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="@page { size: 35 28; @top-center { content: string(print-page); } @top-right { content: counter(page); } }">             <p style="{ display: block; text-indent: 1 }">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>                          <p space="preserve" style="{ display: block; text-indent: 1; white-space: pre-wrap }">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
+        <div xmlns="http://www.w3.org/1999/xhtml" style="@page { size: 35 28; @top-center { content: string(print-page); } @top-right { content: counter(page); } } { text-transform: none }">             <p style="{ display: block; text-indent: 1 }">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="{ display: block; text-indent: 1; white-space: pre-wrap }">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
       </x:document>
     </x:expect>
   </x:scenario>
