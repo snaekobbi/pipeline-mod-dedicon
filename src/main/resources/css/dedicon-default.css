@@ -10,6 +10,8 @@
 
 pagenum {
 	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
 	text-align: center;
 	string-set: print-page content();
 }
@@ -24,7 +26,6 @@ book {
 
 p {
 	display: block;
-	text-indent: 1;
 }
 
 hd, h1, h2, h3, h4, h5, h6 {
@@ -32,6 +33,7 @@ hd, h1, h2, h3, h4, h5, h6 {
 	margin-top: 1;
 	margin-bottom: 1;
 	page-break-after: avoid;
+	text-indent: -2;
 }
 
 level,
@@ -52,6 +54,6 @@ code {
 	hyphens: none;
 }
 
-[space=preserve] {
+[xml|space=preserve] {
 	white-space: pre-wrap;
 }
