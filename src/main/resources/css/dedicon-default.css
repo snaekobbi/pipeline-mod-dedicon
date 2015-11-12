@@ -6,10 +6,12 @@
 	@top-right {
 		content: counter(page);
 	}
+	margin-left: 2;
 }
 
 pagenum {
-	display: none;
+	display: block;
+	text-align: center;
 	string-set: print-page content();
 }
 
