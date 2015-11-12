@@ -6,7 +6,6 @@
 	@top-right {
 		content: counter(page);
 	}
-	margin-left: 2;
 }
 
 pagenum {
