@@ -1,7 +1,7 @@
 @page {
 	size: 35 28;
 	@top-center {
-		content: string(print-page);
+		content: string(print-page-from, page-first) string(print-page-to, page-last-except-start);
 	}
 	@top-right {
 		content: counter(page);
@@ -13,7 +13,7 @@ pagenum {
 	margin-top: 1;
 	margin-bottom: 1;
 	text-align: center;
-	string-set: print-page content();
+	string-set: print-page-from content(), print-page-to ' - ' content();
 }
 
 head {
@@ -30,7 +30,6 @@ p {
 
 hd, h1, h2, h3, h4, h5, h6 {
 	display: block;
-	margin-top: 1;
 	margin-bottom: 1;
 	page-break-after: avoid;
 	text-indent: -2;
@@ -46,7 +45,6 @@ frontmatter, bodymatter, rearmatter {
 }
 
 doctitle, docauthor {
-	margin-top: 2;
 	margin-bottom: 2;
 }
 
