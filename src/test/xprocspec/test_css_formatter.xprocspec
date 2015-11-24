@@ -38,4 +38,36 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario label="test_pagination_2" pending="bug: wrong print page number range: 2 - 2">
+    <x:call step="pxi:transform">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/pagination-test-2.xml"/>
+      </x:input>
+      <x:option name="temp-dir" select="$temp-dir"/>
+    </x:call>
+    <x:context label="pef">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/pagination-test-2.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="test_pagination_3" pending="print page range not centered perfectly
+                                                 print page number at top op page should be skipped
+                                                 heading at top of page should not have top margin">
+    <x:call step="pxi:transform">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/pagination-test-3.xml"/>
+      </x:input>
+      <x:option name="temp-dir" select="$temp-dir"/>
+    </x:call>
+    <x:context label="pef">
+      <x:document type="port" port="result"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/pagination-test-3.pef"/>
+    </x:expect>
+  </x:scenario>
+  
 </x:description>
