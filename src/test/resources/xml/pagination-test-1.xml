@@ -17,7 +17,7 @@
 <style type="text/css">
 /* @import url("http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/css/default.css"); */
 @page {
-	size: 35 28;
+	size: 35 3;
 	@top-center {
 		content: string(print-page);
 	}
