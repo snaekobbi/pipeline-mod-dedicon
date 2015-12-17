@@ -17,7 +17,7 @@
       <css:inline>
         <p:with-option name="default-stylesheet" select="$stylesheet"/>
       </css:inline>
-      <px:transform type="css" query="(formatter:dotify)(translator:dedicon)(locale:nl)">
+      <px:transform query="(input:css)(output:pef)(formatter:dotify)(translator:dedicon)(locale:nl)">
         <p:with-option name="temp-dir" select="$temp-dir"/>
       </px:transform>
     </p:declare-step>

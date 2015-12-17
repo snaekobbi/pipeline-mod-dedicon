@@ -15,7 +15,7 @@
       <css:inline>
         <p:with-option name="default-stylesheet" select="'../../main/resources/css/dedicon-default.css'"/>
       </css:inline>
-      <px:transform type="css-block" query="(translator:dedicon)(locale:nl)"/>
+      <px:transform query="(input:css)(input:html)(output:css)(translator:dedicon)(locale:nl)"/>
     </p:declare-step>
   </x:script>
   
@@ -35,7 +35,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="@page { size: 35 28; @top-center { content: string(print-page-from, page-start)  string(print-page-to, page-last-except-start); } @top-right { content: counter(page); } } { text-transform: none }">             <p style="{ display: block }">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="{ display: block; white-space: pre-wrap }">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
+        <div xmlns="http://www.w3.org/1999/xhtml" style="text-transform: none @page { size: 35 28; @top-center { content: string(print-page-from, page-start)  string(print-page-to, page-last-except-start); } @top-right { content: counter(page); } }">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
       </x:document>
     </x:expect>
   </x:scenario>
