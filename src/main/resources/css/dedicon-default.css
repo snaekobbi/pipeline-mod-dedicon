@@ -1,5 +1,56 @@
+/**********************************************************************************
+ * Dedicon Default CSS
+ * http://www.dedicon.nl/
+ *
+ * Author: Davy Kager <davykager@dedicon.nl>
+ * Author: Bert Frees <bertfrees@gmail.com>
+ *
+ * See also Braille CSS: http://snaekobbi.github.io/braille-css-spec/master/index.html
+ */
+
+/**********************************************************************************
+ * Main stylesheet
+ */
+
+/* --------------------------------------------------------------------------------
+ * Namespaces
+ */
 @namespace xml "http://www.w3.org/XML/1998/namespace";
 
+/* --------------------------------------------------------------------------------
+ * Hidden elements
+ *
+ * These are not incldued in the output.
+ */
+head {
+	display: none;
+}
+
+/* --------------------------------------------------------------------------------
+ * Hyphenation
+ *
+ * Everything except code is hyphenated.
+ *
+ * See also the code rule.
+ */
+book {
+	hyphens: auto;
+}
+
+/* --------------------------------------------------------------------------------
+ * Page layout
+ *
+ * A page contains 35 columns by 28 rows of braille.
+ *
+ * The print page number is shown in the top-center.
+ * If a braille page contains content from multiple print pages,
+ * the print page number is a range "from - to".
+ * If no print page number is available, this part of the braille page is left blank.
+ *
+ * The braille page number is shown in the top-right.
+ *
+ * See also the pagenum rule.
+ */
 @page {
 	size: 35 28;
 	@top-center {
@@ -10,33 +61,29 @@
 	}
 }
 
+/* --------------------------------------------------------------------------------
+ * Print page numbers
+ *
+ * If there is a print page change somewhere on the braille page,
+ * the new print page number is shown on its own line, horizontally centered,
+ * with a blank line before and after it.
+ *
+ * See also the @page rule.
+ */
 pagenum {
 	display: block;
 	margin-top: 1;
 	margin-bottom: 1;
 	text-align: center;
+	/* The following line sets the values used for the top-center position. */
 	string-set: print-page-from content(), print-page-to ' - ' content();
 }
 
-head {
-	display: none;
-}
-
-book {
-	hyphens: auto;
-}
-
-p {
-	display: block;
-}
-
-hd, h1, h2, h3, h4, h5, h6 {
-	display: block;
-	margin-bottom: 1;
-	page-break-after: avoid;
-	text-indent: -2;
-}
-
+/* --------------------------------------------------------------------------------
+ * Sections
+ *
+ * Each section starts on a new page.
+ */
 level,
 level1, level2, level3,
 level4, level5, level6,
@@ -46,14 +93,58 @@ frontmatter, bodymatter, rearmatter {
 	page-break-after: always;
 }
 
+/* --------------------------------------------------------------------------------
+ * Headings
+ *
+ * Each heading has a blank line after it.
+ * A heading cannot be the last item on a page.
+ * If the heading spans multiple braille lines,
+ * every line except the first one is indented by 2 braille cells.
+ */
+hd, h1, h2, h3, h4, h5, h6 {
+	display: block;
+	margin-bottom: 1;
+	page-break-after: avoid;
+	text-indent: -2;
+}
+
+/* --------------------------------------------------------------------------------
+ * Book title and author
+ */
 doctitle, docauthor {
 	margin-bottom: 2;
 }
 
+/* --------------------------------------------------------------------------------
+ * Paragraphs
+ *
+ * A paragraph is a block element with no special features.
+ */
+p {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Code
+ *
+ * Code is not hyphenated.
+ * To also preserve whitespace, add attribute xml:space="preserve" to the XML element.
+ */
 code {
 	hyphens: none;
 }
 
+/**********************************************************************************
+ * Attributes
+ *
+ * These are attributes that can be specified on XML elements.
+ */
+
+/* --------------------------------------------------------------------------------
+ * xml:space="preserve"
+ *
+ * Elements with this attribute and value are treated as preformatted text.
+ */
 [xml|space=preserve] {
 	white-space: pre-wrap;
 }
