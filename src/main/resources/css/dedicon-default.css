@@ -104,8 +104,10 @@ frontmatter, bodymatter, rearmatter {
 hd, h1, h2, h3, h4, h5, h6 {
 	display: block;
 	margin-bottom: 1;
-	page-break-after: avoid;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
 	text-indent: -2;
+	page-break-after: avoid;
 }
 
 /* --------------------------------------------------------------------------------
