@@ -140,6 +140,61 @@ code {
 	hyphens: none;
 }
 
+/* --------------------------------------------------------------------------------
+ * Tables
+ *
+ * The start of a table is indicated by the text "bt".
+ * The end of a table is indicated by the text "et".
+ * A table has a blank line before and after it.
+ */
+table::before {
+	display: block;
+	content: 'bt';
+}
+table::after {
+	display: block;
+	content: 'et';
+}
+table {
+	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
+}
+
+/* --------------------------------------------------------------------------------
+ * Table rows
+ *
+ * Each row is shown on a new line.
+ * If the row spans multiple braille lines,
+ * every line except the first one is indented by 2 braille cells.
+ */
+table > tr {
+	display: block;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
+}
+
+/* --------------------------------------------------------------------------------
+ * Table columns
+ *
+ * Columns are separated by a semicolon.
+ */
+/* Use nth-last-child because the negation function :not isn't implemented. */
+table > tr > td:nth-last-child(n+2)::after {
+	/* Use a braille pattern here because a semicolon currently doesn't work. */
+	content: '⠆';
+}
+
+/* --------------------------------------------------------------------------------
+ * Table cells
+ *
+ * Empty table cells are indicated by the text "gg".
+ */
+table > tr > td:empty::before {
+	content: 'gg';
+}
+
 /**********************************************************************************
  * Attributes
  *
