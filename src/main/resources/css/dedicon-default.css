@@ -119,6 +119,10 @@ doctitle, docauthor {
  * Paragraphs
  *
  * A paragraph is a block element with no special features.
+ *
+ * To precede the paragraph by a blank line, add class precedingemptyline.
+ * To indent the first line of the paragraph, add class indented.
+ * If this paragraph is a table title or caption, add class table-title.
  */
 p {
 	display: block;
@@ -139,6 +143,43 @@ code {
  *
  * These are attributes that can be specified on XML elements.
  */
+
+/* --------------------------------------------------------------------------------
+ * Preceding empty line
+ *
+ * Adds a blank line before the element.
+ */
+.precedingemptyline::before {
+	/* The next line prevents newline characters from being converted to spaces. */
+	white-space: pre-line;
+	content: '\A';
+}
+
+/* --------------------------------------------------------------------------------
+ * Indented elements
+ *
+ * Indents the element by 2 braille cells.
+ */
+.indented {
+	text-indent: 2;
+}
+
+/* --------------------------------------------------------------------------------
+ * Table title or caption
+ *
+ * This adds the text "titel tabel", followed by the element text on a new line.
+ * The element text is indented by 2 braille cells.
+ */
+p.table-title::before {
+	/* The next line prevents newline characters from being converted to spaces. */
+	white-space: pre-line;
+	content: 'tabel titel\A';
+}
+p.table-title {
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
+}
 
 /* --------------------------------------------------------------------------------
  * xml:space="preserve"

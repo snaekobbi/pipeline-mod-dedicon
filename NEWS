@@ -4,6 +4,8 @@ pipeline-mod-dedicon v1.2.1
 Includes
 --------
 - Documentation in the default CSS (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/10)
+- Support special classes `precedingemptyline`, `indented` and `table-title`
+  (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/8)
 
 pipeline-mod-dedicon v1.2.0
 ===========================
