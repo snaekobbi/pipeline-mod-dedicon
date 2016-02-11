@@ -194,6 +194,40 @@ table > tr > td:empty::before {
 	content: 'gg';
 }
 
+/* --------------------------------------------------------------------------------
+ * Image groups
+ *
+ * The start of an image group is indicated by the text "ba".
+ * The end of an image group is indicated by the text "ea".
+ * An image group has a blank line before and after it.
+ */
+imggroup::before {
+	display: block;
+	content: 'ba';
+}
+imggroup::after {
+	display: block;
+	content: 'ea';
+}
+imggroup {
+	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
+}
+
+/* --------------------------------------------------------------------------------
+ * Captions
+ *
+ * This adds the text "Bijschrift:", followed by a space and the element text.
+ * Captions are only used for images.
+ */
+caption::before {
+	content: 'Bijschrift: ';
+}
+caption {
+	display: block;
+}
+
 /**********************************************************************************
  * Attributes
  *

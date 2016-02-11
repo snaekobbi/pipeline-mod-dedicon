@@ -7,6 +7,7 @@ Includes
 - Support special classes `precedingemptyline`, `indented` and `table-title`
   (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/8)
 - Initial support for tables (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/11)
+- Support for images and captions (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/12)
 - Minor fixes.
 
 pipeline-mod-dedicon v1.2.0
