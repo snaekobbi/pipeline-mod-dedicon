@@ -131,6 +131,18 @@ p {
 }
 
 /* --------------------------------------------------------------------------------
+ * Producer notes
+ *
+ * This adds the text "ND:", followed by a space and the element text.
+ */
+prodnote::before {
+	content: 'ND: ';
+}
+prodnote {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
  * Code
  *
  * Code is not hyphenated.
