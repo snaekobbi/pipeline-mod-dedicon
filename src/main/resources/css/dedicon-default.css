@@ -143,16 +143,6 @@ prodnote {
 }
 
 /* --------------------------------------------------------------------------------
- * Code
- *
- * Code is not hyphenated.
- * To also preserve whitespace, add attribute xml:space="preserve" to the XML element.
- */
-code {
-	hyphens: none;
-}
-
-/* --------------------------------------------------------------------------------
  * Tables
  *
  * The start of a table is indicated by the text "bt".
@@ -238,6 +228,16 @@ caption::before {
 }
 caption {
 	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Code
+ *
+ * Code is not hyphenated.
+ * To also preserve whitespace, add attribute xml:space="preserve" to the XML element.
+ */
+code {
+	hyphens: none;
 }
 
 /**********************************************************************************
