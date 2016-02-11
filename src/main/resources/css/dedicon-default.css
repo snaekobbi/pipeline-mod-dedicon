@@ -9,7 +9,7 @@
  */
 
 /**********************************************************************************
- * Main stylesheet
+ * General rules
  */
 
 /* --------------------------------------------------------------------------------
@@ -60,6 +60,10 @@ book {
 		content: counter(page);
 	}
 }
+
+/**********************************************************************************
+ * Block elements
+ */
 
 /* --------------------------------------------------------------------------------
  * Print page numbers
@@ -114,6 +118,7 @@ hd, h1, h2, h3, h4, h5, h6 {
  * Book title and author
  */
 doctitle, docauthor {
+	display: block;
 	margin-bottom: 2;
 }
 
@@ -237,7 +242,30 @@ caption {
  * To also preserve whitespace, add attribute xml:space="preserve" to the XML element.
  */
 code {
+	display: block;
 	hyphens: none;
+}
+
+/**********************************************************************************
+ * Inline elements
+ */
+
+/* --------------------------------------------------------------------------------
+ * Strong text
+ *
+ * This is marked up as bold.
+ */
+strong {
+	text-transform: louis-bold;
+}
+
+/* --------------------------------------------------------------------------------
+ * Emphasized text
+ *
+ * This is marked up as italic.
+ */
+em {
+	text-transform: louis-ital;
 }
 
 /**********************************************************************************
