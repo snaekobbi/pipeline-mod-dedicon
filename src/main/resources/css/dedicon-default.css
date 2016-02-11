@@ -180,7 +180,6 @@ table > tr {
  *
  * Columns are separated by a semicolon.
  */
-/* Use nth-last-child because the negation function :not isn't implemented. */
 table > tr > td:nth-last-child(n+2)::after {
 	/* Use a braille pattern here because a semicolon currently doesn't work. */
 	content: '⠆';
