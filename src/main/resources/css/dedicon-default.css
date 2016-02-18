@@ -64,15 +64,10 @@ book {
 /* --------------------------------------------------------------------------------
  * Volume-level TOC
  */
-#generated-toc::-obfl-on-toc-start {
+#generated-volume-toc::-obfl-on-toc-start {
 	display: block;
 	margin-bottom: 1;
 	content: 'Inhoud band ' -obfl-evaluate('(round $volume)');
-}
-#generated-toc {
-	flow: volume-toc;
-	display: -obfl-toc;
-	-obfl-toc-range: volume;
 }
 
 /* --------------------------------------------------------------------------------
@@ -150,10 +145,10 @@ doctitle, docauthor {
 /* --------------------------------------------------------------------------------
  * TOC items
  */
-#generated-toc li > a::after {
+#generated-volume-toc li > a::after {
 	content: ' ' target-string(attr(href), print-page-from) ' ' target-counter(attr(href), page);
 }
-#generated-toc li > a {
+#generated-volume-toc li > a {
 	display: block;
 	/* This needs a left margin in order to negatively indent the first line. */
 	margin-left: 2;
