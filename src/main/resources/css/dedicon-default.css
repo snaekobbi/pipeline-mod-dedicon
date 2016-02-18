@@ -61,6 +61,31 @@ book {
 	}
 }
 
+/* --------------------------------------------------------------------------------
+ * Volume-level TOC
+ */
+#generated-toc::-obfl-on-toc-start {
+	display: block;
+	margin-bottom: 1;
+	content: 'Inhoud band ' -obfl-evaluate('(round $volume)');
+}
+#generated-toc {
+	flow: volume-toc;
+	display: -obfl-toc;
+	-obfl-toc-range: volume;
+}
+
+/* --------------------------------------------------------------------------------
+ * Boilerplate
+ *
+ * Each volume begins with the volume-level TOC.
+ */
+@volume {
+	@begin {
+		content: flow(volume-toc);
+	}
+}
+
 /**********************************************************************************
  * Block elements
  */
@@ -123,6 +148,19 @@ doctitle, docauthor {
 }
 
 /* --------------------------------------------------------------------------------
+ * TOC items
+ */
+#generated-toc li > a::after {
+	content: ' ' target-string(attr(href), print-page-from) ' ' target-counter(attr(href), page);
+}
+#generated-toc li > a {
+	display: block;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
+}
+
+/* --------------------------------------------------------------------------------
  * Paragraphs
  *
  * A paragraph is a block element with no special features.
@@ -132,6 +170,20 @@ doctitle, docauthor {
  * If this paragraph is a table title or caption, add class table-title.
  */
 p {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Lists
+ */
+list {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * List items
+ */
+list > li {
 	display: block;
 }
 
