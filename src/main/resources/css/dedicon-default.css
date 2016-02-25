@@ -34,7 +34,8 @@ head {
  * See also the code rule.
  */
 book {
-	hyphens: auto;
+	/* !FIXME: re-enable on release! */
+	/* hyphens: auto; */
 }
 
 /* --------------------------------------------------------------------------------
