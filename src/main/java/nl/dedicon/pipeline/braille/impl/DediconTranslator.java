@@ -118,7 +118,7 @@ public interface DediconTranslator {
 			private final XProc xproc;
 			
 			private TransformImpl(String translatorQuery, LiblouisTranslator translator) {
-				Map<String,String> options = ImmutableMap.of("query", mutableQuery().add("id", this.getIdentifier()).toString());
+				Map<String,String> options = ImmutableMap.of("text-transform", mutableQuery().add("id", this.getIdentifier()).toString());
 				xproc = new XProc(href, null, options);
 				this.translator = translator.fromStyledTextToBraille();
 			}
