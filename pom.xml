@@ -129,9 +129,9 @@
         <artifactId>maven-bundle-plugin</artifactId>
         <configuration>
           <instructions>
-            <Service-Component>OSGI-INF/tables.xml</Service-Component>
             <_dsannotations>
-              nl.dedicon.pipeline.braille.impl.DediconTranslator$Provider
+              nl.dedicon.pipeline.braille.impl.DediconTranslator$Provider,
+              nl.dedicon.pipeline.braille.impl.TablePath
             </_dsannotations>
           </instructions>
         </configuration>
