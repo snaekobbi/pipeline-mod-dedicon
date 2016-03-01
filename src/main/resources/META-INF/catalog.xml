@@ -3,7 +3,7 @@
   PUBLIC "-//OASIS/DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" xmlns:px="http://www.daisy.org/ns/pipeline">
   <uri name="http://www.dedicon.nl/pipeline/modules/braille/dtbook-to-pef.xpl" uri="../xml/dtbook-to-pef.xpl"
-       px:extends-script="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl"/>
+       px:extends-script="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl" script="true"/>
   <uri name="http://www.dedicon.nl/pipeline/modules/braille/default.css" uri="../css/dedicon-default.css"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:css-utils"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:liblouis-utils"/>
