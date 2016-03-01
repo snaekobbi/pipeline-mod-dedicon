@@ -32,8 +32,6 @@
     <p:option name="tab-width"/>
     <p:option name="capital-letters"/>
     <p:option name="accented-letters"/>
-    <p:option name="polite-forms"/>
-    <p:option name="downshift-ordinal-numbers"/>
     <p:option name="include-captions"/>
     <p:option name="include-images"/>
     <p:option name="include-image-groups"/>
@@ -76,8 +74,6 @@
         <p:with-option name="tab-width" select="$tab-width"/>
         <p:with-option name="capital-letters" select="$capital-letters"/>
         <p:with-option name="accented-letters" select="$accented-letters"/>
-        <p:with-option name="polite-forms" select="$polite-forms"/>
-        <p:with-option name="downshift-ordinal-numbers" select="$downshift-ordinal-numbers"/>
         <p:with-option name="include-captions" select="$include-captions"/>
         <p:with-option name="include-images" select="$include-images"/>
         <p:with-option name="include-image-groups" select="$include-image-groups"/>
