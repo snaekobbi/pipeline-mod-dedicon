@@ -12,7 +12,9 @@
     </p:documentation>
     
     <p:input port="source"/>
-    <p:option name="output-dir"/>
+    <p:option name="pef-output-dir"/>
+    <p:option name="brf-output-dir"/>
+    <p:option name="preview-output-dir"/>
     <p:option name="temp-dir"/>
     
     <p:option name="stylesheet" select="'http://www.dedicon.nl/pipeline/modules/braille/default.css'"/>
@@ -56,7 +58,9 @@
     <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl"/>
     
     <px:dtbook-to-pef>
-        <p:with-option name="output-dir" select="$output-dir"/>
+        <p:with-option name="pef-output-dir" select="$pef-output-dir"/>
+        <p:with-option name="brf-output-dir" select="$brf-output-dir"/>
+        <p:with-option name="preview-output-dir" select="$preview-output-dir"/>
         <p:with-option name="temp-dir" select="$temp-dir"/>
         <p:with-option name="stylesheet" select="$stylesheet"/>
         <p:with-option name="transform" select="'(formatter:dotify)(translator:dedicon)'"/>
