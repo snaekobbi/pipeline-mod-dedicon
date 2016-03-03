@@ -148,7 +148,7 @@ doctitle, docauthor {
  * TOC items
  */
 #generated-volume-toc li > a::after {
-	content: ' ' target-string(attr(href), print-page-from) ' ' target-counter(attr(href), page);
+	content: '  ' target-string(attr(href), print-page-from) '  ' target-counter(attr(href), page);
 }
 #generated-volume-toc li > a {
 	display: block;
