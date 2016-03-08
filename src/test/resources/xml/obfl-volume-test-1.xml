@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE dtbook PUBLIC "-//NISO//DTD dtbook 2005-3//EN" "http://www.daisy.org/z3986/2005/dtbook-2005-3.dtd">
+<dtbook xml:lang="nl" version="2005-3" xmlns="http://www.daisy.org/z3986/2005/dtbook/">
+<head>
+<meta name="dc:Title" content="OBFL volume test"/>
+<meta name="dc:Creator" content="Davy Kager"/>
+<meta name="dc:Date" content="2014-05-30"/>
+<meta name="dc:Publisher" content="Dedicon"/>
+<meta name="dc:Language" content="nl"/>
+<meta name="dc:Identifier" content="222222"/>
+<meta name="dc:Format" content="ANSI/NISO Z39.86-2002"/>
+<meta name="dc:Source" content="1111111111"/>
+<style type="text/css">
+.placeholder-current-volume::after { content: -obfl-evaluate('(round $volume)'); }
+.placeholder-total-volumes::after { content: -obfl-evaluate('(round $volumes)'); }
+</style>
+</head>
+<book>
+<frontmatter>
+<doctitle>OBFL volume test</doctitle>
+<docauthor>Davy Kager</docauthor>
+<level1>
+<p id="generated-volume-count">
+Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
+</p>
+</level1>
+</frontmatter>
+<bodymatter>
+<level1>
+<pagenum page="normal" id="p-2">2</pagenum>
+<h1>Hoofdstuk 1</h1>
+<p>Eerste alinea.</p>
+<p>Tweede alinea.</p>
+<p>Derde alinea.</p>
+</level1>
+</bodymatter>
+<rearmatter>
+<level1 class="jacket_copy">
+<p>Achterkant boek</p>
+</level1>
+</rearmatter>
+</book>
+</dtbook>
