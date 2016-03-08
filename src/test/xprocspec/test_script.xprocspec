@@ -39,4 +39,39 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario label="obfl-volume">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/obfl-volume-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'2'"/>
+      <x:option name="pef-output-dir" select="resolve-uri('toc/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('toc/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="toc/output-dir/obfl-volume-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare"
+              pending="TODO: expected result">
+      <x:document type="inline">
+        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+          <head>
+            <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
+              <dc:format>application/x-pef+xml</dc:format>
+            </meta>
+          </head>
+          <body>
+            <volume cols="35" rows="20" rowgap="0" duplex="true">
+              <section>
+                <page>
+                  <row/>
+                </page>
+              </section>
+            </volume>
+          </body>
+        </pef>
+      </x:document>
+    </x:expect>
+  </x:scenario>
+  
 </x:description>
