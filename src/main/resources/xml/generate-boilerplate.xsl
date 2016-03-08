@@ -30,7 +30,7 @@
       <p id="generated-production-date">
         <!-- FIXME: should be Dutch (nl-NL) month names -->
         <xsl:value-of select="//meta[@name eq 'dc:Publisher']/@content"/>,
-        <xsl:value-of select="format-date(//meta[@name eq 'dc:Date']/@content, '[MNn] [Y]')"/>
+        <xsl:value-of select="format-date(current-date(), '[MNn] [Y]')"/>
       </p>
       <p id="generated-volume-count">
         Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
