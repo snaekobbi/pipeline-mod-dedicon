@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE dtbook PUBLIC "-//NISO//DTD dtbook 2005-3//EN" "http://www.daisy.org/z3986/2005/dtbook-2005-3.dtd">
 <dtbook xml:lang="nl" version="2005-3" xmlns="http://www.daisy.org/z3986/2005/dtbook/">
 <head>
 <meta name="dc:Title" content="OBFL volume test"/>
@@ -11,6 +10,14 @@
 <meta name="dc:Format" content="ANSI/NISO Z39.86-2002"/>
 <meta name="dc:Source" content="1111111111"/>
 <style type="text/css">
+@volume {
+  @begin {
+    content: flow(frontmatter)
+  }
+}
+#title-page {
+  flow: frontmatter;
+}
 .placeholder-current-volume::after { content: -obfl-evaluate('(round $volume)'); }
 .placeholder-total-volumes::after { content: -obfl-evaluate('(round $volumes)'); }
 </style>
@@ -19,7 +26,7 @@
 <frontmatter>
 <doctitle>OBFL volume test</doctitle>
 <docauthor>Davy Kager</docauthor>
-<level1>
+<level1 id="title-page">
 <p id="generated-volume-count">
 Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
 </p>
