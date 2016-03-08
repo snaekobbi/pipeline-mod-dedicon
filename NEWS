@@ -9,6 +9,7 @@ Includes
 - Initial support for tables (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/11)
 - Support for images and captions (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/12)
 - Support for producer notes (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/13)
+- Initial support for generated title pages (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/16)
 - Minor fixes.
 
 pipeline-mod-dedicon v1.2.0

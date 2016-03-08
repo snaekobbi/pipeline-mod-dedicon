@@ -1,4 +1,4 @@
-﻿/**********************************************************************************
+/**********************************************************************************
  * Dedicon Default CSS
  * http://www.dedicon.nl/
  *
@@ -16,27 +16,6 @@
  * Namespaces
  */
 @namespace xml "http://www.w3.org/XML/1998/namespace";
-
-/* --------------------------------------------------------------------------------
- * Hidden elements
- *
- * These are not incldued in the output.
- */
-head {
-	display: none;
-}
-
-/* --------------------------------------------------------------------------------
- * Hyphenation
- *
- * Everything except code is hyphenated.
- *
- * See also the code rule.
- */
-book {
-	/* !FIXME: re-enable on release! */
-	/* hyphens: auto; */
-}
 
 /* --------------------------------------------------------------------------------
  * Page layout
@@ -63,24 +42,37 @@ book {
 }
 
 /* --------------------------------------------------------------------------------
- * Volume-level TOC
- */
-#generated-volume-toc::-obfl-on-toc-start {
-	display: block;
-	margin-bottom: 1;
-	content: 'Inhoud band ' -obfl-evaluate('(round $volume)');
-}
-
-/* --------------------------------------------------------------------------------
  * Boilerplate
  *
  * Each volume begins with the volume-level TOC.
  */
 @volume {
 	@begin {
-		/* This named flow is defined by the system default CSS. */
-		content: flow(volume-toc);
+		/* The volume-toc flow is defined by the system default CSS. */
+		content: flow(title-page) flow(volume-toc);
 	}
+}
+
+/* --------------------------------------------------------------------------------
+ * Hyphenation
+ *
+ * Everything except code is hyphenated.
+ *
+ * See also the code rule.
+ */
+book {
+	hyphens: auto;
+}
+
+/* --------------------------------------------------------------------------------
+ * Hidden elements
+ *
+ * These are not directly incldued in the output.
+ *
+ * See also the #generated-doctitle and #generated-docauthor rules.
+ */
+head, doctitle, docauthor {
+	display: none;
 }
 
 /**********************************************************************************
@@ -101,7 +93,7 @@ pagenum {
 	margin-top: 1;
 	margin-bottom: 1;
 	text-align: center;
-	/* The following line sets the values used for the top-center position. */
+	/* The following line sets the values used for the top-center position and the TOC. */
 	string-set: print-page-from content(), print-page-to ' - ' content();
 }
 
@@ -137,27 +129,6 @@ hd, h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------------
- * Book title and author
- */
-doctitle, docauthor {
-	display: block;
-	margin-bottom: 2;
-}
-
-/* --------------------------------------------------------------------------------
- * TOC items
- */
-#generated-volume-toc li > a::after {
-	content: '  ' target-string(attr(href), print-page-from) '  ' target-counter(attr(href), page);
-}
-#generated-volume-toc li > a {
-	display: block;
-	/* This needs a left margin in order to negatively indent the first line. */
-	margin-left: 2;
-	text-indent: -2;
-}
-
-/* --------------------------------------------------------------------------------
  * Paragraphs
  *
  * A paragraph is a block element with no special features.
@@ -168,6 +139,26 @@ doctitle, docauthor {
  */
 p {
 	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Generated title page
+ */
+#generated-title-page {
+	flow: title-page;
+ }
+
+/* --------------------------------------------------------------------------------
+ * Book title, author and ISBN
+ */
+#generated-doctitle,
+#generated-docauthor,
+#generated-isbn {
+	margin-top: 1;
+	margin-bottom: 2;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
 }
 
 /* --------------------------------------------------------------------------------
@@ -182,6 +173,30 @@ list {
  */
 list > li {
 	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Volume-level TOC
+ */
+#generated-volume-toc::-obfl-on-toc-start {
+	display: block;
+	margin-bottom: 1;
+	content: 'Inhoud band ' -obfl-evaluate('(round $volume)');
+}
+
+/* --------------------------------------------------------------------------------
+ * TOC items
+ */
+#generated-volume-toc li > a::after {
+	/* The next line prevents whitespace from being collapsed. */
+	white-space: pre-wrap;
+	content: '  ' target-string(attr(href), print-page-from) '  ' target-counter(attr(href), page);
+}
+#generated-volume-toc li > a {
+	display: block;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
 }
 
 /* --------------------------------------------------------------------------------
@@ -298,6 +313,20 @@ code {
 /**********************************************************************************
  * Inline elements
  */
+ 
+/* --------------------------------------------------------------------------------
+ * Current volume number
+ */
+.placeholder-current-volume::after {
+	content: -obfl-evaluate('(round $volume)');
+}
+
+/* --------------------------------------------------------------------------------
+ * Total number of volumes
+ */
+.placeholder-total-volumes::after {
+	content: -obfl-evaluate('(round $volumes)');
+}
 
 /* --------------------------------------------------------------------------------
  * Strong text
