@@ -2,6 +2,7 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" xmlns:px="http://www.daisy.org/ns/pipeline">
   <uri name="http://www.dedicon.nl/pipeline/modules/braille/dtbook-to-pef.xpl" uri="../xml/dtbook-to-pef.xpl"
        px:extends="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl" px:script="true"/>
+  <uri name="http://www.dedicon.nl/pipeline/modules/braille/library.xpl" uri="../xml/library.xpl"/>
   <uri name="http://www.dedicon.nl/pipeline/modules/braille/default.css" uri="../css/dedicon-default.css"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:css-utils"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:liblouis-utils"/>

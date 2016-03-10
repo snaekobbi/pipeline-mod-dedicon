@@ -8,12 +8,6 @@
 
 	<p:xslt>
 		<p:input port="stylesheet">
-			<p:document href="generate-boilerplate.xsl"/>
-		</p:input>
-	</p:xslt>
-	
-	<p:xslt>
-		<p:input port="stylesheet">
 			<p:document href="block-translate.xsl"/>
 		</p:input>
 		<p:with-param name="text-transform" select="$text-transform"/>

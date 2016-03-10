@@ -146,6 +146,7 @@ p {
  */
 #generated-title-page {
 	flow: title-page;
+	page-break-inside: avoid;
  }
 
 /* --------------------------------------------------------------------------------
