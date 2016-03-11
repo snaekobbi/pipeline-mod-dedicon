@@ -31,7 +31,7 @@ pagenum {
 frontmatter, bodymatter {
 	display: block;
 	page-break-before: always;
-	page-break-after: always;
+	/* page-break-after: always; */
 }
 level1, h1, p {
 	display: block;
