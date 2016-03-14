@@ -31,8 +31,8 @@
         </p:documentation>
     </p:option>
     
-    <p:option name="page-width"/>
-    <p:option name="page-height"/>
+    <p:option name="page-width" select="'35'"/>
+    <p:option name="page-height" select="'28'"/>
     <p:option name="left-margin"/>
     <p:option name="duplex"/>
     <p:option name="levels-in-footer"/>
