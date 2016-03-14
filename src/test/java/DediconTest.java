@@ -2,6 +2,8 @@ import javax.inject.Inject;
 
 import java.io.File;
 
+import com.google.common.collect.ImmutableMap;
+
 import org.daisy.maven.xproc.xprocspec.XProcSpecRunner;
 
 import static org.daisy.pipeline.pax.exam.Options.brailleModule;
@@ -28,9 +30,7 @@ import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.PathUtils;
 
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
-import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
 import static org.ops4j.pax.exam.CoreOptions.options;
-import static org.ops4j.pax.exam.CoreOptions.wrappedBundle;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
@@ -42,10 +42,20 @@ public class DediconTest {
 	@Test
 	public void runXProcSpec() throws Exception {
 		File baseDir = new File(PathUtils.getBaseDir());
-		boolean success = xprocspecRunner.run(new File(baseDir, "src/test/xprocspec"),
+		boolean success = xprocspecRunner.run(ImmutableMap.of(
+			                                      "test_css_formatter.xprocspec",
+			                                      new File(baseDir, "src/test/xprocspec/test_css_formatter.xprocspec"),
+			                                      "test_css_translator.xprocspec",
+			                                      new File(baseDir, "src/test/xprocspec/test_css_translator.xprocspec"),
+			                                      "test_script.xprocspec",
+			                                      new File(baseDir, "src/test/xprocspec/test_script.xprocspec"),
+			                                      "test_translator.xprocspec",
+			                                      new File(baseDir, "src/test/xprocspec/test_translator.xprocspec")
+			                                      ),
 		                                      new File(baseDir, "target/xprocspec-reports"),
 		                                      new File(baseDir, "target/surefire-reports"),
 		                                      new File(baseDir, "target/xprocspec"),
+		                                      null,
 		                                      new XProcSpecRunner.Reporter.DefaultReporter());
 		assertTrue("XProcSpec tests should run with success", success);
 	}

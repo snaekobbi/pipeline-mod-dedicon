@@ -24,6 +24,13 @@
     <p:option name="include-preview"/>
     <p:option name="include-brf"/>
     
+    <p:option name="add-boilerplate" px:type="boolean" select="'true'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name">Add boilerplate text</h2>
+            <p px:role="desc">When enabled, and when the input has a `docauthor` element, will insert boilerplate text such as a title page.</p>
+        </p:documentation>
+    </p:option>
+    
     <p:option name="page-width"/>
     <p:option name="page-height"/>
     <p:option name="left-margin"/>
@@ -56,18 +63,26 @@
     <p:option name="maximum-number-of-pages"/>
     <p:option name="minimum-number-of-pages"/>
     
+    <p:import href="http://www.daisy.org/pipeline/modules/common-utils/library.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl"/>
     <p:import href="http://www.dedicon.nl/pipeline/modules/braille/library.xpl"/>
-
-    <p:in-scope-names name="parameters"/>
-    <dedicon:pre-processing>
-        <p:input port="parameters">
-            <p:pipe port="result" step="parameters"/>
-        </p:input>
-        <p:input port="source">
-            <p:pipe port="source" step="main"/>
-        </p:input>
-    </dedicon:pre-processing>
+    
+    <p:choose>
+        <p:when test="$add-boilerplate='true'">
+            <p:in-scope-names name="parameters"/>
+            <dedicon:pre-processing>
+                <p:input port="parameters">
+                    <p:pipe port="result" step="parameters"/>
+                </p:input>
+                <p:input port="source">
+                    <p:pipe port="source" step="main"/>
+                </p:input>
+            </dedicon:pre-processing>
+        </p:when>
+        <p:otherwise>
+            <px:message message="Skipping Dedicon-specific pre-processing steps"/>
+        </p:otherwise>
+    </p:choose>
 
     <px:dtbook-to-pef>
         <p:with-option name="pef-output-dir" select="$pef-output-dir"/>
