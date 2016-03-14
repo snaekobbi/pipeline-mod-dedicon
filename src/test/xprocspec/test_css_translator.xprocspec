@@ -13,7 +13,7 @@
       <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
       <p:import href="http://www.daisy.org/pipeline/modules/braille/css-utils/library.xpl"/>
       <css:inline>
-        <p:with-option name="default-stylesheet" select="'../../main/resources/css/dedicon-default.css'"/>
+        <p:with-option name="default-stylesheet" select="'../../main/resources/css/dedicon-default.scss'"/>
       </css:inline>
       <px:transform query="(input:css)(input:html)(output:css)(translator:dedicon)(locale:nl)"/>
     </p:declare-step>

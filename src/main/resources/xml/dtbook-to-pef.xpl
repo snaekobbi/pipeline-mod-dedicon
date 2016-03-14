@@ -18,7 +18,7 @@
     <p:option name="preview-output-dir"/>
     <p:option name="temp-dir"/>
     
-    <p:option name="stylesheet" select="'http://www.dedicon.nl/pipeline/modules/braille/default.css'"/>
+    <p:option name="stylesheet" select="'http://www.dedicon.nl/pipeline/modules/braille/default.scss'"/>
     
     <p:option name="ascii-table"/>
     <p:option name="include-preview"/>
