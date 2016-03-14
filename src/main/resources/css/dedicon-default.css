@@ -98,7 +98,7 @@ pagenum {
 }
 
 /* --------------------------------------------------------------------------------
- * Sections
+ * Sections (levels)
  *
  * Each section starts on a new page.
  */
@@ -108,7 +108,7 @@ level4, level5, level6,
 frontmatter, bodymatter, rearmatter {
 	display: block;
 	page-break-before: always;
-	/* page-break-after: always; */
+	page-break-after: always;
 }
 
 /* --------------------------------------------------------------------------------
