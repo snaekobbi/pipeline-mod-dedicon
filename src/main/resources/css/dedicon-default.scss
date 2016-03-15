@@ -9,6 +9,12 @@
  */
 
 /**********************************************************************************
+ * Variables
+ */
+$show-braille-page-numbers: true !default;
+$show-print-page-numbers: true !default;
+
+/**********************************************************************************
  * General rules
  */
 
@@ -20,7 +26,7 @@
 /* --------------------------------------------------------------------------------
  * Page layout
  *
- * A page contains 35 columns by 28 rows of braille.
+ * A page contains 35 columns by 28 rows of braille (configurable with options, defaults in script).
  *
  * The print page number is shown in the top-center.
  * If a braille page contains content from multiple print pages,
@@ -31,13 +37,19 @@
  *
  * See also the pagenum rule.
  */
-@page {
-	size: 35 28;
-	@top-center {
-		content: string(print-page-from, page-start) string(print-page-to, page-last-except-start);
+@if $show-print-page-numbers {
+	@page {
+		@top-center {
+			content: string(print-page-from, page-start) string(print-page-to, page-last-except-start);
+		}
 	}
-	@top-right {
-		content: counter(page);
+}
+
+@if $show-braille-page-numbers {
+	@page {
+		@top-right {
+			content: counter(page);
+		}
 	}
 }
 

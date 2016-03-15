@@ -2,7 +2,7 @@
 <!DOCTYPE dtbook PUBLIC "-//NISO//DTD dtbook 2005-3//EN" "http://www.daisy.org/z3986/2005/dtbook-2005-3.dtd">
 <dtbook xml:lang="nl" version="2005-3" xmlns="http://www.daisy.org/z3986/2005/dtbook/">
 <head>
-<link rel="stylesheet" type="text/css" media="embossed" href="../../../main/resources/css/dedicon-default.css"/>
+<link rel="stylesheet" type="text/css" media="embossed" href="../../../main/resources/css/dedicon-default.scss"/>
 <meta name="dtb:uid" content="228286"/>
 <meta name="dc:Title" content="Pagina nummers"/>
 <meta name="dc:Creator" content="sfkjhdf"/>
