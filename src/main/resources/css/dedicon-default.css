@@ -108,17 +108,27 @@ level6 > pagenum:first-child {
 }
 
 /* --------------------------------------------------------------------------------
- * Sections (levels)
+ * Front matter, body matter and rear matter
+ *
+ * If any of these consist of only content that is not rendered,
+ * then that element as a whole is not rendered.
+frontmatter, bodymatter, rearmatter {
+	display: block;
+}
+frontmatter:not(:has(> *:not(doctitle, docauthor, #generated-title-page))) {
+	display: none;
+}
+
+/* --------------------------------------------------------------------------------
+ * Levels (sections)
  *
  * Each section starts on a new page.
  */
 level,
 level1, level2, level3,
-level4, level5, level6,
-frontmatter, bodymatter, rearmatter {
+level4, level5, level6 {
 	display: block;
 	page-break-before: always;
-	page-break-after: always;
 }
 
 /* --------------------------------------------------------------------------------
@@ -188,9 +198,12 @@ list > li {
 
 /* --------------------------------------------------------------------------------
  * Volume-level TOC
+ *
+ * The TOC starts on a new page.
  */
 #generated-volume-toc::-obfl-on-toc-start {
 	display: block;
+	page-break-before: always;
 	margin-bottom: 1;
 	content: 'Inhoud band ' -obfl-evaluate('(round $volume)');
 }
