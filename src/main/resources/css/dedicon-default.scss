@@ -11,6 +11,7 @@
 /**********************************************************************************
  * Variables
  */
+
 $show-braille-page-numbers: true !default;
 $show-print-page-numbers: true !default;
 
@@ -26,7 +27,7 @@ $show-print-page-numbers: true !default;
 /* --------------------------------------------------------------------------------
  * Page layout
  *
- * A page contains 35 columns by 28 rows of braille (configurable with options, defaults in script).
+ * A page contains 33 columns by 28 rows of braille (configurable with options, defaults in script).
  *
  * The print page number is shown in the top-center.
  * If a braille page contains content from multiple print pages,
@@ -44,7 +45,6 @@ $show-print-page-numbers: true !default;
 		}
 	}
 }
-
 @if $show-braille-page-numbers {
 	@page {
 		@top-right {
@@ -124,6 +124,7 @@ level6 > pagenum:first-child {
  *
  * If any of these consist of only content that is not rendered,
  * then that element as a whole is not rendered.
+ */
 frontmatter, bodymatter, rearmatter {
 	display: block;
 }
@@ -179,7 +180,7 @@ p {
 #generated-title-page {
 	flow: title-page;
 	page-break-inside: avoid;
- }
+}
 
 /* --------------------------------------------------------------------------------
  * Book title, author and ISBN
