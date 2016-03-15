@@ -14,6 +14,20 @@
     <xsl:call-template name="generate-title-page"/>                
   </xsl:template>
 
+  <xsl:template match="rearmatter/*[last()]">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+    <xsl:call-template name="generate-colophon-page"/>                
+  </xsl:template>
+
+  <xsl:template match="rearmatter[not(node())]">
+    <rearmatter>
+      <xsl:call-template name="generate-colophon-page"/>                
+    </rearmatter>
+  </xsl:template>
+
   <xsl:template match="node()">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -37,4 +51,11 @@
       </p>
     </level1>
   </xsl:template>
+
+  <xsl:template name="generate-colophon-page">
+    <level1 id="generated-colophon-page" class="other">
+      <p>The colophon goes here.</p>
+    </level1>
+  </xsl:template>
+
 </xsl:stylesheet>
