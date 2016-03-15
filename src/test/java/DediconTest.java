@@ -77,7 +77,7 @@ public class DediconTest {
 				brailleModule("liblouis-native").forThisPlatform(),
 				brailleModule("libhyphen-core"),
 				brailleModule("libhyphen-libreoffice-tables"),
-				onWindows ? null : brailleModule("libhyphen-native").forThisPlatform(),
+				//onWindows ? null : brailleModule("libhyphen-native").forThisPlatform(),
 				brailleModule("dotify-formatter"),
 				brailleModule("pef-utils"),
 				brailleModule("dtbook-to-pef"),
@@ -89,6 +89,6 @@ public class DediconTest {
 		);
 	}
 
-	private static boolean onWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
+	//private static boolean onWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
 	
 }
