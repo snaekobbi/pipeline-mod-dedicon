@@ -63,6 +63,9 @@ $show-print-page-numbers: true !default;
 		/* The volume-toc flow is defined by the system default CSS. */
 		content: flow(title-page) flow(volume-toc);
 	}
+	@end {
+		content: flow(colophon-page);
+	}
 }
 
 /* --------------------------------------------------------------------------------
@@ -193,6 +196,14 @@ p {
 	/* This needs a left margin in order to negatively indent the first line. */
 	margin-left: 2;
 	text-indent: -2;
+}
+
+/* --------------------------------------------------------------------------------
+ * Generated colophon page
+ */
+#generated-colophon-page {
+	flow: colophon-page;
+	page-break-inside: avoid;
 }
 
 /* --------------------------------------------------------------------------------
