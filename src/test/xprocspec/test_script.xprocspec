@@ -110,7 +110,7 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="add-boilerplate" pending="empty pages">
+  <x:scenario label="add-boilerplate">
     <x:call step="dedicon:dtbook-to-pef">
       <x:input port="source">
         <x:document type="inline">
@@ -150,10 +150,10 @@
               </meta>
             </head>
             <body>
-              <volume cols="35" rows="28" rowgap="0" duplex="true">
+              <volume cols="33" rows="28" rowgap="0" duplex="true">
                 <section>
                   <page>
-                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
+                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
                     <row/>
                     <row>⠨⠞⠑⠎⠞⠀⠃⠕⠊⠇⠑⠗⠏⠇⠁⠞⠑</row>
                     <row/>
@@ -170,7 +170,7 @@
                 </section>
                 <section>
                   <page>
-                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
+                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
                     <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁</row>
                     <row/>
                   </page>
@@ -199,10 +199,10 @@
               </meta>
             </head>
             <body>
-              <volume cols="35" rows="28" rowgap="0" duplex="true">
+              <volume cols="33" rows="28" rowgap="0" duplex="true">
                 <section>
                   <page>
-                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
+                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
                     <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁</row>
                     <row/>
                   </page>
@@ -251,10 +251,10 @@
               </meta>
             </head>
             <body>
-              <volume cols="35" rows="28" rowgap="0" duplex="true">
+              <volume cols="33" rows="28" rowgap="0" duplex="true">
                 <section>
                   <page>
-                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
+                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
                     <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁</row>
                   </page>
                 </section>
@@ -282,7 +282,7 @@
               </meta>
             </head>
             <body>
-              <volume cols="35" rows="28" rowgap="0" duplex="true">
+              <volume cols="33" rows="28" rowgap="0" duplex="true">
                 <section>
                   <page>
                     <row/>
