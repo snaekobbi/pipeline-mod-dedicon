@@ -6,7 +6,7 @@
 @page {
 	size: 35 28;
 	@top-center {
-		content: string(print-page-from, page-start) string(print-page-to, page-last-except-start);
+		content: string(print-page-from, page-start-except-last) string(print-page-to, page-last);
 	}
 	@top-right {
 		content: counter(page);
@@ -14,7 +14,7 @@
 }
 pagenum {
 	display: none;
-	string-set: print-page-from content(), print-page-to ' - ' content();
+	string-set: print-page-from content() ' - ', print-page-to content();
 }
 head {
 	display: none;

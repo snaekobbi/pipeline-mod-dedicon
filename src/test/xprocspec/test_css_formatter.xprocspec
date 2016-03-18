@@ -38,7 +38,7 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="test_pagination_2" pending="bug: wrong print page number range: 2 - 2">
+  <x:scenario label="test_pagination_2" pending="special number sign '⠯'? what is that about?">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="file" href="../resources/xml/pagination-test-2.xml"/>

@@ -35,7 +35,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="{ text-transform: none } @page { @top-right { content: counter(page); } @top-center { content: string(print-page-from, page-start)  string(print-page-to, page-last-except-start); } } @volume { @begin { content: flow(title-page)  flow(volume-toc); } }">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
+        <div xmlns="http://www.w3.org/1999/xhtml" style="{ text-transform: none } @page { @top-right { content: counter(page); } @top-center { content: string(print-page-from, page-start-except-last)  string(print-page-to, page-last); } } @volume { @begin { content: flow(title-page)  flow(volume-toc); } }">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
       </x:document>
     </x:expect>
   </x:scenario>
