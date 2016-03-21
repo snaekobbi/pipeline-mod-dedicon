@@ -14,12 +14,12 @@
     <xsl:call-template name="generate-title-page"/>                
   </xsl:template>
 
-  <xsl:template match="rearmatter/*[last()]">
+  <xsl:template match="rearmatter">
     <xsl:copy>
-      <xsl:copy-of select="@*"/>
+      <xsl:sequence select="@*"/>
       <xsl:apply-templates/>
+      <xsl:call-template name="generate-colophon-page"/> 
     </xsl:copy>
-    <xsl:call-template name="generate-colophon-page"/>                
   </xsl:template>
 
   <xsl:template match="rearmatter[not(*) and not(normalize-space())]">
