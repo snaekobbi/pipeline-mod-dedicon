@@ -22,7 +22,7 @@
     <xsl:call-template name="generate-colophon-page"/>                
   </xsl:template>
 
-  <xsl:template match="rearmatter[not(node())]">
+  <xsl:template match="rearmatter[not(*) and not(normalize-space())]">
     <rearmatter>
       <xsl:call-template name="generate-colophon-page"/>                
     </rearmatter>
