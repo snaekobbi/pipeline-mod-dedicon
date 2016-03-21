@@ -6,6 +6,7 @@ Includes
 - Support for generated TOC (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/14)
 - Better support for generated title pages (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/16)
 - Support for generated colophon (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/22)
+- Better options handling (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/23)
 
 pipeline-mod-dedicon v1.3.0
 ===========================
