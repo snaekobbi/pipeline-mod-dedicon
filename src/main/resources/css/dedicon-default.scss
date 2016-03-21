@@ -122,6 +122,7 @@ level6 > pagenum:first-child {
 /* --------------------------------------------------------------------------------
  * Front matter, body matter and rear matter
  *
+ * These elements always start on a new page.
  * The print page number is reset on the start of these elements.
  *
  * If any of these consist of only content that is not rendered,
@@ -129,6 +130,7 @@ level6 > pagenum:first-child {
  */
 frontmatter, bodymatter, rearmatter {
 	display: block;
+	page-break-before: always;
 	/* The following line sets the values used for the top-center page position and the TOC. */
 	string-set: print-page-from '', print-page-to '';
 }
@@ -139,7 +141,7 @@ frontmatter:not(:has(> *:not(doctitle, docauthor, #generated-title-page))) {
 /* --------------------------------------------------------------------------------
  * Levels (sections)
  *
- * Each level starts on a new page.
+ * Each level always starts on a new page.
  */
 level,
 level1, level2, level3,
@@ -200,6 +202,13 @@ p {
 }
 
 /* --------------------------------------------------------------------------------
+ * Generated colophon page
+ */
+#generated-colophon-page {
+	page-break-inside: avoid;
+}
+
+/* --------------------------------------------------------------------------------
  * Lists
  */
 list {
@@ -216,7 +225,7 @@ list > li {
 /* --------------------------------------------------------------------------------
  * Volume-level TOC
  *
- * The TOC starts on a new page.
+ * The TOC always starts on a new page.
  */
 #generated-volume-toc::-obfl-on-toc-start {
 	display: block;
