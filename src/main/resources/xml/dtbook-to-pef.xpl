@@ -58,7 +58,22 @@
     <p:option name="include-line-groups" select="'true'"/>
     <p:option name="include-production-notes" select="'true'"/>
     <p:option name="show-braille-page-numbers" select="'true'"/>
-    <p:option name="show-print-page-numbers" select="'true'"/> <!-- TODO: use XPath -->
+    <p:option name="show-print-page-numbers" select="'from-meta'">
+        <p:pipeinfo>
+            <px:data-type>
+                <choice>
+                    <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">
+                        <value>Yes</value>
+                        <value>No</value>
+                        <value>Use value from metadata field</value>
+                    </documentation>
+                    <value>true</value>
+                    <value>false</value>
+                    <value>from-meta</value>
+                </choice>
+            </px:data-type>
+        </p:pipeinfo>
+    </p:option>
     <p:option name="force-braille-page-break" select="'false'"/>
     <p:option name="toc-depth" select="'2'"/>
     <p:option name="ignore-document-title"/>
@@ -116,7 +131,10 @@
         <p:with-option name="include-line-groups" select="$include-line-groups"/>
         <p:with-option name="include-production-notes" select="$include-production-notes"/>
         <p:with-option name="show-braille-page-numbers" select="$show-braille-page-numbers"/>
-        <p:with-option name="show-print-page-numbers" select="$show-print-page-numbers"/>
+        <p:with-option name="show-print-page-numbers"
+                       select="if ($show-print-page-numbers='from-meta')
+                               then //dtb:meta[@name='prod:docType']/@content='sv'
+                               else $show-print-page-numbers='true'"/>
         <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
         <p:with-option name="toc-depth" select="$toc-depth"/>
         <p:with-option name="ignore-document-title" select="$ignore-document-title"/>
