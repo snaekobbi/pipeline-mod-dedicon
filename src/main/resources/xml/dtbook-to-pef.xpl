@@ -31,7 +31,6 @@
     <p:option name="page-height" select="'28'"/>
     <p:option name="left-margin"/>
     <p:option name="duplex" select="'true'"/>
-    <p:option name="main-document-language"/>
     <p:option name="hyphenation" select="'true'"/> <!-- TODO: use XPath -->
     <p:option name="line-spacing" select="'single'"/>
     <p:option name="tab-width"/>
@@ -87,7 +86,6 @@
         <p:with-option name="page-height" select="$page-height"/>
         <p:with-option name="left-margin" select="$left-margin"/>
         <p:with-option name="duplex" select="$duplex"/>
-        <p:with-option name="main-document-language" select="$main-document-language"/>
         <p:with-option name="hyphenation" select="$hyphenation"/>
         <p:with-option name="line-spacing" select="$line-spacing"/>
         <p:with-option name="tab-width" select="$tab-width"/>
