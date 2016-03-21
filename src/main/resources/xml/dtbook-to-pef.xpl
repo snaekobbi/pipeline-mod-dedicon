@@ -3,6 +3,7 @@
                 xmlns:dedicon="http://www.dedicon.nl"
                 xmlns:p="http://www.w3.org/ns/xproc"
                 xmlns:px="http://www.daisy.org/ns/pipeline/xproc"
+                xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
                 exclude-inline-prefixes="#all"
                 name="main">
 
@@ -31,7 +32,22 @@
     <p:option name="page-height" select="'28'"/>
     <p:option name="left-margin"/>
     <p:option name="duplex" select="'true'"/>
-    <p:option name="hyphenation" select="'true'"/> <!-- TODO: use XPath -->
+    <p:option name="hyphenation" select="'from-meta'">
+        <p:pipeinfo>
+            <px:data-type>
+                <choice>
+                    <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">
+                        <value>Yes</value>
+                        <value>No</value>
+                        <value>Use value from metadata field</value>
+                    </documentation>
+                    <value>true</value>
+                    <value>false</value>
+                    <value>from-meta</value>
+                </choice>
+            </px:data-type>
+        </p:pipeinfo>
+    </p:option>
     <p:option name="line-spacing" select="'single'"/>
     <p:option name="tab-width"/>
     <p:option name="capital-letters" select="'true'"/>
@@ -97,7 +113,10 @@
         <p:with-option name="include-line-groups" select="$include-line-groups"/>
         <p:with-option name="include-production-notes" select="$include-production-notes"/>
         <p:with-option name="show-braille-page-numbers" select="$show-braille-page-numbers"/>
-        <p:with-option name="show-print-page-numbers" select="$show-print-page-numbers"/>
+        <p:with-option name="show-print-page-numbers"
+                       select="if ($show-print-page-numbers='from-meta')
+                               then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
+                               else $show-print-page-numbers='true'"/>
         <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
         <p:with-option name="toc-depth" select="$toc-depth"/>
         <p:with-option name="ignore-document-title" select="$ignore-document-title"/>
