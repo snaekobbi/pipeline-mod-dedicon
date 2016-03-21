@@ -102,7 +102,10 @@
         <p:with-option name="page-height" select="$page-height"/>
         <p:with-option name="left-margin" select="$left-margin"/>
         <p:with-option name="duplex" select="$duplex"/>
-        <p:with-option name="hyphenation" select="$hyphenation"/>
+        <p:with-option name="hyphenation"
+                       select="if ($hyphenation='from-meta')
+                               then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
+                               else $hyphenation='true'"/>
         <p:with-option name="line-spacing" select="$line-spacing"/>
         <p:with-option name="tab-width" select="$tab-width"/>
         <p:with-option name="capital-letters" select="$capital-letters"/>
@@ -113,10 +116,7 @@
         <p:with-option name="include-line-groups" select="$include-line-groups"/>
         <p:with-option name="include-production-notes" select="$include-production-notes"/>
         <p:with-option name="show-braille-page-numbers" select="$show-braille-page-numbers"/>
-        <p:with-option name="show-print-page-numbers"
-                       select="if ($show-print-page-numbers='from-meta')
-                               then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
-                               else $show-print-page-numbers='true'"/>
+        <p:with-option name="show-print-page-numbers" select="$show-print-page-numbers"/>
         <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
         <p:with-option name="toc-depth" select="$toc-depth"/>
         <p:with-option name="ignore-document-title" select="$ignore-document-title"/>
