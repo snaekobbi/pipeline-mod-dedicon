@@ -7,7 +7,7 @@
   <xsl:output indent="yes"/>
     
   <!-- Insert title page template: after docauthor (typically in frontmatter) -->
-  <xsl:template match="frontmatter/docauthor">
+  <xsl:template match="frontmatter/docauthor[last()]">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
@@ -47,7 +47,11 @@
     <level1 id="generated-title-page" class="other">
       <p id="generated-identifier"><xsl:value-of select="//meta[@name eq 'dc:Identifier']/@content"/></p>
       <p id="generated-doctitle"><xsl:value-of select="//doctitle"/></p>
-      <p id="generated-docauthor"><xsl:value-of select="//docauthor"/></p>
+      <div id="generated-docauthors">
+        <xsl:for-each select="//docauthor">
+          <p><xsl:value-of select="."/></p>
+        </xsl:for-each>
+      </div>
       <p id="generated-isbn">
         <xsl:if test="$isbn">
           <xsl:value-of select="$isbn"/>

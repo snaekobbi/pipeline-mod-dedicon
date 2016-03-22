@@ -70,7 +70,7 @@ $show-print-page-numbers: true !default;
  *
  * These are not directly incldued in the output.
  *
- * See also the #generated-doctitle and #generated-docauthor rules.
+ * See also the #generated-doctitle and #generated-docauthors rules.
  */
 head, doctitle, docauthor {
 	display: none;
@@ -166,6 +166,13 @@ hd, h1, h2, h3, h4, h5, h6 {
 }
 
 /* --------------------------------------------------------------------------------
+ * Divisions
+ */
+div {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
  * Paragraphs
  *
  * A paragraph is a block element with no special features.
@@ -190,7 +197,7 @@ p {
  * Book title, author and ISBN
  */
 #generated-doctitle,
-#generated-docauthor,
+#generated-docauthors,
 #generated-isbn {
 	margin-top: 1;
 	margin-bottom: 2;
