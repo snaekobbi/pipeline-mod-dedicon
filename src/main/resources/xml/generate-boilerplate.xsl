@@ -6,14 +6,22 @@
 
   <xsl:output indent="yes"/>
     
+  <!-- Insert title page template: after docauthor (typically in frontmatter) -->
   <xsl:template match="frontmatter/docauthor">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>
-    <xsl:call-template name="generate-title-page"/>                
+    <!-- TODO: should hyphenating words on the title page be avoided? -->
+    <xsl:if test="//meta[@name eq 'prod:docType']/@content eq 'ro'">
+      <xsl:call-template name="generate-title-page-al"/>                
+    </xsl:if>
+    <xsl:if test="//meta[@name eq 'prod:docType']/@content eq 'sv'">
+      <xsl:call-template name="generate-title-page-sv"/>                
+    </xsl:if>
   </xsl:template>
 
+  <!-- Insert colophon template: after last item in rearmatter -->
   <xsl:template match="rearmatter">
     <xsl:copy>
       <xsl:sequence select="@*"/>
@@ -22,12 +30,7 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="rearmatter[not(*) and not(normalize-space())]">
-    <rearmatter>
-      <xsl:call-template name="generate-colophon-page"/>                
-    </rearmatter>
-  </xsl:template>
-
+  <!-- Identity template -->
   <xsl:template match="node()">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -35,28 +38,52 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template name="generate-title-page">
+  <!--
+    Template: generate-title-page-al
+    Inserts the title page for AL books.
+  -->
+  <xsl:template name="generate-title-page-al">
+    <xsl:variable name="isbn" select="//meta[@name eq 'dc:Source']/@content"/>
     <level1 id="generated-title-page" class="other">
       <p id="generated-identifier"><xsl:value-of select="//meta[@name eq 'dc:Identifier']/@content"/></p>
       <p id="generated-doctitle"><xsl:value-of select="//doctitle"/></p>
       <p id="generated-docauthor"><xsl:value-of select="//docauthor"/></p>
-      <p id="generated-isbn">ISBN: <xsl:value-of select="//meta[@name eq 'dc:Source']/@content"/></p>
+      <p id="generated-isbn">
+        <xsl:if test="$isbn">
+          <xsl:value-of select="$isbn"/>
+        </xsl:if>
+      </p>
       <p id="generated-production-date">
         <!-- FIXME: should be Dutch (nl-NL) month names -->
-        <xsl:value-of select="//meta[@name eq 'dc:Publisher']/@content"/>,
-        <xsl:value-of select="format-date(current-date(), '[MNn] [Y]')"/>
+        Dedicon, <xsl:value-of select="format-date(current-date(), '[MNn] [Y]')"/>
       </p>
       <p id="generated-volume-count">
         Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
       </p>
     </level1>
   </xsl:template>
+  
+    <!--
+    Template: generate-title-page-sv
+    Inserts the title page for SV books.
+  -->
+  <xsl:template name="generate-title-page-sv">
+    <level1 id="generated-title-page" class="other">
+      <p>TBD</p>
+    </level1>
+  </xsl:template>
 
+  <!--
+    Template: generate-colophon-page
+    Inserts the colophon page for both AL and SV books.
+  -->
   <xsl:template name="generate-colophon-page">
     <level1 id="generated-colophon-page" class="other">
       <xsl:choose>
         <xsl:when test="//meta[@name eq 'prod:docType']/@content eq 'ro'">
           <!-- AL -->
+          <p>Colofon</p>
+          <!-- TODO: should this have class="precedingemptyline"? -->
           <p>Dit braille document is verzorgd door de stichting Dedicon, met inachtneming van artikel 15i van de Auteurswet. Het werk is uitsluitend bestemd voor hen die niet op de gebruikelijke manier kunnen lezen. Alle intellectuele eigendomsrechten op dit braille document berusten bij de Koninklijke Bibliotheek. Voor opmerkingen omtrent de kwaliteit van dit boek of vragen over het gebruik ervan kan worden gebeld met Bibliotheekservice Passend Lezen, telefoon: 070 338 1500.</p>
         </xsl:when>
         <xsl:otherwise>
