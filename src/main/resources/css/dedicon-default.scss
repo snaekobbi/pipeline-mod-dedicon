@@ -360,6 +360,8 @@ caption {
  * The start of a sidebar is indicated by the text "bk".
  * The end of a sidebar is indicated by the text "ek".
  * A sidebar has a blank line before and after it.
+ *
+ * The value of the render attribute has no effect on the output.
  */
 sidebar::before {
 	display: block;
