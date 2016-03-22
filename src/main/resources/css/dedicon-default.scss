@@ -348,6 +348,27 @@ caption {
 }
 
 /* --------------------------------------------------------------------------------
+ * Sidebarss
+ *
+ * The start of a sidebar is indicated by the text "bk".
+ * The end of a sidebar is indicated by the text "ek".
+ * A sidebar has a blank line before and after it.
+ */
+sidebar::before {
+	display: block;
+	content: 'bk';
+}
+sidebar::after {
+	display: block;
+	content: 'ek';
+}
+sidebar {
+	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
+}
+
+/* --------------------------------------------------------------------------------
  * Code
  *
  * Code is not hyphenated.
