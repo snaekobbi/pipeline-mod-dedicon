@@ -76,7 +76,6 @@
     </p:option>
     <p:option name="force-braille-page-break" select="'false'"/>
     <p:option name="toc-depth" select="'2'"/>
-    <p:option name="ignore-document-title"/>
     <p:option name="include-symbols-list"/>
     <p:option name="number-of-pages"/>
     <p:option name="maximum-number-of-pages"/>
@@ -137,7 +136,6 @@
                                else $show-print-page-numbers='true'"/>
         <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
         <p:with-option name="toc-depth" select="$toc-depth"/>
-        <p:with-option name="ignore-document-title" select="$ignore-document-title"/>
         <p:with-option name="include-symbols-list" select="$include-symbols-list"/>
         <p:with-option name="number-of-pages" select="$number-of-pages"/>
         <p:with-option name="maximum-number-of-pages" select="$maximum-number-of-pages"/>
