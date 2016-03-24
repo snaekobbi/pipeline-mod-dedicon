@@ -44,7 +44,7 @@
       <p id="generated-docauthors"><xsl:value-of select="string-join(//docauthor,', ')"/></p>
       <p id="generated-isbn">
         <xsl:if test="$isbn">
-          <xsl:value-of select="$isbn"/>
+          ISBN: <xsl:value-of select="$isbn"/>
         </xsl:if>
       </p>
       <p id="generated-production-date">

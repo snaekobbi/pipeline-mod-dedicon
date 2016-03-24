@@ -77,9 +77,9 @@
     <p:option name="force-braille-page-break" select="'false'"/>
     <p:option name="toc-depth" select="'2'"/>
     <p:option name="include-symbols-list"/>
-    <p:option name="number-of-pages"/>
-    <p:option name="maximum-number-of-pages"/>
-    <p:option name="minimum-number-of-pages"/>
+    <p:option name="number-of-sheets"/>
+    <p:option name="maximum-number-of-sheets"/>
+    <p:option name="minimum-number-of-sheets"/>
     
     <p:import href="http://www.daisy.org/pipeline/modules/common-utils/library.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl"/>
@@ -137,8 +137,8 @@
         <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
         <p:with-option name="toc-depth" select="$toc-depth"/>
         <p:with-option name="include-symbols-list" select="$include-symbols-list"/>
-        <p:with-option name="number-of-pages" select="$number-of-pages"/>
-        <p:with-option name="maximum-number-of-pages" select="$maximum-number-of-pages"/>
-        <p:with-option name="minimum-number-of-pages" select="$minimum-number-of-pages"/>
+        <p:with-option name="number-of-sheets" select="$number-of-sheets"/>
+        <p:with-option name="maximum-number-of-sheets" select="$maximum-number-of-sheets"/>
+        <p:with-option name="minimum-number-of-sheets" select="$minimum-number-of-sheets"/>
     </px:dtbook-to-pef>    
 </p:declare-step>
