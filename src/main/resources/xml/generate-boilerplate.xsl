@@ -12,13 +12,7 @@
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>
-    <!-- TODO: should hyphenating words on the title page be avoided? -->
-    <xsl:if test="//meta[@name eq 'prod:docType']/@content eq 'ro'">
-      <xsl:call-template name="generate-title-page-al"/>                
-    </xsl:if>
-    <xsl:if test="//meta[@name eq 'prod:docType']/@content eq 'sv'">
-      <xsl:call-template name="generate-title-page-sv"/>                
-    </xsl:if>
+    <xsl:call-template name="generate-title-page"/>                
   </xsl:template>
 
   <!-- Insert colophon template: after last item in rearmatter -->
@@ -39,19 +33,15 @@
   </xsl:template>
 
   <!--
-    Template: generate-title-page-al
-    Inserts the title page for AL books.
+    Template: generate-title-page
+    Inserts the title page for both AL and SV books.
   -->
-  <xsl:template name="generate-title-page-al">
+  <xsl:template name="generate-title-page">
     <xsl:variable name="isbn" select="//meta[@name eq 'dc:Source']/@content"/>
     <level1 id="generated-title-page" class="other">
       <p id="generated-identifier"><xsl:value-of select="//meta[@name eq 'dc:Identifier']/@content"/></p>
       <p id="generated-doctitle"><xsl:value-of select="//doctitle"/></p>
-      <div id="generated-docauthors">
-        <xsl:for-each select="//docauthor">
-          <p><xsl:value-of select="."/></p>
-        </xsl:for-each>
-      </div>
+      <p id="generated-docauthors"><xsl:value-of select="string-join(//docauthor,', ')"/></p>
       <p id="generated-isbn">
         <xsl:if test="$isbn">
           <xsl:value-of select="$isbn"/>
@@ -64,16 +54,6 @@
       <p id="generated-volume-count">
         Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
       </p>
-    </level1>
-  </xsl:template>
-  
-    <!--
-    Template: generate-title-page-sv
-    Inserts the title page for SV books.
-  -->
-  <xsl:template name="generate-title-page-sv">
-    <level1 id="generated-title-page" class="other">
-      <p>TBD</p>
     </level1>
   </xsl:template>
 
