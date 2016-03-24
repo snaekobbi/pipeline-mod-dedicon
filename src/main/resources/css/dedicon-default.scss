@@ -407,12 +407,18 @@ br::before {
 	content: -obfl-evaluate('(round $volumes)');
 }
 
-/* --------------------------------------------------------------------------------
+/**********************************************************************************
+ * Attributes
+ *
+ * These are attributes that can be specified on XML elements.
+ */
+ 
+ /* --------------------------------------------------------------------------------
  * Strong text
  *
  * This is marked up as bold.
  */
-strong {
+.emph-bxx-brl {
 	text-transform: louis-bold;
 }
 
@@ -421,15 +427,9 @@ strong {
  *
  * This is marked up as italic.
  */
-em {
+.emph-xix-brl {
 	text-transform: louis-ital;
 }
-
-/**********************************************************************************
- * Attributes
- *
- * These are attributes that can be specified on XML elements.
- */
 
 /* --------------------------------------------------------------------------------
  * Preceding empty line
