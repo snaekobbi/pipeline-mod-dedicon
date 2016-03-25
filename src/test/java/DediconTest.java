@@ -31,6 +31,7 @@ import org.ops4j.pax.exam.util.PathUtils;
 
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.options;
+import static org.ops4j.pax.exam.CoreOptions.systemProperty;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
@@ -63,6 +64,7 @@ public class DediconTest {
 	@Configuration
 	public Option[] config() {
 		return options(
+			systemProperty("file.encoding").value("UTF8"),
 			logbackConfigFile(),
 			domTraversalPackage(),
 			calabashConfigFile(),
