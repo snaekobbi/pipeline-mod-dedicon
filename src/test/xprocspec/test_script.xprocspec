@@ -19,7 +19,7 @@
     <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare"
               pending="TODO: expected result">
       <x:document type="inline">
-        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
           <head>
             <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
               <dc:format>application/x-pef+xml</dc:format>
@@ -53,7 +53,7 @@
     <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare"
               pending="TODO: expected result">
       <x:document type="inline">
-        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
           <head>
             <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
               <dc:format>application/x-pef+xml</dc:format>
@@ -90,7 +90,7 @@
     <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare"
               pending="TODO: expected result">
       <x:document type="inline">
-        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+        <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
           <head>
             <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
               <dc:format>application/x-pef+xml</dc:format>
@@ -143,7 +143,7 @@
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
         <x:document type="inline">
-          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
             <head>
               <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
                 <dc:format>application/x-pef+xml</dc:format>
@@ -161,11 +161,14 @@
                     <row>⠨⠙⠁⠧⠽⠀⠨⠅⠁⠛⠑⠗</row>
                     <row/>
                     <row/>
-                    <row>⠘⠊⠎⠃⠝⠒</row>
-                    <row/>
-                    <row/>
-                    <row>⠂⠀⠨⠍⠁⠗⠉⠓⠀⠼⠃⠚⠁⠋</row>
+                    <row>⠨⠙⠑⠙⠊⠉⠕⠝⠂⠀⠨⠍⠁⠗⠉⠓⠀⠼⠃⠚⠁⠋</row>
                     <row>⠨⠃⠁⠝⠙⠀⠼⠁⠀⠦⠞⠕⠞⠁⠁⠇⠀⠼⠁⠴</row>
+                  </page>
+                  <page>
+                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃</row>
+                    <row>⠨⠊⠝⠓⠕⠥⠙⠀⠃⠁⠝⠙⠀⠼⠁</row>
+                    <row/>
+                    <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁⠀⠀⠀⠀⠼⠁</row>
                   </page>
                 </section>
                 <section>
@@ -192,7 +195,7 @@
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
         <x:document type="inline">
-          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
             <head>
               <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
                 <dc:format>application/x-pef+xml</dc:format>
@@ -200,6 +203,14 @@
             </head>
             <body>
               <volume cols="33" rows="28" rowgap="0" duplex="true">
+                <section>
+                  <page>
+                    <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
+                    <row>⠨⠊⠝⠓⠕⠥⠙⠀⠃⠁⠝⠙⠀⠼⠁</row>
+                    <row/>
+                    <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁⠀⠀⠀⠀⠼⠁</row>
+                  </page>
+                </section>
                 <section>
                   <page>
                     <row>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</row>
@@ -230,6 +241,7 @@
           </dtbook>
         </x:document>
       </x:input>
+      <x:option name="toc-depth" select="0"/>
       <x:option name="include-brf" select="true()"/>
     </x:call>
     <x:scenario label="enabled">
@@ -244,7 +256,7 @@
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
         <x:document type="inline">
-          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
             <head>
               <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
                 <dc:format>application/x-pef+xml</dc:format>
@@ -275,7 +287,7 @@
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
         <x:document type="inline">
-          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1">
+          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
             <head>
               <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
                 <dc:format>application/x-pef+xml</dc:format>
@@ -285,7 +297,6 @@
               <volume cols="33" rows="28" rowgap="0" duplex="true">
                 <section>
                   <page>
-                    <row/>
                     <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁</row>
                   </page>
                 </section>

@@ -11,10 +11,11 @@
       <p:input port="source"/>
       <p:output port="result"/>
       <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
-      <p:import href="http://www.daisy.org/pipeline/modules/braille/css-utils/library.xpl"/>
-      <css:inline>
-        <p:with-option name="default-stylesheet" select="'../../main/resources/css/dedicon-default.scss'"/>
-      </css:inline>
+      <p:import href="http://www.daisy.org/pipeline/modules/braille/xml-to-pef/library.xpl"/>
+      <px:apply-stylesheets stylesheets="../../main/resources/css/dedicon-default.scss">
+        <p:with-param port="parameters" name="show-print-page-numbers" select="false()"/>
+        <p:with-param port="parameters" name="show-braille-page-numbers" select="false()"/>
+      </px:apply-stylesheets>
       <px:transform query="(input:css)(input:html)(output:css)(translator:dedicon)(locale:nl)"/>
     </p:declare-step>
   </x:script>
@@ -35,7 +36,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="{ text-transform: none } @page { @top-right { content: counter(page); } @top-center { content: string(print-page-from, page-start-except-last)  string(print-page-to, page-last); } } @volume { @begin { content: flow(title-page)  flow(volume-toc); } }">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
+        <div xmlns="http://www.w3.org/1999/xhtml" style="{ display: block; text-transform: none } @volume { @begin { content: flow(title-page)  flow(volume-toc); } }">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
       </x:document>
     </x:expect>
   </x:scenario>
