@@ -38,7 +38,7 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="test_pagination_2" pending="special number sign '⠯'? what is that about?">
+  <x:scenario label="test_pagination_2">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="file" href="../resources/xml/pagination-test-2.xml"/>
@@ -53,7 +53,7 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="test_pagination_3" pending="print page range not centered perfectly
+  <x:scenario label="test_pagination_3" pending="Linked CSS does not seem to be applied.">
                                                  print page number at top op page should be skipped
                                                  heading at top of page should not have top margin">
     <x:call step="pxi:transform">
