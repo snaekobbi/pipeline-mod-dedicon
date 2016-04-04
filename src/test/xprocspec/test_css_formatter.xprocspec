@@ -10,13 +10,13 @@
     <p:declare-step type="pxi:transform" version="1.0">
       <p:input port="source"/>
       <p:output port="result"/>
-      <p:option name="stylesheet" select="''"/>
       <p:option name="temp-dir" required="true"/>
       <p:import href="http://www.daisy.org/pipeline/modules/braille/common-utils/library.xpl"/>
-      <p:import href="http://www.daisy.org/pipeline/modules/braille/css-utils/library.xpl"/>
-      <css:inline>
-        <p:with-option name="default-stylesheet" select="$stylesheet"/>
-      </css:inline>
+      <p:import href="http://www.daisy.org/pipeline/modules/braille/xml-to-pef/library.xpl"/>
+      <px:apply-stylesheets>
+        <p:with-param port="parameters" name="show-print-page-numbers" select="true()"/>
+        <p:with-param port="parameters" name="show-braille-page-numbers" select="true()"/>
+      </px:apply-stylesheets>
       <px:transform query="(input:css)(output:pef)(formatter:dotify)(translator:dedicon)(locale:nl)">
         <p:with-option name="temp-dir" select="$temp-dir"/>
       </px:transform>
@@ -53,9 +53,10 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="test_pagination_3" pending="Linked CSS does not seem to be applied.">
-                                                 print page number at top op page should be skipped
-                                                 heading at top of page should not have top margin">
+  <x:scenario label="test_pagination_3" pending="wrong braille page number (mistake in expected pef?)
+                                                 wrong page dimensions (because handled in generic dtbook-to-pef css)
+                                                 print page range not centered perfectly
+                                                 print page range on first braille page does not include first print page">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="file" href="../resources/xml/pagination-test-3.xml"/>
