@@ -17,7 +17,7 @@
   </xsl:template>
   
   <!-- Insert title page template: after docauthor -->
-  <xsl:template match="frontmatter/docauthor[last()]">
+  <xsl:template match="frontmatter/*[self::doctitle or self::docauthor][last()]">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
