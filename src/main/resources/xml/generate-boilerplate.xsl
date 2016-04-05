@@ -51,7 +51,7 @@
       <p id="generated-doctitle"><xsl:value-of select="//doctitle"/></p>
       <p id="generated-docauthors"><xsl:value-of select="string-join(//docauthor,', ')"/></p>
       <p id="generated-isbn">
-        <xsl:if test="$isbn">
+        <xsl:if test="$isbn and matches($isbn, '^[0-9-]{10,}$')">
           ISBN: <xsl:value-of select="$isbn"/>
         </xsl:if>
       </p>
