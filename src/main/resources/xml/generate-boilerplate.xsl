@@ -5,8 +5,8 @@
     xmlns="http://www.daisy.org/z3986/2005/dtbook/">
 
   <xsl:output indent="yes"/>
-    
-  <!-- Insert title page template: after docauthor (typically in frontmatter) -->
+  
+  <!-- Insert title page template: after docauthor -->
   <xsl:template match="frontmatter/docauthor[last()]">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
@@ -25,13 +25,12 @@
   </xsl:template>
 
   <!-- Identity template -->
-  <xsl:template match="node()">
+  <xsl:template match="node()|@*">
     <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
   </xsl:template>
-
+  
   <!--
     Template: generate-title-page
     Inserts the title page for both AL and SV books.
