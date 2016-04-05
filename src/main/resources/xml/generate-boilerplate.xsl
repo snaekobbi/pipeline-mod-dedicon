@@ -6,6 +6,16 @@
 
   <xsl:output indent="yes"/>
   
+  <!-- Add rearmatter if it does not exist -->
+  <xsl:template match="book[not(rearmatter)]">
+    <xsl:copy>
+      <xsl:apply-templates/>
+      <rearmatter>
+        <xsl:call-template name="generate-colophon-page"/> 
+      </rearmatter>
+    </xsl:copy>
+  </xsl:template>
+  
   <!-- Insert title page template: after docauthor -->
   <xsl:template match="frontmatter/docauthor[last()]">
     <xsl:copy>
@@ -18,7 +28,6 @@
   <!-- Insert colophon template: after last item in rearmatter -->
   <xsl:template match="rearmatter">
     <xsl:copy>
-      <xsl:sequence select="@*"/>
       <xsl:apply-templates/>
       <xsl:call-template name="generate-colophon-page"/> 
     </xsl:copy>
