@@ -9,4 +9,6 @@
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:liblouis-tables"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:libhyphen-libreoffice-tables"/>
   <nextCatalog catalog="org:daisy:pipeline:modules:braille:dtbook-to-pef"/>
+  <nextCatalog catalog="org:daisy:pipeline:modules:braille:pef-utils"/>
+  <nextCatalog catalog="org:daisy:pipeline:modules:file-utils"/>
 </catalog>

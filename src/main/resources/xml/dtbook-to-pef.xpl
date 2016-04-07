@@ -4,6 +4,8 @@
                 xmlns:p="http://www.w3.org/ns/xproc"
                 xmlns:px="http://www.daisy.org/ns/pipeline/xproc"
                 xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
+                xmlns:pef="http://www.daisy.org/ns/2008/pef"
+                xmlns:c="http://www.w3.org/ns/xproc-step"
                 exclude-inline-prefixes="#all"
                 name="main">
 
@@ -82,19 +84,64 @@
     <p:option name="maximum-number-of-sheets" select="'70'"/>
     <p:option name="minimum-number-of-sheets"/>
     
+    <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/library.xpl"/>
+    <p:import href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl"/>
+    <p:import href="http://www.daisy.org/pipeline/modules/file-utils/library.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/common-utils/library.xpl"/>
-    <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/dtbook-to-pef.xpl"/>
     <p:import href="http://www.dedicon.nl/pipeline/modules/braille/library.xpl"/>
     
+    <p:in-scope-names name="in-scope-names"/>
+    <p:identity>
+        <p:input port="source">
+            <p:pipe port="result" step="in-scope-names"/>
+        </p:input>
+    </p:identity>
+    <p:delete match="c:param[@name=('stylesheet',
+                                    'ascii-table',
+                                    'include-brf',
+                                    'include-preview',
+                                    'pef-output-dir',
+                                    'brf-output-dir',
+                                    'preview-output-dir',
+                                    'temp-dir')]"/>
+    <p:add-attribute match="c:param[@name='hyphenation']" attribute-name="value">
+        <p:with-option name="attribute-value"
+                       select="if ($hyphenation='from-meta')
+                               then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
+                               else $hyphenation='true'"/>
+    </p:add-attribute>
+    <!--
+    <p:add-attribute match="c:param[@name='show-inline-print-page-numbers']" attribute-name="value">
+        <p:with-option name="attribute-value"
+                       select="if ($show-inline-print-page-numbers='from-meta')
+                               then //dtb:meta[@name='prod:docType']/@content='sv'
+                               else $show-inline-print-page-numbers='true'"/>
+    </p:add-attribute>
+    -->
+    <p:identity name="input-options"/>
+    <p:sink/>
+    
+    <!-- =============== -->
+    <!-- CREATE TEMP DIR -->
+    <!-- =============== -->
+    <px:tempdir name="temp-dir">
+        <p:with-option name="href" select="if ($temp-dir!='') then $temp-dir else $pef-output-dir"/>
+    </px:tempdir>
+    <p:sink/>
+    
+    <!-- ==================== -->
+    <!-- DTBOOK PREPROCESSING -->
+    <!-- ==================== -->
+    <p:identity>
+        <p:input port="source">
+            <p:pipe step="main" port="source"/>
+        </p:input>
+    </p:identity>
     <p:choose>
         <p:when test="$add-boilerplate='true'">
-            <p:in-scope-names name="parameters"/>
             <dedicon:pre-processing>
                 <p:input port="parameters">
-                    <p:pipe port="result" step="parameters"/>
-                </p:input>
-                <p:input port="source">
-                    <p:pipe port="source" step="main"/>
+                    <p:pipe step="input-options" port="result"/>
                 </p:input>
             </dedicon:pre-processing>
         </p:when>
@@ -102,45 +149,39 @@
             <px:message message="Skipping Dedicon-specific pre-processing steps"/>
         </p:otherwise>
     </p:choose>
-
-    <px:dtbook-to-pef>
-        <p:with-option name="pef-output-dir" select="$pef-output-dir"/>
-        <p:with-option name="brf-output-dir" select="$brf-output-dir"/>
-        <p:with-option name="preview-output-dir" select="$preview-output-dir"/>
-        <p:with-option name="temp-dir" select="$temp-dir"/>
+    
+    <!-- ============= -->
+    <!-- DTBOOK TO PEF -->
+    <!-- ============= -->
+    <px:dtbook-to-pef.convert default-stylesheet="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/css/default.css"
+                              transform="(formatter:dotify)(translator:dedicon)">
+        <p:with-option name="temp-dir" select="string(/c:result)">
+            <p:pipe step="temp-dir" port="result"/>
+        </p:with-option>
         <p:with-option name="stylesheet" select="$stylesheet"/>
-        <p:with-option name="transform" select="'(formatter:dotify)(translator:dedicon)'"/>
-        <p:with-option name="ascii-table" select="$ascii-table"/>
-        <p:with-option name="include-preview" select="$include-preview"/>
-        <p:with-option name="include-brf" select="$include-brf"/>
-        <p:with-option name="page-width" select="$page-width"/>
-        <p:with-option name="page-height" select="$page-height"/>
-        <p:with-option name="left-margin" select="$left-margin"/>
-        <p:with-option name="duplex" select="$duplex"/>
-        <p:with-option name="hyphenation"
-                       select="if ($hyphenation='from-meta')
-                               then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
-                               else $hyphenation='true'"/>
-        <p:with-option name="line-spacing" select="$line-spacing"/>
-        <p:with-option name="tab-width" select="$tab-width"/>
-        <p:with-option name="capital-letters" select="$capital-letters"/>
-        <p:with-option name="accented-letters" select="$accented-letters"/>
-        <p:with-option name="include-captions" select="$include-captions"/>
-        <p:with-option name="include-images" select="$include-images"/>
-        <p:with-option name="include-image-groups" select="$include-image-groups"/>
-        <p:with-option name="include-line-groups" select="$include-line-groups"/>
-        <p:with-option name="include-production-notes" select="$include-production-notes"/>
-        <p:with-option name="show-braille-page-numbers" select="$show-braille-page-numbers"/>
-        <p:with-option name="show-print-page-numbers" select="$show-print-page-numbers"/>
-        <!-- <p:with-option name="show-inline-print-page-numbers"
-                       select="if ($show-inline-print-page-numbers='from-meta')
-                               then //dtb:meta[@name='prod:docType']/@content='sv'
-                               else $show-inline-print-page-numbers='true'"/> -->
-        <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
-        <p:with-option name="toc-depth" select="$toc-depth"/>
-        <p:with-option name="include-symbols-list" select="$include-symbols-list"/>
-        <p:with-option name="number-of-sheets" select="$number-of-sheets"/>
-        <p:with-option name="maximum-number-of-sheets" select="$maximum-number-of-sheets"/>
-        <p:with-option name="minimum-number-of-sheets" select="$minimum-number-of-sheets"/>
-    </px:dtbook-to-pef>    
+        <p:input port="parameters">
+            <p:pipe port="result" step="input-options"/>
+        </p:input>
+    </px:dtbook-to-pef.convert>
+    
+    <!-- ========= -->
+    <!-- STORE PEF -->
+    <!-- ========= -->
+    <p:group>
+        <p:variable name="name" select="replace(p:base-uri(/),'^.*/([^/]*)\.[^/\.]*$','$1')">
+            <p:pipe step="main" port="source"/>
+        </p:variable>
+        <pef:store>
+            <p:with-option name="href" select="concat($pef-output-dir,'/',$name,'.pef')"/>
+            <p:with-option name="preview-href" select="if ($include-preview='true' and $preview-output-dir!='')
+                                                       then concat($preview-output-dir,'/',$name,'.pef.html')
+                                                       else ''"/>
+            <p:with-option name="brf-href" select="if ($include-brf='true' and $brf-output-dir!='')
+                                                   then concat($brf-output-dir,'/',$name,'.brf')
+                                                   else ''"/>
+            <p:with-option name="brf-table" select="if ($ascii-table!='') then $ascii-table
+                                                    else concat('(locale:',(/*/@xml:lang,'und')[1],')')"/>
+        </pef:store>
+    </p:group>
+    
 </p:declare-step>
