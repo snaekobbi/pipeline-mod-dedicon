@@ -22,7 +22,7 @@
  *
  * A page contains 33 columns by 28 rows of braille (configurable with options, defaults in script).
  *
- * For SV books, the print page number is shown in the top-center.
+ * The print page number is shown in the top-center.
  * If a braille page contains content from multiple print pages,
  * the print page number is a range "from - to".
  * If no print page number is available, this part of the braille page is left blank.
@@ -83,8 +83,9 @@ head, doctitle, docauthor {
  * See also the @page rule.
  */
 pagenum {
-	/* The following line sets the values used for the top-center page position and the TOC. */
-	string-set: print-page-from content() ' - ', print-page-to content();
+	display: none;
+	/* The following lines sets the values used for the top-center page position and the TOC. */
+	string-set: print-page-from content() ' - ', print-page-to content(), print-page-toc content() '\A0\A0';
 }
 @if $show-print-page-numbers {
 	pagenum {
@@ -113,7 +114,6 @@ pagenum {
 /* --------------------------------------------------------------------------------
  * Front matter, body matter and rear matter
  *
- * These elements always start on a new page.
  * The print page number is reset on the start of these elements.
  *
  * If any of these consist of only content that is not rendered,
@@ -121,7 +121,6 @@ pagenum {
  */
 frontmatter, bodymatter, rearmatter {
 	display: block;
-	page-break-before: always;
 	/* The following line sets the values used for the top-center page position and the TOC. */
 	string-set: print-page-from '', print-page-to '';
 }
@@ -199,6 +198,10 @@ p {
 	text-indent: -2;
 }
 
+#generated-title-page-footer {
+	-obfl-vertical-position: 24;
+}
+
 /* --------------------------------------------------------------------------------
  * Generated colophon page
  */
@@ -215,9 +218,15 @@ list {
 
 /* --------------------------------------------------------------------------------
  * List items
+ *
+ * If the list item spans multiple braille lines,
+ * every line except the first one is indented by 2 braille cells.
  */
 list > li {
 	display: block;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
 }
 
 /* --------------------------------------------------------------------------------
@@ -234,17 +243,26 @@ list > li {
 
 /* --------------------------------------------------------------------------------
  * TOC items
+ *
+ * If the TOC item spans multiple braille lines,
+ * every line except the first one is indented by 2 braille cells.
+ *
+ * See also the pagenum rule.
  */
 #generated-volume-toc li > a::after {
-	/* The next line prevents whitespace from being collapsed. */
-	white-space: pre-wrap;
-	content: '  ' target-string(attr(href), print-page-to) '  ' target-counter(attr(href), page);
+	/* Whitespace after the print page number is added through string-set. */
+	content: '\A0\A0' target-string(attr(href), print-page-toc) target-counter(attr(href), page);
 }
 #generated-volume-toc li > a {
 	display: block;
 	/* This needs a left margin in order to negatively indent the first line. */
 	margin-left: 2;
 	text-indent: -2;
+}
+#generated-volume-toc li {
+	/* Override default list item behavior to avoid indenting nested lists. */
+	margin-left: 0;
+	text-indent: 0;
 }
 
 /* --------------------------------------------------------------------------------

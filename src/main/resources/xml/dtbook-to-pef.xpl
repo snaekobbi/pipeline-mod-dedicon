@@ -58,7 +58,8 @@
     <p:option name="include-line-groups" select="'true'"/>
     <p:option name="include-production-notes" select="'true'"/>
     <p:option name="show-braille-page-numbers" select="'true'"/>
-    <p:option name="show-print-page-numbers" select="'from-meta'">
+    <p:option name="show-print-page-numbers" select="'true'"/>
+    <p:option name="show-inline-print-page-numbers" select="'from-meta'">
         <p:pipeinfo>
             <px:data-type>
                 <choice>
@@ -78,7 +79,7 @@
     <p:option name="toc-depth" select="'2'"/>
     <p:option name="include-symbols-list"/>
     <p:option name="number-of-sheets"/>
-    <p:option name="maximum-number-of-sheets"/>
+    <p:option name="maximum-number-of-sheets" select="'70'"/>
     <p:option name="minimum-number-of-sheets"/>
     
     <p:import href="http://www.daisy.org/pipeline/modules/common-utils/library.xpl"/>
@@ -130,10 +131,11 @@
         <p:with-option name="include-line-groups" select="$include-line-groups"/>
         <p:with-option name="include-production-notes" select="$include-production-notes"/>
         <p:with-option name="show-braille-page-numbers" select="$show-braille-page-numbers"/>
-        <p:with-option name="show-print-page-numbers"
-                       select="if ($show-print-page-numbers='from-meta')
+        <p:with-option name="show-print-page-numbers" select="$show-print-page-numbers"/>
+        <!-- <p:with-option name="show-inline-print-page-numbers"
+                       select="if ($show-inline-print-page-numbers='from-meta')
                                then //dtb:meta[@name='prod:docType']/@content='sv'
-                               else $show-print-page-numbers='true'"/>
+                               else $show-inline-print-page-numbers='true'"/> -->
         <p:with-option name="force-braille-page-break" select="$force-braille-page-break"/>
         <p:with-option name="toc-depth" select="$toc-depth"/>
         <p:with-option name="include-symbols-list" select="$include-symbols-list"/>
