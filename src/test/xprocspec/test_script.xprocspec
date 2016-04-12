@@ -24,6 +24,147 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario label="levels">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/levels-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('levels/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('levels/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="levels/output-dir/levels-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/levels-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="lists 1">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/lists-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('lists/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('lists/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="lists/output-dir/lists-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/lists-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="lists 2">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/lists-test-2.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('lists/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('lists/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="lists/output-dir/lists-test-2.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/lists-test-2.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="lists 3">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/lists-test-3.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('lists/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('lists/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="lists/output-dir/lists-test-3.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/lists-test-3.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="lines 1">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/lines-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('lines/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('lines/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="lines/output-dir/lines-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/lines-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="lines 2">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/lines-test-2.xml"/>
+      </x:input>
+      <x:option name="page-height" select="'15'"/>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('lines/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('lines/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="lines/output-dir/lines-test-2.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/lines-test-2.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="notes 1">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/notes-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('notes/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('notes/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="notes/output-dir/notes-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/notes-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
   <x:scenario label="add-boilerplate" pending="brittle test: result contains current month and year">
     <x:call step="dedicon:dtbook-to-pef">
       <x:input port="source">

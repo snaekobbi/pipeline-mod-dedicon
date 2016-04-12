@@ -14,6 +14,7 @@
       <p:import href="http://www.daisy.org/pipeline/modules/braille/xml-to-pef/library.xpl"/>
       <px:apply-stylesheets stylesheets="../../main/resources/css/dedicon-default.scss">
         <p:with-param port="parameters" name="show-print-page-numbers" select="false()"/>
+        <p:with-param port="parameters" name="show-inline-print-page-numbers" select="false()"/>
         <p:with-param port="parameters" name="show-braille-page-numbers" select="false()"/>
       </px:apply-stylesheets>
       <px:transform query="(input:css)(input:html)(output:css)(translator:dedicon)(locale:nl)"/>

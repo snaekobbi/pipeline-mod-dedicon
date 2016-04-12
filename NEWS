@@ -8,6 +8,8 @@ Includes
 - Support for generated colophon (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/22)
 - Better options handling (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/23)
 - Support for sidebars (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/27)
+- Initial support for notes (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/31)
+- Support for linegroups and lines (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/32)
 
 pipeline-mod-dedicon v1.3.0
 ===========================

@@ -40,6 +40,11 @@
       <groupId>org.daisy.pipeline.modules.braille</groupId>
       <artifactId>dtbook-to-pef</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <scope>provided</scope>
+    </dependency>
     <!--
         runtime dependencies
     -->

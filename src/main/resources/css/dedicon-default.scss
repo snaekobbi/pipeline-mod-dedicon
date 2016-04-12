@@ -87,7 +87,7 @@ pagenum {
 	/* The following lines sets the values used for the top-center page position and the TOC. */
 	string-set: print-page-from content() ' - ', print-page-to content(), print-page-toc content() '\A0\A0';
 }
-@if $show-print-page-numbers {
+@if $show-inline-print-page-numbers {
 	pagenum {
 		display: block;
 		margin-top: 1;
@@ -95,16 +95,10 @@ pagenum {
 		text-align: center;
 	}
 	/* HACK: don't show pagenums if they are the first thing on the page. */
-	level > pagenum:first-child,
-	level1 > pagenum:first-child,
-	level2 > pagenum:first-child,
-	level3 > pagenum:first-child,
-	level4 > pagenum:first-child,
-	level5 > pagenum:first-child,
-	level6 > pagenum:first-child {
+	level1 > pagenum:first-child {
 		display: none;
 	}
-} /* $show-print-page-numbers */
+} /* $show-inline-print-page-numbers */
 @else {
 	pagenum {
 		display: none;
@@ -131,30 +125,54 @@ frontmatter:not(:has(> *:not(doctitle, docauthor, #generated-title-page))) {
 /* --------------------------------------------------------------------------------
  * Levels (sections)
  *
- * Each level always starts on a new page.
+ * Level 1 always start on a new page.
+ * Level 2 has two blank lines before it.
+ * Other level have one blank line before it.
+ *
+ * See also the heading rules.
  */
 level,
 level1, level2, level3,
 level4, level5, level6 {
 	display: block;
+}
+level1 {
 	page-break-before: always;
+}
+:has(+ level2) {
+	margin-bottom: 2;
+}
+:has(+ level),
+:has(+ level3),
+:has(+ level4),
+:has(+ level5),
+:has(+ level6) {
+	margin-bottom: 1;
 }
 
 /* --------------------------------------------------------------------------------
  * Headings
  *
- * Each heading has a blank line after it.
  * A heading cannot be the last item on a page.
  * If the heading spans multiple braille lines,
  * every line except the first one is indented by 2 braille cells.
+ *
+ * Heading level 1 has a blank line after it,
+ * and typically starts on a new page because it is at the start of a level 1.
+ * Other headings have no blank lines after it.
+ *
+ * See also the level rules.
  */
 hd, h1, h2, h3, h4, h5, h6 {
 	display: block;
-	margin-bottom: 1;
 	/* This needs a left margin in order to negatively indent the first line. */
 	margin-left: 2;
 	text-indent: -2;
 	page-break-after: avoid;
+}
+/* HACK: see https://github.com/snaekobbi/braille-css-spec/issues/29 */
+h1:not(:has(+ level2)) {
+	margin-bottom: 1;
 }
 
 /* --------------------------------------------------------------------------------
@@ -211,9 +229,16 @@ p {
 
 /* --------------------------------------------------------------------------------
  * Lists
+ *
+ * Two consecutive lists are separated by a blank line.
  */
 list {
 	display: block;
+}
+list:has(+ list)::after {
+	/* Setting a margin doesn't seem to work for lists. */
+	white-space: pre-line;
+	content: '\A';
 }
 
 /* --------------------------------------------------------------------------------
@@ -389,6 +414,64 @@ sidebar {
 }
 
 /* --------------------------------------------------------------------------------
+ * Poems
+ *
+ * A poem has a blank line before and after it.
+ */
+poem {
+	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
+}
+
+/* --------------------------------------------------------------------------------
+ * Linegroups
+ */
+linegroup {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Lines
+ *
+ * If a line spans multiple braille lines,
+ * every line except the first one is indented by 2 braille cells.
+ *
+ * A line should be kept on a single page.
+ */
+line {
+	display: block;
+	page-break-inside: avoid;
+	/* This needs a left margin in order to negatively indent the first line. */
+	margin-left: 2;
+	text-indent: -2;
+}
+
+/* --------------------------------------------------------------------------------
+ * Notes
+ *
+ * A note is indicated with an asterisk (*), but not with its number.
+ *
+ * Every line except the first one is indented by 2 braille cells.
+ * The first line is indented by 1 braille cell,
+ * this extra cell contains the asterisk.
+ *
+ * A note has a blank line before and after it.
+ */
+note {
+	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
+	margin-left: 2;
+}
+note > :first-child::before {
+	content: '*';
+}
+note > :first-child {
+	text-indent: -1;
+}
+
+/* --------------------------------------------------------------------------------
  * Code
  *
  * Code is not hyphenated.
@@ -409,6 +492,15 @@ code {
 br::before {
 	white-space: pre-line;
 	content: '\A';
+}
+
+/* --------------------------------------------------------------------------------
+ * Note references
+ *
+ * A note reference is indicated by an asterisk (*).
+ */
+noteref::before {
+	content: '*';
 }
  
 /* --------------------------------------------------------------------------------

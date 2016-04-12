@@ -78,7 +78,7 @@
         </p:pipeinfo>
     </p:option>
     <p:option name="force-braille-page-break" select="'false'"/>
-    <p:option name="toc-depth" select="'2'"/>
+    <p:option name="toc-depth" select="'6'"/>
     <p:option name="include-symbols-list"/>
     <p:option name="number-of-sheets"/>
     <p:option name="maximum-number-of-sheets" select="'70'"/>
@@ -110,14 +110,12 @@
                                then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
                                else $hyphenation='true'"/>
     </p:add-attribute>
-    <!--
     <p:add-attribute match="c:param[@name='show-inline-print-page-numbers']" attribute-name="value">
         <p:with-option name="attribute-value"
                        select="if ($show-inline-print-page-numbers='from-meta')
                                then //dtb:meta[@name='prod:docType']/@content='sv'
                                else $show-inline-print-page-numbers='true'"/>
     </p:add-attribute>
-    -->
     <p:identity name="input-options"/>
     <p:sink/>
     
