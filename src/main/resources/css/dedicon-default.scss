@@ -495,6 +495,24 @@ br::before {
 }
 
 /* --------------------------------------------------------------------------------
+ * Subscript
+ *
+ * Subscript is indicated with dots 16.
+ */
+sub::before {
+	content: '\\';
+}
+
+/* --------------------------------------------------------------------------------
+ * Superscript
+ *
+ * Superscript is indicated with dots 34.
+ */
+sup::before {
+	content: '^';
+}
+
+/* --------------------------------------------------------------------------------
  * Note references
  *
  * A note reference is indicated by an asterisk (*).

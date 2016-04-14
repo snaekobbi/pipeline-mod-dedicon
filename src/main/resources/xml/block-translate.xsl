@@ -12,12 +12,7 @@
 	<xsl:param name="text-transform" required="yes"/>
 	
 	<xsl:template match="css:block" mode="#default before after">
-		<xsl:variable name="text" as="xs:string*">
-			<xsl:for-each select="//text()">
-				<xsl:sequence select="if (ancestor::*:sup) then concat('^',.) else
-				                      if (ancestor::*:sub) then concat('\',.) else ."/>
-			</xsl:for-each>
-		</xsl:variable>
+		<xsl:variable name="text" as="xs:string*" select="//text()"/>
 		<xsl:variable name="style" as="xs:string*">
 			<xsl:for-each select="//text()">
 				<xsl:variable name="inline-style" as="element()*"

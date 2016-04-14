@@ -165,6 +165,26 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario label="subsup 1">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/subsup-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('subsup/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('subsup/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="subsup/output-dir/subsup-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/subsup-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
   <x:scenario label="add-boilerplate" pending="brittle test: result contains current month and year">
     <x:call step="dedicon:dtbook-to-pef">
       <x:input port="source">
