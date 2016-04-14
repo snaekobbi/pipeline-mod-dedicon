@@ -238,6 +238,7 @@ list {
 list:has(+ list)::after {
 	/* Setting a margin doesn't seem to work for lists. */
 	white-space: pre-line;
+	/* \A is a line break. */
 	content: '\A';
 }
 
@@ -276,6 +277,7 @@ list > li {
  */
 #generated-volume-toc li > a::after {
 	/* Whitespace after the print page number is added through string-set. */
+	/* \A0 is a non-breaking space. */
 	content: '\A0\A0' target-string(attr(href), print-page-toc) target-counter(attr(href), page);
 }
 #generated-volume-toc li > a {
@@ -344,7 +346,7 @@ table > tr {
  */
 table > tr > td:nth-last-child(n+2)::after {
 	/* Use a braille pattern here because a semicolon currently doesn't work. */
-	content: '⠆';
+	content: 'Рає';
 }
 
 /* --------------------------------------------------------------------------------
@@ -465,7 +467,7 @@ note {
 	margin-left: 2;
 }
 note > :first-child::before {
-	content: '*';
+	content: '⠔';
 }
 note > :first-child {
 	text-indent: -1;
@@ -491,6 +493,7 @@ code {
  */
 br::before {
 	white-space: pre-line;
+	/* \A is a line break. */
 	content: '\A';
 }
 
@@ -500,7 +503,7 @@ br::before {
  * Subscript is indicated with dots 16.
  */
 sub::before {
-	content: '\\';
+	content: '⠡';
 }
 
 /* --------------------------------------------------------------------------------
@@ -509,7 +512,7 @@ sub::before {
  * Superscript is indicated with dots 34.
  */
 sup::before {
-	content: '^';
+	content: '⠌';
 }
 
 /* --------------------------------------------------------------------------------
@@ -518,7 +521,7 @@ sup::before {
  * A note reference is indicated by an asterisk (*).
  */
 noteref::before {
-	content: '*';
+	content: '⠔';
 }
  
 /* --------------------------------------------------------------------------------
@@ -567,6 +570,7 @@ noteref::before {
 .precedingemptyline::before {
 	/* The next line prevents newline characters from being converted to spaces. */
 	white-space: pre-line;
+	/* \A is a line break. */
 	content: '\A';
 }
 
@@ -588,6 +592,7 @@ noteref::before {
 p.table-title::before {
 	/* The next line prevents newline characters from being converted to spaces. */
 	white-space: pre-line;
+	/* \A is a line break. */
 	content: 'tabel titel\A';
 }
 p.table-title {
