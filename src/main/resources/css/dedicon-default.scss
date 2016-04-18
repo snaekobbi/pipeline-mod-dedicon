@@ -342,11 +342,11 @@ table > tr {
 /* --------------------------------------------------------------------------------
  * Table columns
  *
- * Columns are separated by a semicolon.
+ * Columns are separated by a semicolon and a space.
  */
-table > tr > td:nth-last-child(n+2)::after {
+table > tr > td:has(+ td)::after {
 	/* Use a braille pattern here because a semicolon currently doesn't work. */
-	content: 'Рає';
+	content: '⠆⠀';
 }
 
 /* --------------------------------------------------------------------------------
