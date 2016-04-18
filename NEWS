@@ -10,6 +10,8 @@ Includes
 - Support for sidebars (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/27)
 - Initial support for notes (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/31)
 - Support for linegroups and lines (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/32)
+- Support for definition lists (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/33)
+- Minor fixes.
 
 pipeline-mod-dedicon v1.3.0
 ===========================

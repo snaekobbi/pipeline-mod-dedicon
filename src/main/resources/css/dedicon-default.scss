@@ -127,7 +127,7 @@ frontmatter:not(:has(> *:not(doctitle, docauthor, #generated-title-page))) {
  *
  * Level 1 always start on a new page.
  * Level 2 has two blank lines before it.
- * Other level have one blank line before it.
+ * Other levels have one blank line before them.
  *
  * See also the heading rules.
  */
@@ -139,15 +139,12 @@ level4, level5, level6 {
 level1 {
 	page-break-before: always;
 }
-:has(+ level2) {
-	margin-bottom: 2;
+level2 {
+	margin-top: 2;
 }
-:has(+ level),
-:has(+ level3),
-:has(+ level4),
-:has(+ level5),
-:has(+ level6) {
-	margin-bottom: 1;
+level, level3,
+level4, level5, level6 {
+	margin-top: 1;
 }
 
 /* --------------------------------------------------------------------------------
@@ -159,7 +156,7 @@ level1 {
  *
  * Heading level 1 has a blank line after it,
  * and typically starts on a new page because it is at the start of a level 1.
- * Other headings have no blank lines after it.
+ * Other headings have no blank lines after them.
  *
  * See also the level rules.
  */
@@ -170,8 +167,7 @@ hd, h1, h2, h3, h4, h5, h6 {
 	text-indent: -2;
 	page-break-after: avoid;
 }
-/* HACK: see https://github.com/snaekobbi/braille-css-spec/issues/29 */
-h1:not(:has(+ level2)) {
+h1 {
 	margin-bottom: 1;
 }
 
@@ -471,6 +467,30 @@ note > :first-child::before {
 }
 note > :first-child {
 	text-indent: -1;
+}
+
+/* --------------------------------------------------------------------------------
+ * Definition lists
+ */
+dl {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Definition list terms
+ */
+dt {
+	display: block;
+}
+
+/* --------------------------------------------------------------------------------
+ * Definition list definitions
+ *
+ * Definitions are indented by 2 braille cells.
+ */
+dd {
+	display: block;
+	margin-left: 2;
 }
 
 /* --------------------------------------------------------------------------------
