@@ -48,7 +48,7 @@
     <xsl:variable name="isbn" select="//meta[@name eq 'dc:Source']/@content"/>
     <level1 id="generated-title-page" class="other">
       <p id="generated-identifier"><xsl:value-of select="//meta[@name eq 'dc:Identifier']/@content"/></p>
-      <p id="generated-doctitle"><xsl:value-of select="//doctitle"/></p>
+      <p id="generated-doctitle"><xsl:copy-of select="//doctitle/node()"/></p>
       <p id="generated-docauthors"><xsl:value-of select="string-join(//docauthor,', ')"/></p>
       <p id="generated-isbn">
         <xsl:if test="matches($isbn, '^[0-9-]{10,}$')">
