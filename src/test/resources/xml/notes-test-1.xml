@@ -23,7 +23,7 @@
 <level1>
 <h1>A simple note</h1>
 <p>This text contains a note<noteref idref="#c06001">1</noteref>.</p>
-<note id="c06003"><p>This is the note. The text can take up multiple lines on the braille page.</p>
+<note id="c06001"><p>This is the note. The text can take up multiple lines on the braille page.</p>
 <p>The text may span several paragraphs.</p></note>
 <p>This is the text after the note.</p>
 </level1>
