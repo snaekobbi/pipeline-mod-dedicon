@@ -30,8 +30,18 @@
             <p px:role="desc">When enabled, and when the input has a `docauthor` element, will insert boilerplate text such as a title page.</p>
         </p:documentation>
     </p:option>
-    <p:option name="page-width" select="'33'"/>
-    <p:option name="page-height" select="'28'"/>
+    <p:option name="page-width" select="'-1'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name" px:inherit="prepend"/>
+            <p px:role="desc" px:inherit="prepend" xml:space="preserve">Use `-1` to compute this from metadata.</p>
+        </p:documentation>
+    </p:option>
+    <p:option name="page-height" select="'-1'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name" px:inherit="prepend"/>
+            <p px:role="desc" px:inherit="prepend" xml:space="preserve">Use `-1` to compute this from metadata.</p>
+        </p:documentation>
+    </p:option>
     <p:option name="left-margin"/>
     <p:option name="duplex" select="'true'"/>
     <p:option name="hyphenation" select="'from-meta'">
@@ -108,6 +118,20 @@
     <px:add-parameters>
       <p:with-param name="skip-margin-top-of-page" select="true()"/>
     </px:add-parameters>
+    <p:add-attribute match="c:param[@name='page-width']" attribute-name="value">
+        <p:with-option name="attribute-value"
+                       select="if ($page-width=-1)
+                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then 28
+                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then 33 else $page-width
+                               else $page-width"/>
+    </p:add-attribute>
+    <p:add-attribute match="c:param[@name='page-height']" attribute-name="value">
+        <p:with-option name="attribute-value"
+                       select="if ($page-height=-1)
+                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then 26
+                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then 27 else $page-height
+                               else $page-height"/>
+    </p:add-attribute>
     <p:add-attribute match="c:param[@name='hyphenation']" attribute-name="value">
         <p:with-option name="attribute-value"
                        select="if ($hyphenation='from-meta')
