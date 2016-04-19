@@ -183,12 +183,17 @@ div {
  *
  * A paragraph is a block element with no special features.
  *
+ * An empty paragraph is rendered as a blank line.
+ *
  * To precede the paragraph by a blank line, add class precedingemptyline.
  * To indent the first line of the paragraph, add class indented.
- * If this paragraph is a table title or caption, add class table-title.
+ * To mark this paragraph as a table title or caption, add class table-title.
  */
 p {
 	display: block;
+}
+p:empty {
+	margin-bottom: 1;
 }
 
 /* --------------------------------------------------------------------------------

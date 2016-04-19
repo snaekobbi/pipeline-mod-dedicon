@@ -124,6 +124,26 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario label="line breaks 1">
+    <x:call step="dedicon:dtbook-to-pef">
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/line-breaks-test-1.xml"/>
+      </x:input>
+      <x:option name="toc-depth" select="'0'"/>
+      <x:option name="show-print-page-numbers" select="false()"/>
+      <x:option name="show-braille-page-numbers" select="false()"/>
+      <x:option name="add-boilerplate" select="false()"/>
+      <x:option name="pef-output-dir" select="resolve-uri('line-breaks/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('line-breaks/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="line-breaks/output-dir/line-breaks-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/line-breaks-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
   <x:scenario label="lines 1">
     <x:call step="dedicon:dtbook-to-pef">
       <x:input port="source">
