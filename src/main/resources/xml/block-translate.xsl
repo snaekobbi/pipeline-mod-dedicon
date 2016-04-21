@@ -2,9 +2,9 @@
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-				xmlns:pf="http://www.daisy.org/ns/pipeline/functions"
+                xmlns:pf="http://www.daisy.org/ns/pipeline/functions"
                 xmlns:css="http://www.daisy.org/ns/pipeline/braille-css"
-                xmlns:html="http://www.w3.org/1999/xhtml"
+                xmlns:dtb="http://www.daisy.org/z3986/2005/dtbook/"
                 exclude-result-prefixes="#all">
 	
 	<xsl:import href="http://www.daisy.org/pipeline/modules/braille/css-utils/transform/block-translator-template.xsl"/>
@@ -21,7 +21,7 @@
 			</xsl:for-each>
 		</xsl:variable>
 		<xsl:apply-templates select="node()[1]" mode="treewalk">
-			<xsl:with-param name="new-text-nodes" select="pf:text-transform($text-transform,$text,$style)"/>
+			<xsl:with-param name="new-text-nodes" select="pf:text-transform($text-transform, $text, $style)"/>
 		</xsl:apply-templates>
 	</xsl:template>
 	
