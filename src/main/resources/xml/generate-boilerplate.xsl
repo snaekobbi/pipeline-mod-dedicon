@@ -56,10 +56,7 @@
         </xsl:if>
       </p>
       <div id="generated-title-page-footer">
-        <p id="generated-production-date">
-          <!-- FIXME: should be Dutch (nl-NL) month names -->
-          Dedicon, <xsl:value-of select="format-date(current-date(), '[MNn] [Y]')"/>
-        </p>
+        <p>Dedicon</p>
         <p id="generated-volume-count">
           Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
         </p>
