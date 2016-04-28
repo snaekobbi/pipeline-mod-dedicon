@@ -120,16 +120,16 @@
     </px:add-parameters>
     <p:add-attribute match="c:param[@name='page-width']" attribute-name="value">
         <p:with-option name="attribute-value"
-                       select="if ($page-width=-1)
-                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then 28
-                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then 33 else $page-width
+                       select="if ($page-width='-1')
+                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then '28'
+                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then '33' else $page-width
                                else $page-width"/>
     </p:add-attribute>
     <p:add-attribute match="c:param[@name='page-height']" attribute-name="value">
         <p:with-option name="attribute-value"
-                       select="if ($page-height=-1)
-                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then 26
-                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then 27 else $page-height
+                       select="if ($page-height='-1')
+                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then '26'
+                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then '27' else $page-height
                                else $page-height"/>
     </p:add-attribute>
     <p:add-attribute match="c:param[@name='hyphenation']" attribute-name="value">
