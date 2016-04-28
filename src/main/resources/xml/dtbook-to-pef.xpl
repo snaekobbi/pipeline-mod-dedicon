@@ -120,17 +120,25 @@
       <p:with-param name="page-width" select="if ($page-width='-1')
                                then if (//dtb:meta[@name='prod:docType']/@content='ro') then '28'
                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then '33' else ''
-                               else $page-width"/>
+                               else $page-width">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
       <p:with-param name="page-height" select="if ($page-height='-1')
                                then if (//dtb:meta[@name='prod:docType']/@content='ro') then '26'
                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then '27' else ''
-                               else $page-height"/>
+                               else $page-height">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
       <p:with-param name="hyphenation" select="if ($hyphenation='from-meta')
                                then (//dtb:meta[@name='prod:docHyphenate']/@content,'Y')[1]='Y'
-                               else $hyphenation='true'"/>
+                               else $hyphenation='true'">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
       <p:with-param name="show-inline-print-page-numbers" select="if ($show-inline-print-page-numbers='from-meta')
                                then //dtb:meta[@name='prod:docType']/@content='sv'
-                               else $show-inline-print-page-numbers='true'"/>
+                               else $show-inline-print-page-numbers='true'">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
     </px:add-parameters>
     <p:identity name="input-options"/>
     <p:sink/>
