@@ -23,6 +23,10 @@
 		<xsl:apply-templates select="node()[1]" mode="treewalk">
 			<xsl:with-param name="new-text-nodes" select="pf:text-transform($text-transform, $text, $style)"/>
 		</xsl:apply-templates>
+    <xsl:for-each select="//dtb:noteref">
+      <xsl:variable name="idref" select="@idref"/>
+      <xsl:sequence select="collection()[1]//dtb:note[@id=replace($idref, '^#', '')]"/>
+    </xsl:for-each>
 	</xsl:template>
 	
 	<xsl:template match="css:property[@name=('font-style','font-weight','text-decoration','color')]"
@@ -31,5 +35,7 @@
 	<xsl:template match="css:property[@name='hyphens' and @value='auto']" mode="translate-declaration-list">
 		<xsl:sequence select="css:property('hyphens','manual')"/>
 	</xsl:template>
+  
+  <xsl:template match="//dtb:note" mode="identify-blocks"/>
 	
 </xsl:stylesheet>

@@ -460,6 +460,10 @@ line {
  * this extra cell contains the asterisk.
  *
  * A note has a blank line before and after it.
+ *
+ * Notes are inserted inside the block element that references it,
+ * after all the block's other content.
+ * Because of this behavior, some styling from these blocks has to be reset.
  */
 note {
 	display: block;
@@ -472,6 +476,9 @@ note > :first-child::before {
 }
 note > :first-child {
 	text-indent: -1;
+}
+note > :not(:first-child) {
+	text-indent: 0;
 }
 
 /* --------------------------------------------------------------------------------

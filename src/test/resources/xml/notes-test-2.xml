@@ -33,7 +33,7 @@
 <div><p>This text contains a note<noteref idref="#c06005">5</noteref> in nested block elements.</p>
 <p>Another paragraph.</p></div>
 <list type="pl">
-<li>- This text contains a note<noteref idref="#c06006">6</noteref>.</li>
+<li>- This text wraps and it also contains a note<noteref idref="#c06006">6</noteref>.</li>
 <li>- This is the next list item.</li>
 </list>
 </level1>
@@ -50,7 +50,8 @@
 <note id="c06003"><p>This is the third note.</p></note>
 <note id="c06004"><p>This is the fourth note.</p></note>
 <note id="c06005"><p>This is the fifth note.</p></note>
-<note id="c06006"><p>This is the sixth note.</p></note>
+<note id="c06006"><p>This is the sixth note. It wraps to the next line.</p>
+<p>It also consists of two paragraphs.</p></note>
 <note id="c06007"><p>This is the seventh note.</p></note>
 </level1>
 </rearmatter>
