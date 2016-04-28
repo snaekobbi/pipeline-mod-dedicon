@@ -224,70 +224,23 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="add-boilerplate" pending="brittle test: result contains current month and year">
+  <x:scenario label="add-boilerplate">
     <x:call>
       <x:input port="source">
-        <x:document type="inline">
-          <dtbook xml:lang="nl" version="2005-3" xmlns="http://www.daisy.org/z3986/2005/dtbook/">
-            <book>
-              <frontmatter>
-                <doctitle>Test boilerplate</doctitle>
-                <docauthor>Davy Kager</docauthor>
-              </frontmatter>
-              <bodymatter>
-                <level1>
-                  <h1>Hoofdstuk 1</h1>
-                </level1>
-              </bodymatter>
-            </book>
-          </dtbook>
-        </x:document>
+        <x:document type="file" href="../resources/xml/boilerplate-test-1.xml"/>
       </x:input>
-      <x:option name="include-brf" select="true()"/>
     </x:call>
     <x:scenario label="enabled">
       <x:call>
         <x:option name="add-boilerplate" select="true()"/>
         <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/enabled/output-dir',$temp-dir)"/>
-        <x:option name="brf-output-dir" select="resolve-uri('add-boilerplate/enabled/output-dir',$temp-dir)"/>
         <x:option name="temp-dir" select="resolve-uri('add-boilerplate/enabled/temp-dir',$temp-dir)"/>
       </x:call>
       <x:context label="result">
-        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/enabled/output-dir/test_script.pef"/>
+        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/enabled/output-dir/boilerplate-test-1.pef"/>
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
-        <x:document type="inline">
-          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
-            <head>
-              <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
-                <dc:format>application/x-pef+xml</dc:format>
-              </meta>
-            </head>
-            <body>
-              <volume cols="33" rows="28" rowgap="0" duplex="true">
-                <section>
-                  <page>
-                    <row/>
-                    <row>⠨⠞⠑⠎⠞⠀⠃⠕⠊⠇⠑⠗⠏⠇⠁⠞⠑</row>
-                    <row/>
-                    <row/>
-                    <row>⠨⠙⠁⠧⠽⠀⠨⠅⠁⠛⠑⠗</row>
-                    <row/>
-                    <row/>
-                    <row>⠨⠙⠑⠙⠊⠉⠕⠝⠂⠀⠨⠁⠏⠗⠊⠇⠀⠼⠃⠚⠁⠋</row>
-                    <row>⠨⠃⠁⠝⠙⠀⠼⠁⠀⠦⠞⠕⠞⠁⠁⠇⠀⠼⠁⠴</row>
-                  </page>
-                </section>
-                <section>
-                  <page>
-                    <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁</row>
-                    <row/>
-                  </page>
-                </section>
-              </volume>
-            </body>
-          </pef>
-        </x:document>
+        <x:document type="file" href="../resources/pef/boilerplate-test-1-enabled.pef"/>
       </x:expect>
     </x:scenario>
     <x:scenario label="disabled">
@@ -297,31 +250,13 @@
         <x:option name="temp-dir" select="resolve-uri('add-boilerplate/disabled/temp-dir',$temp-dir)"/>
       </x:call>
       <x:context label="result">
-        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/disabled/output-dir/test_script.pef"/>
+        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/disabled/output-dir/boilerplate-test-1.pef"/>
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
-        <x:document type="inline">
-          <pef xmlns="http://www.daisy.org/ns/2008/pef" version="2008-1" xml:lang="nl">
-            <head>
-              <meta xmlns:dc="http://purl.org/dc/elements/1.1/">
-                <dc:format>application/x-pef+xml</dc:format>
-              </meta>
-            </head>
-            <body>
-              <volume cols="33" rows="28" rowgap="0" duplex="true">
-                <section>
-                  <page>
-                    <row>⠨⠓⠕⠕⠋⠙⠎⠞⠥⠅⠀⠼⠁</row>
-                    <row/>
-                  </page>
-                </section>
-              </volume>
-            </body>
-          </pef>
-        </x:document>
+        <x:document type="file" href="../resources/pef/boilerplate-test-1-disabled.pef"/>
       </x:expect>
     </x:scenario>
-  </x:scenario>
+	</x:scenario>
   
   <x:scenario label="show-braille-page-numbers">
     <x:call>
