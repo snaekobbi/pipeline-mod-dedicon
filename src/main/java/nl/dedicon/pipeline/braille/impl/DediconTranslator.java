@@ -19,7 +19,9 @@ import static org.daisy.pipeline.braille.common.AbstractTransformProvider.util.l
 import static org.daisy.pipeline.braille.common.AbstractTransformProvider.util.logSelect;
 import org.daisy.pipeline.braille.common.BrailleTranslator;
 import org.daisy.pipeline.braille.common.BrailleTranslatorProvider;
+import org.daisy.pipeline.braille.common.CSSStyledText;
 import org.daisy.pipeline.braille.common.Hyphenator;
+import org.daisy.pipeline.braille.common.HyphenatorProvider;
 import org.daisy.pipeline.braille.common.Query;
 import org.daisy.pipeline.braille.common.Query.Feature;
 import org.daisy.pipeline.braille.common.Query.MutableQuery;
@@ -172,18 +174,18 @@ public interface DediconTranslator {
 		@Reference(
 			name = "HyphenatorProvider",
 			unbind = "unbindHyphenatorProvider",
-			service = Hyphenator.Provider.class,
+			service = HyphenatorProvider.class,
 			cardinality = ReferenceCardinality.MULTIPLE,
 			policy = ReferencePolicy.DYNAMIC
 		)
 		@SuppressWarnings(
 			"unchecked" // safe cast to TransformProvider<Hyphenator>
 		)
-		protected void bindHyphenatorProvider(Hyphenator.Provider<?> provider) {
+		protected void bindHyphenatorProvider(HyphenatorProvider<?> provider) {
 			hyphenatorProviders.add((TransformProvider<Hyphenator>)provider);
 		}
 	
-		protected void unbindHyphenatorProvider(Hyphenator.Provider<?> provider) {
+		protected void unbindHyphenatorProvider(HyphenatorProvider<?> provider) {
 			hyphenatorProviders.remove(provider);
 			hyphenatorProvider.invalidateCache();
 		}
