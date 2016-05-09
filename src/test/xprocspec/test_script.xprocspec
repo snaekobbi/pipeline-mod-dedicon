@@ -249,6 +249,7 @@
     <x:scenario label="enabled">
       <x:call>
         <x:option name="add-boilerplate" select="true()"/>
+        <x:option name="page-width" select="'40'"/>
         <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/enabled/output-dir',$temp-dir)"/>
         <x:option name="temp-dir" select="resolve-uri('add-boilerplate/enabled/temp-dir',$temp-dir)"/>
       </x:call>
