@@ -23,8 +23,8 @@
 		<xsl:apply-templates select="node()[1]" mode="treewalk">
 			<xsl:with-param name="new-text-nodes" select="pf:text-transform($text-transform, $text, $style)"/>
 		</xsl:apply-templates>
-    <xsl:for-each select="//dtb:noteref">
-      <xsl:variable name="idref" select="@idref"/>
+    <xsl:for-each select="distinct-values(//dtb:noteref/@idref)">
+      <xsl:variable name="idref" select="."/>
       <xsl:sequence select="collection()[1]//dtb:note[@id=replace($idref, '^#', '')]"/>
     </xsl:for-each>
 	</xsl:template>
