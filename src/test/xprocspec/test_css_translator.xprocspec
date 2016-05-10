@@ -16,6 +16,7 @@
         <p:with-param port="parameters" name="show-print-page-numbers" select="false()"/>
         <p:with-param port="parameters" name="show-inline-print-page-numbers" select="false()"/>
         <p:with-param port="parameters" name="show-braille-page-numbers" select="false()"/>
+        <p:with-param port="parameters" name="include-document-toc-in-last-volume" select="false()"/>
       </px:apply-stylesheets>
       <px:transform query="(input:css)(input:html)(output:css)(translator:dedicon)(locale:nl)"/>
     </p:declare-step>
