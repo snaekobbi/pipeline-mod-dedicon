@@ -65,7 +65,7 @@
     <p:option name="capital-letters" select="'true'"/>
     <p:option name="accented-letters" select="'true'"/>
     <p:option name="include-captions" select="'true'"/>
-    <p:option name="include-images" select="'true'"/>
+    <p:option name="include-images" select="'false'"/>
     <p:option name="include-image-groups" select="'true'"/>
     <p:option name="include-line-groups" select="'true'"/>
     <p:option name="include-production-notes" select="'true'"/>

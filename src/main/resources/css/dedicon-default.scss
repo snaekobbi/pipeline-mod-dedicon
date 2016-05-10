@@ -389,6 +389,8 @@ table > tr > td:empty::before {
  * The start of an image group is indicated by the text "ba".
  * The end of an image group is indicated by the text "ea".
  * An image group has a blank line before and after it.
+ *
+ * An image groups that doesn't contain a caption or a prodnote is ignored.
  */
 imggroup::before {
 	display: block;
@@ -402,6 +404,9 @@ imggroup {
 	display: block;
 	margin-top: 1;
 	margin-bottom: 1;
+}
+imggroup:not(:has(caption)):not(:has(prodnote)) {
+	display: none;
 }
 
 /* --------------------------------------------------------------------------------

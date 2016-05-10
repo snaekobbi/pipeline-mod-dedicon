@@ -9,6 +9,7 @@
       <x:option name="page-width" select="'33'"/>
       <x:option name="page-height" select="'28'"/>
       <x:option name="toc-depth" select="'0'"/>
+      <x:option name="include-document-toc-in-last-volume" select="false()"/>
       <x:option name="show-print-page-numbers" select="false()"/>
       <x:option name="show-braille-page-numbers" select="false()"/>
       <x:option name="add-boilerplate" select="false()"/>
@@ -44,6 +45,22 @@
     </x:context>
     <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
       <x:document type="file" href="../resources/pef/def-lists-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
+  <x:scenario label="images">
+    <x:call>
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/images-test-1.xml"/>
+      </x:input>
+      <x:option name="pef-output-dir" select="resolve-uri('images/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('images/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="images/output-dir/images-test-1.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/images-test-1.pef"/>
     </x:expect>
   </x:scenario>
   
