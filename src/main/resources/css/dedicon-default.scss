@@ -181,6 +181,16 @@ h1 {
 }
 
 /* --------------------------------------------------------------------------------
+ * Bridgeheads
+ *
+ * A bridgehead has a blank line before it.
+ */
+bridgehead {
+	display: block;
+	margin-top: 1;
+}
+
+/* --------------------------------------------------------------------------------
  * Divisions
  */
 div {
@@ -440,6 +450,27 @@ sidebar::after {
 	content: 'ek';
 }
 sidebar {
+	display: block;
+	margin-top: 1;
+	margin-bottom: 1;
+}
+
+/* --------------------------------------------------------------------------------
+ * Block quotations
+ *
+ * The start of a block quotation is indicated by the text "bb".
+ * The end of a block quotation is indicated by the text "eb".
+ * A block quotation has a blank line before and after it.
+ */
+blockquote::before {
+	display: block;
+	content: 'bb';
+}
+blockquote::after {
+	display: block;
+	content: 'eb';
+}
+blockquote {
 	display: block;
 	margin-top: 1;
 	margin-bottom: 1;
