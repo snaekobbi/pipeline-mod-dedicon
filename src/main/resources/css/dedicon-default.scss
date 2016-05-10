@@ -50,11 +50,20 @@
  * Boilerplate
  *
  * Each volume begins with the volume-level TOC.
+ * For AL books, the last volume ends with a document-level TOC.
  */
 @volume {
 	@begin {
 		/* The volume-toc flow is defined by the system default CSS. */
 		content: flow(title-page) flow(volume-toc);
+	}
+}
+@if $include-document-toc-in-last-volume {
+	@volume:last {
+		@end {
+			/* The document-toc flow is defined by the system default CSS. */
+			content: flow(document-toc);
+		}
 	}
 }
 
@@ -269,6 +278,18 @@ list > li {
 }
 
 /* --------------------------------------------------------------------------------
+ * Document-level TOC
+ *
+ * The TOC always starts on a new page.
+ */
+#generated-document-toc::-obfl-on-toc-start {
+	display: block;
+	page-break-before: always;
+	margin-bottom: 1;
+	content: 'Inhoud van alle banden';
+}
+
+/* --------------------------------------------------------------------------------
  * TOC items
  *
  * If the TOC item spans multiple braille lines,
@@ -276,18 +297,21 @@ list > li {
  *
  * See also the pagenum rule.
  */
-#generated-volume-toc li > a::after {
+#generated-volume-toc li > a::after,
+#generated-document-toc li > a::after {
 	/* Whitespace after the print page number is added through string-set. */
 	/* \A0 is a non-breaking space. */
 	content: '\A0\A0' target-string(attr(href), print-page-toc) target-counter(attr(href), page);
 }
-#generated-volume-toc li > a {
+#generated-volume-toc li > a,
+#generated-document-toc li > a {
 	display: block;
 	/* This needs a left margin in order to negatively indent the first line. */
 	margin-left: 2;
 	text-indent: -2;
 }
-#generated-volume-toc li {
+#generated-volume-toc li,
+#generated-document-toc li {
 	/* Override default list item behavior to avoid indenting nested lists. */
 	margin-left: 0;
 	text-indent: 0;

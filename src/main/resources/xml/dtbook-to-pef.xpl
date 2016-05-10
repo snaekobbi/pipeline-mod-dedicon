@@ -89,6 +89,26 @@
     </p:option>
     <p:option name="force-braille-page-break" select="'false'"/>
     <p:option name="toc-depth" select="'6'"/>
+    <p:option name="include-document-toc-in-last-volume" required="false" px:type="boolean" select="'from-meta'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name">Include document TOC</h2>
+            <p px:role="desc" xml:space="preserve">Whether or not to include a document-level TOC in the last volume.</p>
+        </p:documentation>
+        <p:pipeinfo>
+            <px:data-type>
+                <choice>
+                    <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">
+                        <value>Yes</value>
+                        <value>No</value>
+                        <value>Use value from metadata field</value>
+                    </documentation>
+                    <value>true</value>
+                    <value>false</value>
+                    <value>from-meta</value>
+                </choice>
+            </px:data-type>
+        </p:pipeinfo>
+    </p:option>
     <p:option name="include-symbols-list"/>
     <p:option name="number-of-sheets"/>
     <p:option name="maximum-number-of-sheets" select="'70'"/>
@@ -137,6 +157,11 @@
       <p:with-param name="show-inline-print-page-numbers" select="if ($show-inline-print-page-numbers='from-meta')
                                then //dtb:meta[@name='prod:docType']/@content='sv'
                                else $show-inline-print-page-numbers='true'">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
+      <p:with-param name="include-document-toc-in-last-volume" select="if ($include-document-toc-in-last-volume='from-meta')
+                               then //dtb:meta[@name='prod:docType']/@content='ro'
+                               else $include-document-toc-in-last-volume='true'">
         <p:pipe step="main" port="source"/>
       </p:with-param>
     </px:add-parameters>
