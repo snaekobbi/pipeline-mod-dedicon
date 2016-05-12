@@ -659,11 +659,8 @@ noteref::before {
  *
  * Adds a blank line before the element.
  */
-.precedingemptyline::before {
-	/* The next line prevents newline characters from being converted to spaces. */
-	white-space: pre-line;
-	/* \A is a line break. */
-	content: '\A';
+.precedingemptyline {
+	margin-top: 1;
 }
 
 /* --------------------------------------------------------------------------------
