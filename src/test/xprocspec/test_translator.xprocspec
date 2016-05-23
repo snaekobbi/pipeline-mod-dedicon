@@ -3,6 +3,7 @@
                xmlns:p="http://www.w3.org/ns/xproc"
                xmlns:px="http://www.daisy.org/ns/pipeline/xproc"
                xmlns:html="http://www.w3.org/1999/xhtml"
+               xmlns:css="http://www.daisy.org/ns/pipeline/braille-css"
                xmlns:pxi="http://www.daisy.org/ns/pipeline/xproc/internal">
   
   <x:script>
@@ -29,9 +30,11 @@
     </x:context>
     <x:expect label="result" type="compare">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="hyphens: manual; text-transform: none">
+        <_ style="text-transform: none">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="hyphens: manual">
           <p style="display: block">⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
         </div>
+        </_>
       </x:document>
     </x:expect>
   </x:scenario>
@@ -51,9 +54,11 @@
     </x:context>
     <x:expect label="result" type="compare">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="text-transform: none">
+        <_ style="text-transform: none">
+        <div xmlns="http://www.w3.org/1999/xhtml">
           <strong>⠸⠧⠑⠞⠛⠑⠙⠗⠥⠅⠞</strong>
         </div>
+        </_>
       </x:document>
     </x:expect>
   </x:scenario>
@@ -73,9 +78,11 @@
     </x:context>
     <x:expect label="result" type="compare">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="text-transform: none">
+        <_ style="text-transform: none">
+        <div xmlns="http://www.w3.org/1999/xhtml">
           <em>⠸⠉⠥⠗⠎⠊⠑⠋</em>
         </div>
+        </_>
       </x:document>
     </x:expect>
   </x:scenario>
@@ -96,7 +103,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="text-transform: none">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div>
+        <_ style="text-transform: none"><div xmlns="http://www.w3.org/1999/xhtml">             <p css:display="block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p css:display="block" style="white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div></_>
       </x:document>
     </x:expect>
   </x:scenario>
@@ -116,9 +123,11 @@
     </x:context>
     <x:expect label="result" type="compare">
       <x:document type="inline">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="text-transform: none">
-          <p style="display: block">⠨⠎⠑⠑⠢ ⠢</p>
+        <_ style="text-transform: none">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <p css:display="block">⠨⠎⠑⠑⠢ ⠢</p>
         </div>
+        </_>
       </x:document>
     </x:expect>
   </x:scenario>
