@@ -223,11 +223,13 @@
             <p:with-option name="preview-href" select="if ($include-preview='true' and $preview-output-dir!='')
                                                        then concat($preview-output-dir,'/',$name,'.pef.html')
                                                        else ''"/>
-            <p:with-option name="brf-href" select="if ($include-brf='true' and $brf-output-dir!='')
-                                                   then concat($brf-output-dir,'/',$name,'.brf')
-                                                   else ''"/>
+            <p:with-option name="brf-dir-href" select="if ($include-brf='true' and $brf-output-dir!='')
+                                                   then $brf-output-dir else ''"/>
             <p:with-option name="brf-table" select="if ($ascii-table!='') then $ascii-table
                                                     else concat('(locale:',(/*/@xml:lang,'und')[1],')')"/>
+            <p:with-option name="brf-file-format" select="'(line-breaks:dos)'"/>
+            <p:with-option name="brf-name-pattern" select="$name_{}"/>
+            <p:with-option name="brf-number-width" select="3"/>
         </pef:store>
     </p:group>
     
