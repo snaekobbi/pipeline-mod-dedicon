@@ -1,3 +1,10 @@
+pipeline-mod-dedicon v1.5.2
+===========================
+
+Includes
+--------
+- Splitting the output into one BRF file per volume (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/21)
+
 pipeline-mod-dedicon v1.5.1
 ===========================
 
