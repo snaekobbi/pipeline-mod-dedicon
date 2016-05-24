@@ -51,6 +51,8 @@
  *
  * Each volume begins with the volume-level TOC.
  * For AL books, the last volume ends with a document-level TOC.
+ *
+ * See also the #generated-volume-toc and #generated-document-toc rules.
  */
 @volume {
 	@begin {
@@ -279,6 +281,9 @@ list > li {
  * Volume-level TOC
  *
  * The TOC always starts on a new page.
+ * The start of each volume's TOC is indicated by the text "Inhoud band X".
+ *
+ * See also the @volume rule.
  */
 #generated-volume-toc::-obfl-on-toc-start {
 	display: block;
@@ -291,12 +296,21 @@ list > li {
  * Document-level TOC
  *
  * The TOC always starts on a new page.
+ * The start of each volume's TOC is indicated by the text "Inhoud band X".
+ *
+ * See also the @volume rule.
  */
 #generated-document-toc::-obfl-on-toc-start {
 	display: block;
 	page-break-before: always;
 	margin-bottom: 1;
 	content: 'Inhoud van alle banden';
+}
+#generated-document-toc::-obfl-on-volume-start {
+	display: block;
+	page-break-after: avoid;
+	margin-bottom: 1;
+	content: 'Inhoud band ' -obfl-evaluate('(round $started-volume-number)');
 }
 
 /* --------------------------------------------------------------------------------
