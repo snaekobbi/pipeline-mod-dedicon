@@ -62,7 +62,7 @@
 		content: flow(title-page) flow(document-toc);
 	}
 }
-@volume:not(:first) {
+@volume {
 	@begin {
 		/* The volume-toc flow is defined by the system default CSS. */
 		content: flow(title-page) flow(volume-toc);
@@ -245,6 +245,9 @@ p:empty {
 	text-indent: -2;
 }
 
+/* --------------------------------------------------------------------------------
+ * Title page footer
+ */
 #generated-title-page-footer {
 	-obfl-vertical-position: 24;
 }
@@ -254,6 +257,8 @@ p:empty {
  */
 #generated-colophon-page {
 	page-break-inside: avoid;
+	/* The following line sets the values used for the top-center page position and the TOC. */
+	string-set: print-page-from '', print-page-to '';
 }
 
 /* --------------------------------------------------------------------------------
