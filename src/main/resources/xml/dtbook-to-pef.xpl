@@ -22,7 +22,7 @@
     <p:option name="temp-dir"/>
     <p:option name="stylesheet" select="'http://www.dedicon.nl/pipeline/modules/braille/default.scss'"/>
     <p:option name="ascii-table"/>
-    <p:option name="include-preview" select="'true'"/>
+    <p:option name="include-preview" select="'false'"/>
     <p:option name="include-brf" select="'true'"/>
     <p:option name="add-boilerplate" px:type="boolean" select="'true'">
         <p:documentation xmlns="http://www.w3.org/1999/xhtml">
