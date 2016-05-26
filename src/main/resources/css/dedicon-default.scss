@@ -49,25 +49,33 @@
 /* --------------------------------------------------------------------------------
  * Boilerplate
  *
+ * NOTE: not fully supported yet, see: https://github.com/snaekobbi/pipeline-mod-dedicon/issues/40
+ *
  * Each volume begins with the volume-level TOC.
  * The last volume optionally ends with a document-level TOC.
  *
  * See also the #generated-volume-toc and #generated-document-toc rules.
  */
-@volume {
+@volume:first {
+	@begin {
+		/* The document-toc flow is defined by the system default CSS. */
+		content: flow(title-page) flow(document-toc);
+	}
+}
+@volume:not(:first) {
 	@begin {
 		/* The volume-toc flow is defined by the system default CSS. */
 		content: flow(title-page) flow(volume-toc);
 	}
 }
-@if $include-document-toc-in-last-volume {
+/* @if $include-document-toc-in-last-volume {
 	@volume:last {
 		@end {
-			/* The document-toc flow is defined by the system default CSS. */
+			-- The document-toc flow is defined by the system default CSS.
 			content: flow(document-toc);
 		}
 	}
-}
+} */
 
 /* --------------------------------------------------------------------------------
  * Hidden elements
