@@ -50,7 +50,7 @@
  * Boilerplate
  *
  * Each volume begins with the volume-level TOC.
- * For AL books, the last volume ends with a document-level TOC.
+ * The last volume optionally ends with a document-level TOC.
  *
  * See also the #generated-volume-toc and #generated-document-toc rules.
  */
@@ -87,9 +87,9 @@ head, doctitle, docauthor {
 /* --------------------------------------------------------------------------------
  * Print page numbers
  *
- * For SV books, if there is a print page change somewhere on the braille page,
- * the new print page number is shown on its own line, horizontally centered,
- * with a blank line before and after it.
+ * If there is a print page change somewhere on the braille page,
+ * the new print page number is optionally shown on its own line, horizontally centered,
+ * with a blank line before it.
  *
  * See also the @page rule.
  */
@@ -102,7 +102,6 @@ pagenum {
 	pagenum {
 		display: block;
 		margin-top: 1;
-		margin-bottom: 1;
 		text-align: center;
 	}
 	/* HACK: don't show pagenums if they are the first thing on the page. */
