@@ -15,7 +15,7 @@
       <x:option name="add-boilerplate" select="false()"/>
     </x:call>
     
-    <x:scenario label="toc">
+  <x:scenario label="toc">
     <x:call>
       <x:input port="source">
         <x:document type="file" href="../resources/xml/toc-test-1.xml"/>
@@ -289,7 +289,21 @@
         <x:document type="file" href="../resources/pef/boilerplate-test-1-disabled.pef"/>
       </x:expect>
     </x:scenario>
-	</x:scenario>
+    <x:scenario label="with toc">
+      <x:call>
+        <x:option name="add-boilerplate" select="true()"/>
+        <x:option name="toc-depth" select="'6'"/>
+        <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/toc/output-dir',$temp-dir)"/>
+        <x:option name="temp-dir" select="resolve-uri('add-boilerplate/toc/temp-dir',$temp-dir)"/>
+      </x:call>
+      <x:context label="result">
+        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/toc/output-dir/boilerplate-test-1.pef"/>
+      </x:context>
+      <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+        <x:document type="file" href="../resources/pef/boilerplate-test-1-toc.pef"/>
+      </x:expect>
+    </x:scenario>
+  </x:scenario>
   
   <x:scenario label="show-braille-page-numbers">
     <x:call>
@@ -372,5 +386,5 @@
     </x:scenario>
   </x:scenario>
   
-</x:scenario>
+  </x:scenario> <!-- label="_" -->
 </x:description>
