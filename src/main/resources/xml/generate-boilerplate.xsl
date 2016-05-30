@@ -45,7 +45,7 @@
     The assumption is that the print TOC contains no more information
     than the document-level generated TOC.
   -->
-  <xsl:template match="//[@class='print_toc']"/>
+  <xsl:template match="//*[@class='print_toc']"/>
   
   <!--
     Template: generate-title-page
