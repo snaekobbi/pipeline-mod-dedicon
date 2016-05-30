@@ -368,17 +368,16 @@ prodnote {
 /* --------------------------------------------------------------------------------
  * Tables
  *
- * The start of a table is indicated by the text "bt".
- * The end of a table is indicated by the text "et".
+ * The start and end of a table are indicated with text.
  * A table has a blank line before and after it.
  */
 table::before {
 	display: block;
-	content: 'bt';
+	content: 'begin tabel';
 }
 table::after {
 	display: block;
-	content: 'et';
+	content: 'einde tabel';
 }
 table {
 	display: block;
@@ -422,19 +421,18 @@ table > tr > td:empty::before {
 /* --------------------------------------------------------------------------------
  * Image groups
  *
- * The start of an image group is indicated by the text "ba".
- * The end of an image group is indicated by the text "ea".
+ * The start and end of an image group are indicated with text.
  * An image group has a blank line before and after it.
  *
- * An image groups that doesn't contain a caption or a prodnote is ignored.
+ * An image groups that does not contain a caption or a prodnote is ignored.
  */
 imggroup::before {
 	display: block;
-	content: 'ba';
+	content: 'begin afbeelding';
 }
 imggroup::after {
 	display: block;
-	content: 'ea';
+	content: 'einde afbeelding';
 }
 imggroup {
 	display: block;
@@ -461,19 +459,18 @@ caption {
 /* --------------------------------------------------------------------------------
  * Sidebarss
  *
- * The start of a sidebar is indicated by the text "bk".
- * The end of a sidebar is indicated by the text "ek".
+ * The start and end of a sidebar are indicated with text.
  * A sidebar has a blank line before and after it.
  *
  * The value of the render attribute has no effect on the output.
  */
 sidebar::before {
 	display: block;
-	content: 'bk';
+	content: 'begin kader';
 }
 sidebar::after {
 	display: block;
-	content: 'ek';
+	content: 'einde kader';
 }
 sidebar {
 	display: block;
@@ -484,17 +481,16 @@ sidebar {
 /* --------------------------------------------------------------------------------
  * Block quotations
  *
- * The start of a block quotation is indicated by the text "bb".
- * The end of a block quotation is indicated by the text "eb".
+ * The start and end of a block quotation is indicated with text.
  * A block quotation has a blank line before and after it.
  */
 blockquote::before {
 	display: block;
-	content: 'bb';
+	content: 'begin citaat';
 }
 blockquote::after {
 	display: block;
-	content: 'eb';
+	content: 'einde citaat';
 }
 blockquote {
 	display: block;

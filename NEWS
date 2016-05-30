@@ -5,6 +5,8 @@ Includes
 --------
 - Splitting the output into one BRF file per volume (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/21)
 - Add volume headings to document-level TOCs (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/41)
+- Fully written out descriptive words instead of abbreviated indicators
+  (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/42)
 
 pipeline-mod-dedicon v1.5.1
 ===========================
