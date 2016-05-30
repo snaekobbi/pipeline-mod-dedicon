@@ -115,7 +115,12 @@
             </px:data-type>
         </p:pipeinfo>
     </p:option>
-    <p:option name="include-symbols-list"/>
+    <!-- <p:option name="include-symbols-list" required="false" px:type="boolean" select="'true'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name">Include symbols list</h2>
+            <p px:role="desc" xml:space="preserve">Whether to include a list of symbols and their descriptions in the first volume.</p>
+        </p:documentation>
+    </p:option> -->
     <p:option name="number-of-sheets"/>
     <p:option name="maximum-number-of-sheets" select="'70'"/>
     <p:option name="minimum-number-of-sheets"/>
