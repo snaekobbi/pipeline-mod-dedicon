@@ -41,6 +41,13 @@
   </xsl:template>
   
   <!--
+    Removes the print TOC.
+    The assumption is that the print TOC contains no more information
+    than the document-level generated TOC.
+  -->
+  <xsl:template match="//[@class='print_toc']"/>
+  
+  <!--
     Template: generate-title-page
     Inserts the title page for both AL and SV books.
   -->
