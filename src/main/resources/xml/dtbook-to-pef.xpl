@@ -21,9 +21,15 @@
     <p:option name="preview-output-dir"/>
     <p:option name="temp-dir"/>
     <p:option name="stylesheet" select="'http://www.dedicon.nl/pipeline/modules/braille/default.scss'"/>
-    <p:option name="ascii-table"/>
     <p:option name="include-preview" select="'false'"/>
     <p:option name="include-brf" select="'true'"/>
+    <p:option name="include-obfl" select="'false'"/>
+    <p:option name="ascii-file-format" select="concat(
+                                           '(table:&quot;com_braillo.BrailloTableProvider.TableType.BRAILLO_6DOT_031_01&quot;)',
+                                           '(line-breaks:dos)',
+                                           '(file-extension:&quot;.brl&quot;)',
+                                           '(pad:both)')"/>
+    <p:option name="ascii-table"/>
     <p:option name="add-boilerplate" px:type="boolean" select="'true'">
         <p:documentation xmlns="http://www.w3.org/1999/xhtml">
             <h2 px:role="name">Add boilerplate text</h2>
@@ -227,11 +233,7 @@
                                                     else concat('(locale:',(/*/@xml:lang,'und')[1],')')"/> -->
             <p:with-option name="brf-dir-href" select="if ($include-brf='true' and $brf-output-dir!='')
                                                    then $brf-output-dir else ''"/>
-            <p:with-option name="brf-file-format" select="concat(
-                                                   '(table:&quot;com_braillo.BrailloTableProvider.TableType.BRAILLO_6DOT_031_01&quot;)',
-                                                   '(line-breaks:dos)',
-                                                   '(file-extension:&quot;.brl&quot;)',
-                                                   '(pad:both)')"/>
+            <p:with-option name="brf-file-format" select="$ascii-file-format"/>
             <p:with-option name="brf-name-pattern" select="concat($name,'_{}')"/>
             <p:with-option name="brf-number-width" select="3"/>
         </pef:store>
