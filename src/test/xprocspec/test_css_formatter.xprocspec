@@ -53,10 +53,7 @@
     </x:expect>
   </x:scenario>
   
-  <x:scenario label="test_pagination_3" pending="wrong braille page number (mistake in expected pef?)
-                                                 wrong page dimensions (because handled in generic dtbook-to-pef css)
-                                                 print page range not centered perfectly
-                                                 print page range on first braille page does not include first print page">
+  <x:scenario label="test_pagination_3" pending="print page range on first braille page does not include first print page">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="file" href="../resources/xml/pagination-test-3.xml"/>
