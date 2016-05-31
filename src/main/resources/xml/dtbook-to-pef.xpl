@@ -122,7 +122,12 @@
         </p:documentation>
     </p:option> -->
     <p:option name="number-of-sheets"/>
-    <p:option name="maximum-number-of-sheets" select="'70'"/>
+    <p:option name="maximum-number-of-sheets" select="'-1'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name" px:inherit="prepend"/>
+            <p px:role="desc" px:inherit="prepend" xml:space="preserve">Use `-1` to compute this from metadata.</p>
+        </p:documentation>
+    </p:option>
     <p:option name="minimum-number-of-sheets"/>
     
     <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/library.xpl"/>
@@ -158,6 +163,12 @@
                                then if (//dtb:meta[@name='prod:docType']/@content='ro') then '26'
                                     else if (//dtb:meta[@name='prod:docType']/@content='sv') then '27' else ''
                                else $page-height">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
+      <p:with-param name="maximum-number-of-sheets" select="if ($maximum-number-of-sheets='-1')
+                               then if (//dtb:meta[@name='prod:docType']/@content='ro') then '35'
+                                    else if (//dtb:meta[@name='prod:docType']/@content='sv') then '37' else ''
+                               else $maximum-number-of-sheets">
         <p:pipe step="main" port="source"/>
       </p:with-param>
       <p:with-param name="hyphenation" select="if ($hyphenation='from-meta')
