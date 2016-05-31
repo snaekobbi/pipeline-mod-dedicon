@@ -117,11 +117,6 @@ pagenum {
 		display: none;
 	}
 } /* $show-inline-print-page-numbers */
-@else {
-	pagenum {
-		display: none;
-	}
-}
 
 /* --------------------------------------------------------------------------------
  * Front matter, body matter and rear matter
