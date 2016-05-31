@@ -226,7 +226,9 @@
     <!-- STORE PEF -->
     <!-- ========= -->
     <p:group>
-        <p:variable name="name" select="replace(p:base-uri(/),'^.*/([^/]*)\.[^/\.]*$','$1')">
+        <p:variable name="name" select="if (//dtb:meta[@name='dc:Identifier']/@content)
+                                then //dtb:meta[@name='dc:Identifier']/@content
+                                else replace(p:base-uri(/),'^.*/([^/]*)\.[^/\.]*$','$1')">
             <p:pipe step="main" port="source"/>
         </p:variable>
         <pef:store>
@@ -239,7 +241,7 @@
             <p:with-option name="brf-dir-href" select="if ($include-brf='true' and $brf-output-dir!='')
                                                    then $brf-output-dir else ''"/>
             <p:with-option name="brf-file-format" select="$ascii-file-format"/>
-            <p:with-option name="brf-name-pattern" select="concat($name,'_{}')"/>
+            <p:with-option name="brf-name-pattern" select="concat('p',$name,'_001_{}')"/>
             <p:with-option name="brf-number-width" select="3"/>
         </pef:store>
     </p:group>
