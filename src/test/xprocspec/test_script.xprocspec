@@ -289,18 +289,34 @@
         <x:document type="file" href="../resources/pef/boilerplate-test-1-disabled.pef"/>
       </x:expect>
     </x:scenario>
-    <x:scenario label="with toc">
+    <x:scenario label="with toc without pagenums">
       <x:call>
         <x:option name="add-boilerplate" select="true()"/>
         <x:option name="toc-depth" select="'6'"/>
-        <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/toc/output-dir',$temp-dir)"/>
-        <x:option name="temp-dir" select="resolve-uri('add-boilerplate/toc/temp-dir',$temp-dir)"/>
+        <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/toc-no-pagenums/output-dir',$temp-dir)"/>
+        <x:option name="temp-dir" select="resolve-uri('add-boilerplate/toc-no-pagenums/temp-dir',$temp-dir)"/>
       </x:call>
       <x:context label="result">
-        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/toc/output-dir/boilerplate-test-1.pef"/>
+        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/toc-no-pagenums/output-dir/boilerplate-test-1.pef"/>
       </x:context>
       <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
-        <x:document type="file" href="../resources/pef/boilerplate-test-1-toc.pef"/>
+        <x:document type="file" href="../resources/pef/boilerplate-test-1-toc-no-pagenums.pef"/>
+      </x:expect>
+    </x:scenario>
+    <x:scenario label="with toc with pagenums">
+      <x:call>
+        <x:option name="add-boilerplate" select="true()"/>
+        <x:option name="toc-depth" select="'6'"/>
+        <x:option name="show-print-page-numbers" select="true()"/>
+        <x:option name="show-braille-page-numbers" select="true()"/>
+        <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/toc-pagenums/output-dir',$temp-dir)"/>
+        <x:option name="temp-dir" select="resolve-uri('add-boilerplate/toc-pagenums/temp-dir',$temp-dir)"/>
+      </x:call>
+      <x:context label="result">
+        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/toc-pagenums/output-dir/boilerplate-test-1.pef"/>
+      </x:context>
+      <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+        <x:document type="file" href="../resources/pef/boilerplate-test-1-toc-pagenums.pef"/>
       </x:expect>
     </x:scenario>
   </x:scenario>
