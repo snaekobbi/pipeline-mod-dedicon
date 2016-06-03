@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>mod-dedicon</artifactId>
-  <version>1.6.0</version>
+  <version>1.6.1-SNAPSHOT</version>
   <packaging>bundle</packaging>
 
   <name>DP2 Braille Modules :: mod-dedicon</name>
@@ -195,8 +195,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <scm>
-    <tag>v1.6.0</tag>
-  </scm>
 </project>
