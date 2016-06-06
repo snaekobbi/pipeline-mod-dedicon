@@ -56,26 +56,20 @@
  *
  * See also the #generated-volume-toc and #generated-document-toc rules.
  */
-@volume:first {
-	@begin {
-		/* The document-toc flow is defined by the system default CSS. */
-		content: flow(title-page) flow(document-toc);
-	}
-}
 @volume {
 	@begin {
 		/* The volume-toc flow is defined by the system default CSS. */
 		content: flow(title-page) flow(volume-toc);
 	}
 }
-/* @if $include-document-toc-in-last-volume {
+@if $include-document-toc-in-last-volume {
 	@volume:last {
 		@end {
-			-- The document-toc flow is defined by the system default CSS.
+			/* The document-toc flow is defined by the system default CSS. */
 			content: flow(document-toc);
 		}
 	}
-} */
+}
 
 /* --------------------------------------------------------------------------------
  * Hidden elements
@@ -288,7 +282,7 @@ list > li {
  * Volume-level TOC
  *
  * The TOC always starts on a new page.
- * The start of each volume's TOC is indicated by the text "Inhoud band X".
+ * The start of each TOC is indicated with text.
  *
  * See also the @volume rule.
  */
@@ -303,7 +297,7 @@ list > li {
  * Document-level TOC
  *
  * The TOC always starts on a new page.
- * The start of each volume's TOC is indicated by the text "Inhoud band X".
+ * The start of each TOC is indicated with text.
  *
  * See also the @volume rule.
  */
@@ -318,6 +312,11 @@ list > li {
 	page-break-after: avoid;
 	margin-bottom: 1;
 	content: 'Inhoud band ' -obfl-evaluate('(round $started-volume-number)');
+}
+#generated-document-toc::-obfl-on-volume-end {
+	/* This separates individual volume TOCs by an empty line. */
+	display: block;
+	margin-bottom: 1;
 }
 
 /* --------------------------------------------------------------------------------
@@ -407,7 +406,7 @@ table > tr > td:has(+ td)::after {
 /* --------------------------------------------------------------------------------
  * Table cells
  *
- * Empty table cells are indicated by the text "gg".
+ * Empty table cells are indicated with text.
  */
 table > tr > td:empty::before {
 	content: 'gg';
@@ -627,7 +626,7 @@ sup::before {
 /* --------------------------------------------------------------------------------
  * Note references
  *
- * A note reference is indicated by an asterisk (*).
+ * A note reference is indicated with an asterisk (*).
  */
 noteref::before {
 	content: '⠔';
