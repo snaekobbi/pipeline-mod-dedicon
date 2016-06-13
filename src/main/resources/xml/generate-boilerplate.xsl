@@ -5,7 +5,7 @@
     xmlns="http://www.daisy.org/z3986/2005/dtbook/">
 
   <xsl:output indent="yes"/>
-  
+
   <!-- Add rearmatter if it does not exist -->
   <xsl:template match="book[not(rearmatter)]">
     <xsl:copy>
@@ -15,7 +15,7 @@
       </rearmatter>
     </xsl:copy>
   </xsl:template>
-  
+
   <!-- Insert title page template: after docauthor -->
   <xsl:template match="frontmatter/*[self::doctitle or self::docauthor][last()]">
     <xsl:copy>
@@ -23,6 +23,15 @@
       <xsl:apply-templates/>
     </xsl:copy>
     <xsl:call-template name="generate-title-page"/>                
+  </xsl:template>
+
+  <!-- Insert cover template: at end of frontmatter -->
+  <xsl:template match="frontmatter/*[last()]">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+    <xsl:copy-of select="//level1[@class='flap']"/>
   </xsl:template>
 
   <!-- Insert colophon template: after last item in rearmatter -->
@@ -39,14 +48,13 @@
       <xsl:apply-templates select="node()|@*"/>
     </xsl:copy>
   </xsl:template>
-  
+
   <!--
-    Removes the print TOC.
-    The assumption is that the print TOC contains no more information
-    than the document-level generated TOC.
+    Removes the cover.
+    The cover is moved into the frontmatter.
   -->
-  <xsl:template match="//*[@class='print_toc']"/>
-  
+  <xsl:template match="//level1[@class='flap']"/>
+
   <!--
     Template: generate-title-page
     Inserts the title page for both AL and SV books.
