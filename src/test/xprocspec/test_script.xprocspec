@@ -32,6 +32,22 @@
     </x:expect>
   </x:scenario>
   
+  <x:scenario label="annotations 1">
+    <x:call>
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/annotations-test-1.xml"/>
+      </x:input>
+      <x:option name="pef-output-dir" select="resolve-uri('annotations/1/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('annotations/1/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="annotations/1/output-dir/222222.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/annotations-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
+  
   <x:scenario label="definition lists 1">
     <x:call>
       <x:input port="source">
