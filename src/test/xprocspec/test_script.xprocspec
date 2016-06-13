@@ -289,6 +289,24 @@
         <x:document type="file" href="../resources/pef/boilerplate-test-1-disabled.pef"/>
       </x:expect>
     </x:scenario>
+    <x:scenario label="with pagenums">
+      <x:call>
+        <x:option name="add-boilerplate" select="true()"/>
+        <x:option name="show-print-page-numbers" select="true()"/>
+        <x:option name="show-braille-page-numbers" select="true()"/>
+        <x:option name="pef-output-dir" select="resolve-uri('add-boilerplate/pagenums/output-dir',$temp-dir)"/>
+        <x:option name="temp-dir" select="resolve-uri('add-boilerplate/pagenums/temp-dir',$temp-dir)"/>
+      </x:call>
+      <x:context label="result">
+        <x:document type="file" base-uri="temp-dir" href="add-boilerplate/pagenums/output-dir/222222.pef"/>
+      </x:context>
+      <!--
+          fails because of empty page
+      -->
+      <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare" xfail="true">
+        <x:document type="file" href="../resources/pef/boilerplate-test-1-pagenums.pef"/>
+      </x:expect>
+    </x:scenario>
     <x:scenario label="with toc without pagenums">
       <x:call>
         <x:option name="add-boilerplate" select="true()"/>
