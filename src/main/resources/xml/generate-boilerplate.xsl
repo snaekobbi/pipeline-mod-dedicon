@@ -73,7 +73,7 @@
       <div id="generated-title-page-footer">
         <p>Dedicon</p>
         <p id="generated-volume-count">
-          Band <span class="placeholder-current-volume"/> (totaal <span class="placeholder-total-volumes"/>)
+          Band <span class="placeholder-current-volume"/> van <span class="placeholder-total-volumes"/>
         </p>
       </div>
     </level1>
