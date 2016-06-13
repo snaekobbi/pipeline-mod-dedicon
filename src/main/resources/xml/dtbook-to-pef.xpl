@@ -252,7 +252,7 @@
             <p:with-option name="brf-dir-href" select="if ($include-brf='true' and $brf-output-dir!='')
                                                    then $brf-output-dir else ''"/>
             <p:with-option name="brf-file-format" select="$ascii-file-format"/>
-            <p:with-option name="brf-name-pattern" select="concat('p',$name,'_001_{}')"/>
+            <p:with-option name="brf-name-pattern" select="concat('p',$name,'_{}')"/>
             <p:with-option name="brf-number-width" select="3"/>
         </pef:store>
     </p:group>
