@@ -121,6 +121,12 @@
             <p px:role="desc" xml:space="preserve">Whether to include a list of symbols and their descriptions in the first volume.</p>
         </p:documentation>
     </p:option> -->
+    <p:option name="move-print-cover-to-first-volume" required="false" px:type="boolean" select="'true'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name">Move print cover to first volume</h2>
+            <p px:role="desc">When enabled, and when the input has a `level1` element with class `flap`, will move that cover to the first volume.</p>
+        </p:documentation>
+    </p:option>
     <p:option name="move-print-colophon-to-last-volume" required="false" px:type="boolean" select="'from-meta'">
         <p:documentation xmlns="http://www.w3.org/1999/xhtml">
             <h2 px:role="name">Move print colophon to last volume</h2>
