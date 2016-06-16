@@ -15,17 +15,10 @@
     
     <p:import href="http://www.daisy.org/pipeline/modules/common-utils/library.xpl"/>
     
-    <p:parameters name="parameters"/>
-    <p:identity>
-        <p:input port="source">
-            <p:pipe port="source" step="main"/>
-        </p:input>
-    </p:identity>
-    
     <px:message message="Running Dedicon-specific pre-processing steps"/>
     <p:xslt>
         <p:input port="parameters">
-            <p:pipe port="result" step="parameters"/>
+            <p:pipe port="parameters" step="main"/>
         </p:input>
         <p:input port="stylesheet">
             <p:document href="generate-boilerplate.xsl"/>
