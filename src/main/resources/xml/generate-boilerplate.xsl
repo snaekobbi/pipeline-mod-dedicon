@@ -5,12 +5,16 @@
     xmlns="http://www.daisy.org/z3986/2005/dtbook/">
 
   <xsl:output indent="yes"/>
+  <xsl:param name="move-print-colophon-to-last-volume" required="yes"/>
 
   <!-- Add rearmatter if it does not exist -->
   <xsl:template match="book[not(rearmatter)]">
     <xsl:copy>
       <xsl:apply-templates/>
       <rearmatter>
+        <xsl:if test="$move-print-colophon-to-last-volume">
+          <xsl:copy-of select="//level1[@class='colophon']"/>
+        </xsl:if>
         <xsl:call-template name="generate-colophon-page"/> 
       </rearmatter>
     </xsl:copy>
@@ -34,10 +38,13 @@
     <xsl:copy-of select="//level1[@class='flap']"/>
   </xsl:template>
 
-  <!-- Insert colophon template: after last item in rearmatter -->
+  <!-- Insert print and generated colophon template: after last item in rearmatter -->
   <xsl:template match="rearmatter">
     <xsl:copy>
       <xsl:apply-templates/>
+      <xsl:if test="$move-print-colophon-to-last-volume">
+        <xsl:copy-of select="//level1[@class='colophon']"/>
+      </xsl:if>
       <xsl:call-template name="generate-colophon-page"/> 
     </xsl:copy>
   </xsl:template>
@@ -54,6 +61,18 @@
     The cover is moved into the frontmatter.
   -->
   <xsl:template match="//level1[@class='flap']"/>
+
+  <!--
+    Removes the print colophon.
+    The print colophon is moved into the rearmatter.
+  -->
+  <xsl:template match="//level1[@class='colophon']">
+    <xsl:if test="not($move-print-colophon-to-last-volume)">
+      <xsl:copy>
+        <xsl:apply-templates select="node()|@*"/>
+      </xsl:copy>
+    </xsl:if>
+  </xsl:template>
 
   <!--
     Template: generate-title-page

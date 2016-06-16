@@ -3,6 +3,7 @@ pipeline-mod-dedicon v1.6.1
 
 Includes
 --------
+- Moving the print colophon to the last volume (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/46)
 - Small improvements and fixes
 
 pipeline-mod-dedicon v1.5.2

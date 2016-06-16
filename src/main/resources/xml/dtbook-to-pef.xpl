@@ -121,6 +121,26 @@
             <p px:role="desc" xml:space="preserve">Whether to include a list of symbols and their descriptions in the first volume.</p>
         </p:documentation>
     </p:option> -->
+    <p:option name="move-print-colophon-to-last-volume" required="false" px:type="boolean" select="'from-meta'">
+        <p:documentation xmlns="http://www.w3.org/1999/xhtml">
+            <h2 px:role="name">Move print colophon to last volume</h2>
+            <p px:role="desc">When enabled, and when the input has a `level1` element with class `colophon`, will move that colophon to the last volume.</p>
+        </p:documentation>
+        <p:pipeinfo>
+            <px:data-type>
+                <choice>
+                    <documentation xmlns="http://relaxng.org/ns/compatibility/annotations/1.0">
+                        <value>Yes</value>
+                        <value>No</value>
+                        <value>Use value from metadata field</value>
+                    </documentation>
+                    <value>true</value>
+                    <value>false</value>
+                    <value>from-meta</value>
+                </choice>
+            </px:data-type>
+        </p:pipeinfo>
+    </p:option>
     <p:option name="number-of-sheets"/>
     <p:option name="maximum-number-of-sheets" select="'-1'">
         <p:documentation xmlns="http://www.w3.org/1999/xhtml">
@@ -184,6 +204,11 @@
       <p:with-param name="include-document-toc-in-last-volume" select="if ($include-document-toc-in-last-volume='from-meta')
                                then //dtb:meta[@name='prod:docType']/@content='ro'
                                else $include-document-toc-in-last-volume='true'">
+        <p:pipe step="main" port="source"/>
+      </p:with-param>
+      <p:with-param name="move-print-colophon-to-last-volume" select="if ($move-print-colophon-to-last-volume='from-meta')
+                               then //dtb:meta[@name='prod:docType']/@content='sv'
+                               else $move-print-colophon-to-last-volume='true'">
         <p:pipe step="main" port="source"/>
       </p:with-param>
     </px:add-parameters>
