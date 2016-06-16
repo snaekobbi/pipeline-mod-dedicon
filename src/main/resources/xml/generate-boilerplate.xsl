@@ -12,7 +12,7 @@
     <xsl:copy>
       <xsl:apply-templates/>
       <rearmatter>
-        <xsl:if test="$move-print-colophon-to-last-volume">
+        <xsl:if test="$move-print-colophon-to-last-volume='true'">
           <xsl:copy-of select="//level1[@class='colophon']"/>
         </xsl:if>
         <xsl:call-template name="generate-colophon-page"/> 
@@ -42,7 +42,7 @@
   <xsl:template match="rearmatter">
     <xsl:copy>
       <xsl:apply-templates/>
-      <xsl:if test="$move-print-colophon-to-last-volume">
+      <xsl:if test="$move-print-colophon-to-last-volume='true'">
         <xsl:copy-of select="//level1[@class='colophon']"/>
       </xsl:if>
       <xsl:call-template name="generate-colophon-page"/> 
@@ -67,7 +67,7 @@
     The print colophon is moved into the rearmatter.
   -->
   <xsl:template match="//level1[@class='colophon']">
-    <xsl:if test="not($move-print-colophon-to-last-volume)">
+    <xsl:if test="not($move-print-colophon-to-last-volume='true')">
       <xsl:copy>
         <xsl:apply-templates select="node()|@*"/>
       </xsl:copy>
