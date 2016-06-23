@@ -15,7 +15,7 @@
     </p:declare-step>
   </x:script>
   
-  <x:scenario label="test_hyphenation" pending="libhyphen not available on Windows">
+  <x:scenario label="test_hyphenation">
     <x:call step="pxi:transform">
       <x:input port="source">
         <x:document type="inline">
@@ -31,8 +31,8 @@
     <x:expect label="result" type="compare">
       <x:document type="inline">
         <_ style="text-transform: none">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="hyphens: manual">
-          <p style="display: block">⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
+        <div xmlns="http://www.w3.org/1999/xhtml">
+          <p css:display="block">⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
         </div>
         </_>
       </x:document>

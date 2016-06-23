@@ -79,7 +79,7 @@ public class DediconTest {
 				brailleModule("liblouis-native").forThisPlatform(),
 				brailleModule("libhyphen-core"),
 				brailleModule("libhyphen-libreoffice-tables"),
-				//onWindows ? null : brailleModule("libhyphen-native").forThisPlatform(),
+				brailleModule("libhyphen-native").forThisPlatform(),
 				brailleModule("dotify-formatter"),
 				brailleModule("pef-utils"),
 				brailleModule("dtbook-to-pef"),
@@ -90,7 +90,4 @@ public class DediconTest {
 				mavenBundle("org.daisy.maven:xproc-engine-daisy-pipeline:?"))
 		);
 	}
-
-	//private static boolean onWindows = System.getProperty("os.name").toLowerCase().startsWith("windows");
-	
 }
