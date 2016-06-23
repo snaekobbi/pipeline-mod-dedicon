@@ -28,7 +28,7 @@
                                            '(table:&quot;com_braillo.BrailloTableProvider.TableType.BRAILLO_6DOT_031_01&quot;)',
                                            '(line-breaks:dos)',
                                            '(file-extension:&quot;.brl&quot;)',
-                                           '(pad:both)')
+                                           '(pad:both)',
                                            '(charset:&quot;windows-1252&quot;)')"/>
     <p:option name="ascii-table"/>
     <p:option name="add-boilerplate" px:type="boolean" select="'true'">
