@@ -18,6 +18,22 @@
 @namespace xml "http://www.w3.org/XML/1998/namespace";
 
 /* --------------------------------------------------------------------------------
+ * Volume breaking
+ *
+ * Try to prevent breaking top-level sections in a way that would leave
+ * two sheets or less in either volume.
+ * Try to avoid breaking inside block elements that can be assumed
+ * to contain less than one sheet of text.
+ */
+level1 {
+	-obfl-keep-with-previous-sheets: 2;
+	-obfl-keep-with-next-sheets: 2;
+}
+p {
+	volume-break-inside: -obfl-keep(1);
+}
+
+/* --------------------------------------------------------------------------------
  * Page layout
  *
  * A page contains 33 columns by 28 rows of braille (configurable with options, defaults in script).
