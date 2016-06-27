@@ -5,6 +5,11 @@
  * Author: Davy Kager <davykager@dedicon.nl>
  * Author: Bert Frees <bertfrees@gmail.com>
  *
+ * Hexadecimal Unicode values used throughout this stylesheet:
+ * \A - line feed (LF)
+ * \A0 - non-breaking space (NBSP)
+ * \200B - zero-width space (ZWSP)
+ *
  * See also Braille CSS: http://snaekobbi.github.io/braille-css-spec/master/index.html
  */
 
@@ -114,8 +119,7 @@ head, doctitle, docauthor {
 pagenum {
 	display: none;
 	/* The following lines sets the values used for the top-center page position and the TOC. */
-	/* \A0 is a non-breaking space. */
-	string-set: print-page-from content() ' - ', print-page-to content(), print-page-toc content() '\A0\A0';
+	string-set: print-page-from content() ' - ', print-page-to content(), print-page-toc content() '\200B\A0\A0';
 }
 @if $show-inline-print-page-numbers {
 	pagenum {
@@ -277,7 +281,6 @@ list {
 list:has(+ list)::after {
 	/* Setting a margin doesn't seem to work for lists. */
 	white-space: pre-line;
-	/* \A is a line break. */
 	content: '\A';
 }
 
@@ -346,8 +349,7 @@ list > li {
 #generated-volume-toc li > a::after,
 #generated-document-toc li > a::after {
 	/* Whitespace after the print page number is added through string-set. */
-	/* \A0 is a non-breaking space. */
-	content: '\A0\A0' target-string(attr(href), print-page-toc) target-counter(attr(href), page);
+	content: '\200B\A0\A0' target-string(attr(href), print-page-toc) target-counter(attr(href), page);
 }
 #generated-volume-toc li > a,
 #generated-document-toc li > a {
@@ -598,7 +600,6 @@ code {
  */
 br::before {
 	white-space: pre-line;
-	/* \A is a line break. */
 	content: '\A';
 }
 
@@ -622,8 +623,7 @@ table > tr > td:empty::before {
  * Components are separated by two spaces.
  */
 list > li > lic:has(+ lic)::after {
-	white-space: pre-wrap;
-	content: '  ';
+	content: '\200B\A0\A0';
 }
 
 /* --------------------------------------------------------------------------------
@@ -724,7 +724,6 @@ noteref::before {
 p.table-title::before {
 	/* The next line prevents newline characters from being converted to spaces. */
 	white-space: pre-line;
-	/* \A is a line break. */
 	content: 'tabel titel\A';
 }
 p.table-title {
