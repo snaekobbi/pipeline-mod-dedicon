@@ -278,10 +278,8 @@ p:empty {
 list {
 	display: block;
 }
-list:has(+ list)::after {
-	/* Setting a margin doesn't seem to work for lists. */
-	white-space: pre-line;
-	content: '\A';
+list:has(+ list) {
+	margin-bottom: 1;
 }
 
 /* --------------------------------------------------------------------------------
