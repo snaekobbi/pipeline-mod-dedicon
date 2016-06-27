@@ -656,15 +656,21 @@ noteref::before {
 /* --------------------------------------------------------------------------------
  * Current volume number
  */
+.placeholder-current-volume::before {
+	/* HACK: the space before the span is dropped. */
+	content: ' ';
+}
 .placeholder-current-volume::after {
-	content: -obfl-evaluate('(round $volume)');
+	/* HACK: the space after the span is dropped. */
+	content: -obfl-evaluate('(round $volume)') ' ';
 }
 
 /* --------------------------------------------------------------------------------
  * Total number of volumes
  */
 .placeholder-total-volumes::after {
-	content: -obfl-evaluate('(round $volumes)');
+	/* HACK: the space before the span is dropped. */
+	content: ' ' -obfl-evaluate('(round $volumes)');
 }
 
 /**********************************************************************************
