@@ -5,8 +5,8 @@
     xmlns="http://www.daisy.org/z3986/2005/dtbook/">
 
   <xsl:output indent="yes"/>
-  <xsl:param name="move-print-cover-to-first-volume" required="no" select="true()"/>
-  <xsl:param name="move-print-colophon-to-last-volume" required="no" select="true()"/>
+  <xsl:param name="move-print-cover-to-first-volume" required="no" select="'true'"/>
+  <xsl:param name="move-print-colophon-to-last-volume" required="no" select="'true'"/>
 
   <!-- Add rearmatter if it does not exist -->
   <xsl:template match="book[not(rearmatter)]">
@@ -21,8 +21,8 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Insert title page template: after docauthor -->
-  <xsl:template match="frontmatter/*[self::doctitle or self::docauthor][last()]">
+  <!-- Insert generated title page template: after docauthor -->
+  <xsl:template match="frontmatter/*[self::doctitle or self::docauthor][last()]" priority="10">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
@@ -31,11 +31,16 @@
   </xsl:template>
 
   <!-- Insert cover template: at end of frontmatter -->
-  <xsl:template match="frontmatter/*[last()]">
+  <!-- Also inserts the generated title page if the frontmatter is empty
+       apart from doctitle and/or docauthor. -->
+  <xsl:template match="frontmatter/*[last()]" priority="5">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>
+    <xsl:if test=".[self::doctitle or self::docauthor]">
+      <xsl:call-template name="generate-title-page"/>                
+    </xsl:if>
     <xsl:if test="$move-print-cover-to-first-volume='true'">
       <xsl:copy-of select="//level1[@class='flap']"/>
     </xsl:if>
@@ -85,7 +90,7 @@
 
   <!--
     Template: generate-title-page
-    Inserts the title page for both AL and SV books.
+    Inserts the generated title page for both AL and SV books.
   -->
   <xsl:template name="generate-title-page">
     <xsl:variable name="isbn" select="//meta[@name eq 'dc:Source']/@content"/>
@@ -109,7 +114,7 @@
 
   <!--
     Template: generate-colophon-page
-    Inserts the colophon page for both AL and SV books.
+    Inserts the generated colophon page for both AL and SV books.
   -->
   <xsl:template name="generate-colophon-page">
     <xsl:choose>
