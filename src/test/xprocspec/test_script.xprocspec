@@ -144,6 +144,22 @@
       <x:document type="file" href="../resources/pef/lists-test-3.pef"/>
     </x:expect>
   </x:scenario>
+
+  <x:scenario label="lists 4">
+    <x:call>
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/lists-test-4.xml"/>
+      </x:input>
+      <x:option name="pef-output-dir" select="resolve-uri('lists4/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('lists4/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="lists4/output-dir/222222.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/lists-test-4.pef"/>
+    </x:expect>
+  </x:scenario>
   
   <x:scenario label="line breaks 1">
     <x:call>

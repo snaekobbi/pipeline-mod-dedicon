@@ -114,6 +114,7 @@ head, doctitle, docauthor {
 pagenum {
 	display: none;
 	/* The following lines sets the values used for the top-center page position and the TOC. */
+	/* \A0 is a non-breaking space. */
 	string-set: print-page-from content() ' - ', print-page-to content(), print-page-toc content() '\A0\A0';
 }
 @if $show-inline-print-page-numbers {
@@ -409,25 +410,6 @@ table > tr {
 }
 
 /* --------------------------------------------------------------------------------
- * Table columns
- *
- * Columns are separated by a semicolon and a space.
- */
-table > tr > td:has(+ td)::after {
-	/* Use a braille pattern here because a semicolon currently doesn't work. */
-	content: '⠆⠀';
-}
-
-/* --------------------------------------------------------------------------------
- * Table cells
- *
- * Empty table cells are indicated with text.
- */
-table > tr > td:empty::before {
-	content: 'gg';
-}
-
-/* --------------------------------------------------------------------------------
  * Image groups
  *
  * The start and end of an image group are indicated with text.
@@ -618,6 +600,30 @@ br::before {
 	white-space: pre-line;
 	/* \A is a line break. */
 	content: '\A';
+}
+
+/* --------------------------------------------------------------------------------
+ * Table cells
+ *
+ * Cells are separated by a semicolon and a space.
+ * Empty cells are indicated with text.
+ */
+table > tr > td:has(+ td)::after {
+	/* Use a braille pattern here because a semicolon currently doesn't work. */
+	content: '⠆⠀';
+}
+table > tr > td:empty::before {
+	content: 'gg';
+}
+
+/* --------------------------------------------------------------------------------
+ * List item components
+ *
+ * Components are separated by two spaces.
+ */
+list > li > lic:has(+ lic)::after {
+	white-space: pre-wrap;
+	content: '  ';
 }
 
 /* --------------------------------------------------------------------------------
