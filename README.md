@@ -1,7 +1,9 @@
 # pipeline-mod-dedicon
+
 Dedicon specific modules for the DAISY Pipeline 2
 
 ## Release procedure
+
 - View changes since previous release and update version number according to semantic versioning.
 
   ```sh
@@ -18,7 +20,7 @@ Dedicon specific modules for the DAISY Pipeline 2
 - Resolve snapshot dependencies and commit.
 - Set the version in pom.xml to `${VERSION}-SNAPSHOT` and commit.
 - Make release notes and commit. (View changes since previous release with `git diff v1.1.0...HEAD`
-  and look for relevant Github issues on [https://github.com/search](https://github.com/search))
+  and look for relevant GitHub issues on [https://github.com/search](https://github.com/search))
 - Perform the release with Maven.
 
 ```sh
@@ -52,4 +54,5 @@ Dedicon specific modules for the DAISY Pipeline 2
   git push origin v${VERSION}
   ```
   
-- Add the release notes to http://github.com/snaekobbi/pipeline-mod-dedicon/releases/v${VERSION}.
+- Add a link to https://github.com/snaekobbi/pipeline-mod-dedicon/blob/master/NEWS.md
+  as release notes in https://github.com/snaekobbi/pipeline-mod-dedicon/releases/v${VERSION}.
