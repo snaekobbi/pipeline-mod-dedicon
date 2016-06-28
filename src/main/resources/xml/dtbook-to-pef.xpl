@@ -147,7 +147,7 @@
             <p px:role="desc" px:inherit="prepend" xml:space="preserve">Use `-1` to compute this from metadata.</p>
         </p:documentation>
     </p:option>
-    <p:option name="pef-output-dir" select="''"/>
+    <p:option name="pef-output-dir"/>
     <p:option name="brf-output-dir" select="''"/>
     <p:option name="preview-output-dir" select="''"/>
     <p:option name="temp-dir" select="''"/>
