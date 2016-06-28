@@ -16,10 +16,6 @@
     
     <p:input port="source" primary="true" px:name="source" px:media-type="application/x-dtbook+xml"/>
     
-    <p:option name="pef-output-dir"/>
-    <p:option name="brf-output-dir"/>
-    <p:option name="preview-output-dir"/>
-    <p:option name="temp-dir"/>
     <p:option name="stylesheet" select="'http://www.dedicon.nl/pipeline/modules/braille/default.scss'"/>
     <p:option name="include-preview" select="'false'"/>
     <p:option name="include-brf" select="'true'"/>
@@ -31,7 +27,7 @@
                                            '(pad:both)',
                                            '(charset:&quot;windows-1252&quot;)')"/>
     <p:option name="ascii-table"/>
-    <p:option name="add-boilerplate" px:type="boolean" select="'true'">
+    <p:option name="add-boilerplate" required="false" px:type="boolean" select="'true'">
         <p:documentation xmlns="http://www.w3.org/1999/xhtml">
             <h2 px:role="name">Add boilerplate text</h2>
             <p px:role="desc">When enabled, and when the input has a `docauthor` element, will insert boilerplate text such as a title page.</p>
@@ -49,7 +45,6 @@
             <p px:role="desc" px:inherit="prepend" xml:space="preserve">Use `-1` to compute this from metadata.</p>
         </p:documentation>
     </p:option>
-    <p:option name="left-margin"/>
     <p:option name="duplex" select="'true'"/>
     <p:option name="hyphenation" select="'from-meta'">
         <p:pipeinfo>
@@ -68,11 +63,9 @@
         </p:pipeinfo>
     </p:option>
     <p:option name="line-spacing" select="'single'"/>
-    <p:option name="tab-width"/>
     <p:option name="capital-letters" select="'true'"/>
-    <p:option name="accented-letters" select="'true'"/>
     <p:option name="include-captions" select="'true'"/>
-    <p:option name="include-images" select="'false'"/>
+    <p:option name="include-images" select="'false'"/> <!-- displays the alt text -->
     <p:option name="include-image-groups" select="'true'"/>
     <p:option name="include-line-groups" select="'true'"/>
     <p:option name="include-production-notes" select="'true'"/>
@@ -148,14 +141,16 @@
             </px:data-type>
         </p:pipeinfo>
     </p:option>
-    <p:option name="number-of-sheets"/>
     <p:option name="maximum-number-of-sheets" select="'-1'">
         <p:documentation xmlns="http://www.w3.org/1999/xhtml">
             <h2 px:role="name" px:inherit="prepend"/>
             <p px:role="desc" px:inherit="prepend" xml:space="preserve">Use `-1` to compute this from metadata.</p>
         </p:documentation>
     </p:option>
-    <p:option name="minimum-number-of-sheets"/>
+    <p:option name="pef-output-dir" select="''"/>
+    <p:option name="brf-output-dir" select="''"/>
+    <p:option name="preview-output-dir" select="''"/>
+    <p:option name="temp-dir" select="''"/>
     
     <p:import href="http://www.daisy.org/pipeline/modules/braille/dtbook-to-pef/library.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/braille/xml-to-pef/library.xpl"/>
@@ -285,7 +280,7 @@
                                                    then $brf-output-dir else ''"/>
             <p:with-option name="brf-file-format" select="$ascii-file-format"/>
             <p:with-option name="brf-name-pattern" select="concat('p',$name,'_{}')"/>
-            <p:with-option name="brf-number-width" select="3"/>
+            <p:with-option name="brf-number-width" select="'3'"/>
         </pef:store>
     </p:group>
     
