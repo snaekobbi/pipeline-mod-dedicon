@@ -30,13 +30,13 @@
  * Try to avoid breaking inside block elements that can be assumed
  * to contain less than one sheet of text.
  */
-level1 {
+/* level1 {
 	-obfl-keep-with-previous-sheets: 2;
 	-obfl-keep-with-next-sheets: 2;
 }
 p {
 	volume-break-inside: -obfl-keep(1);
-}
+} */
 
 /* --------------------------------------------------------------------------------
  * Page layout
