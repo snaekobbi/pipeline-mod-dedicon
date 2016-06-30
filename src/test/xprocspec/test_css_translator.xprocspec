@@ -38,7 +38,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <_ style="text-transform: none"><div xmlns="http://www.w3.org/1999/xhtml" css:display="block" style="@volume { @begin { content: flow(title-page) flow(volume-toc); text-transform: auto } }">             <p css:display="block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" css:display="block" style="volume-break-inside: -obfl-keep(1); white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div></_>
+        <_ style="text-transform: none"><div xmlns="http://www.w3.org/1999/xhtml" css:display="block" style="@volume { @begin { content: flow(title-page) flow(volume-toc); text-transform: auto } }">             <p css:display="block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p xml:space="preserve" css:display="block" style="white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div></_>
       </x:document>
     </x:expect>
   </x:scenario>
