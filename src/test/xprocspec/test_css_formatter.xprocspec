@@ -16,6 +16,8 @@
       <px:apply-stylesheets>
         <p:with-param port="parameters" name="show-print-page-numbers" select="true()"/>
         <p:with-param port="parameters" name="show-braille-page-numbers" select="true()"/>
+        <p:with-param port="parameters" name="include-document-toc-in-last-volume" select="false()"/>
+        <p:with-param port="parameters" name="show-inline-print-page-numbers" select="true()"/>
       </px:apply-stylesheets>
       <px:transform query="(input:css)(output:pef)(formatter:dotify)(translator:dedicon)(locale:nl)">
         <p:with-option name="temp-dir" select="$temp-dir"/>
