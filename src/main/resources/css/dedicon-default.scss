@@ -142,8 +142,8 @@ pagenum {
  */
 frontmatter, bodymatter, rearmatter {
 	display: block;
-	/* The following line sets the values used for the top-center page position and the TOC. */
-	string-set: print-page-from '', print-page-to '', print-page-toc '';
+	/* The following line sets the values used for the TOC. */
+	string-set: print-page-toc '';
 }
 frontmatter:not(:has(> *:not(doctitle, docauthor, #generated-title-page))) {
 	display: none;
@@ -266,8 +266,8 @@ p:empty {
  */
 #generated-colophon-page {
 	page-break-inside: avoid;
-	/* The following line sets the values used for the top-center page position and the TOC. */
-	string-set: print-page-from '', print-page-to '', print-page-toc '';
+	/* The following line sets the values used for the TOC. */
+	string-set: print-page-toc '';
 }
 
 /* --------------------------------------------------------------------------------
