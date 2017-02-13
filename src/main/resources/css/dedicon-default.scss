@@ -70,8 +70,6 @@ p {
 /* --------------------------------------------------------------------------------
  * Boilerplate
  *
- * NOTE: not fully supported yet, see: https://github.com/snaekobbi/pipeline-mod-dedicon/issues/40
- *
  * Each volume begins with the volume-level TOC.
  * The last volume optionally ends with a document-level TOC.
  *
@@ -118,7 +116,7 @@ head, doctitle, docauthor {
  */
 pagenum {
 	display: none;
-	/* The following lines sets the values used for the top-center page position and the TOC. */
+	/* The following line sets the values used for the top-center page position and the TOC. */
 	string-set: print-page-from content() ' - ', print-page-to content(), print-page-toc content() '\200B\A0\A0';
 }
 @if $show-inline-print-page-numbers {
@@ -677,7 +675,7 @@ noteref::before {
  * These are attributes that can be specified on XML elements.
  */
  
- /* --------------------------------------------------------------------------------
+/* --------------------------------------------------------------------------------
  * Strong text
  *
  * This is marked up as bold.
