@@ -241,6 +241,22 @@
       <x:document type="file" href="../resources/pef/notes-test-2.pef"/>
     </x:expect>
   </x:scenario>
+
+  <x:scenario label="print_toc 1">
+    <x:call>
+      <x:input port="source">
+        <x:document type="file" href="../resources/xml/print_toc-test-1.xml"/>
+      </x:input>
+      <x:option name="pef-output-dir" select="resolve-uri('print_toc/1/output-dir',$temp-dir)"/>
+      <x:option name="temp-dir" select="resolve-uri('print_toc/1/temp-dir',$temp-dir)"/>
+    </x:call>
+    <x:context label="result">
+      <x:document type="file" base-uri="temp-dir" href="print_toc/1/output-dir/222222.pef"/>
+    </x:context>
+    <x:expect label="result" type="custom" href="http://www.daisy.org/pipeline/modules/braille/pef-utils/library.xpl" step="x:pef-compare">
+      <x:document type="file" href="../resources/pef/print_toc-test-1.pef"/>
+    </x:expect>
+  </x:scenario>
   
   <x:scenario label="subsup 1">
     <x:call>
