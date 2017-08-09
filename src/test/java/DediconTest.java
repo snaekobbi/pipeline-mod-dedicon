@@ -14,9 +14,9 @@ import static org.daisy.pipeline.pax.exam.Options.logbackClassic;
 import static org.daisy.pipeline.pax.exam.Options.logbackConfigFile;
 import static org.daisy.pipeline.pax.exam.Options.mavenBundle;
 import static org.daisy.pipeline.pax.exam.Options.mavenBundlesWithDependencies;
-import static org.daisy.pipeline.pax.exam.Options.pipelineModule;
 import static org.daisy.pipeline.pax.exam.Options.thisBundle;
 import static org.daisy.pipeline.pax.exam.Options.xprocspec;
+import static org.ops4j.pax.exam.CoreOptions.systemPackage;
 
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -65,6 +65,7 @@ public class DediconTest {
 	public Option[] config() {
 		return options(
 			systemProperty("file.encoding").value("UTF8"),
+			systemPackage("javax.xml.stream;version=\"1.0.1\""),
 			logbackConfigFile(),
 			domTraversalPackage(),
 			calabashConfigFile(),

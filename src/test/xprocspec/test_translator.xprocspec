@@ -32,7 +32,7 @@
       <x:document type="inline">
         <_ style="text-transform: none">
         <div xmlns="http://www.w3.org/1999/xhtml">
-          <p css:display="block">⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
+          <p style="display: block">⠵⠕­⠍⠑⠗­⠧⠁­⠅⠁⠝­⠞⠊⠑</p>
         </div>
         </_>
       </x:document>
@@ -103,7 +103,7 @@
     </x:context>
     <x:expect label="result" type="compare" normalize-space="false">
       <x:document type="inline">
-        <_ style="text-transform: none"><div xmlns="http://www.w3.org/1999/xhtml">             <p css:display="block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p css:display="block" style="white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div></_>
+        <_ style="text-transform: none"><div xmlns="http://www.w3.org/1999/xhtml">             <p style="display: block">⠨⠝⠕⠞   ⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>             <p style="display: block; white-space: pre-wrap">⠨⠏⠗⠑⠎⠑⠗⠧⠊⠝⠛   ⠺⠓⠊⠞⠑⠎⠏⠁⠉⠑</p>           </div></_>
       </x:document>
     </x:expect>
   </x:scenario>
@@ -125,7 +125,7 @@
       <x:document type="inline">
         <_ style="text-transform: none">
         <div xmlns="http://www.w3.org/1999/xhtml">
-          <p css:display="block">⠨⠎⠑⠑⠢ ⠢</p>
+          <p style="display: block">⠨⠎⠑⠑⠢ ⠢</p>
         </div>
         </_>
       </x:document>
