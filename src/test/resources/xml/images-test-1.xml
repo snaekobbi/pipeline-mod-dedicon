@@ -24,7 +24,7 @@
 <h1>Image with caption and prodnote</h1>
 <p>Tekst voor de afbeelding.</p>
 <imggroup>
-<img alt="afbeelding" src="img/001.jpg"/>
+<img alt="afbeelding" src="img\001.jpg"/>
 <caption>Figuur 1.1</caption>
 <prodnote render="optional"><p>Tekst in afbeelding:</p>
 <list type="pl">
@@ -48,7 +48,7 @@
 <h1>Image with prodnote</h1>
 <p>Tekst voor de afbeelding.</p>
 <imggroup>
-<img alt="afbeelding" src="img/001.jpg"/>
+<img alt="afbeelding" src="img\001.jpg"/>
 <prodnote render="optional"><p>Tekst in afbeelding:</p>
 <list type="pl">
 <li>- Item 1</li>
@@ -62,7 +62,7 @@
 <h1>Empty image</h1>
 <p>Tekst voor de afbeelding.</p>
 <imggroup>
-<img alt="afbeelding" src="img/001.jpg"/>
+<img alt="afbeelding" src="img\001.jpg"/>
 </imggroup>
 <p>Tekst na de afbeelding.</p>
 </level1>

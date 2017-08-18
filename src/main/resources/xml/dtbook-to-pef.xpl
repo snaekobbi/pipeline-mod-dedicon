@@ -233,6 +233,7 @@
             <p:pipe step="main" port="source"/>
         </p:input>
     </p:identity>
+    <dedicon:src-backslash-fix/>
     <p:choose>
         <p:when test="$add-boilerplate='true'">
             <dedicon:pre-processing>
