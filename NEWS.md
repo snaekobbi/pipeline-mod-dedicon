@@ -1,3 +1,16 @@
+v1.6.2
+======
+
+Includes
+--------
+
+- Works with the latest version of the braille-modules-parent (version 1:10:1)
+- Workaround for backslashes in src attributes (https://github.com/daisy/pipeline-mod-braille/issues/162)
+- Simplified test environment
+- Unit test for out-of-memory exception (https://github.com/snaekobbi/pipeline-mod-dedicon/issues/58)
+- Remove hack for resetting print page numbers on frontmatter/bodymatter/rearmatter/colophon
+- Small improvements and fixes
+
 v1.6.1
 ======
 
